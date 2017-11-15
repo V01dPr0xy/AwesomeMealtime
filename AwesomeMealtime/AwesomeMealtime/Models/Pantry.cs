@@ -10,8 +10,8 @@ namespace AwesomeMealtime.Models
     {
         public List<Ingredient> Food_Stuffs { get; set; }
 
-        void Add() { }
-        void Remove() { }
+        void Add(Ingredient ing) { Food_Stuffs.Add(ing); }
+        void Remove(Ingredient ing) { Food_Stuffs.Remove(ing); }
         void Edit() { }
         void Filter() { }
         void Sort() { }
