@@ -21,7 +21,6 @@ namespace AwesomeMealtime.Models
         public struct Quantity
         {
             public double Qty { get; set; }
-
         }
 
         enum Measurement
