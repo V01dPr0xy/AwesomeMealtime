@@ -14,17 +14,17 @@ namespace AwesomeMealtime.Models
 
         public struct ExpDate
         {
-            public TimeSpan Time { get; set; }
+            public DateTime Time { get; set; }
             public List<Quantity> Dates { get; set; }
         }
 
         public struct Quantity
         {
             public double Qty { get; set; }
-
+            public Measurements Msmt { get; set; }
         }
 
-        enum Measurement
+        public enum Measurements
         {
             _,
             Cups,

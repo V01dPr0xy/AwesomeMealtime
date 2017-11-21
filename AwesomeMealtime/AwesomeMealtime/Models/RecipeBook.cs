@@ -13,23 +13,20 @@ namespace AwesomeMealtime.Models
         public void AddRecipe(Recipe rec)
         {
             if (rec != null)
-                Recipes.Add(rec);
+            {
+                for (int i = 0; i < Recipes.Count; i++)
+                {
+                    if (Recipes[i].Name.Equals(rec.Name))
+                        Recipes.Add(rec);
+                }
+            }
         }
 
         public void RemoveRecipe(Recipe rec)
         {
-            if(Recipes != null)
-            {
-                for (int i = 0; i < Recipes.Count; i++)
-                {
-                    if(Recipes[i].Name.Equals(rec.Name))
-                    {
-
-                    }
-                }
-            }
-
-            
+            if (Recipes != null)
+                if (!Recipes.Contains(rec))
+                    Recipes.Add(rec);
         }
     }
 }
