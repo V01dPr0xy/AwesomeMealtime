@@ -8,6 +8,7 @@ using System.Windows.Controls;
 namespace AwesomeMealtime.Models
 {
     public class Recipe
+        //Assigned to Bryan
     {
         public string Name { get; set; }
         public string Dish_Description { get; set; }
