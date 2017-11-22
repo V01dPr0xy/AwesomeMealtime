@@ -21,7 +21,7 @@ namespace AwesomeMealtime.Models
         
         public enum Difficulty
         {
-
+			simple, easy, medium, intense, hard
         }
     }
 }
