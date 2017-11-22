@@ -7,8 +7,8 @@ using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
-    public class Recipe
-        //Assigned to Bryan
+    public class Recipe 
+        //Assigned to Bryan Dorman
     {
         public string Name { get; set; }
         public string Dish_Description { get; set; }
@@ -19,6 +19,7 @@ namespace AwesomeMealtime.Models
         public Difficulty Recipe_Difficulty { get; set; }
         public bool Warning { get; set; }
         public Image MyProperty { get; set; }
+        public Difficulty RecipeDifficulty { get; set; }
         
         public enum Difficulty
         {
