@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AwesomeMealtime.Models
 {
     public class Pantry
+        //Assigned to Micah Ketchum
     {
         public List<Ingredient> Food_Stuffs { get; set; }
 
