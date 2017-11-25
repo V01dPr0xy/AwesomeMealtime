@@ -1,25 +1,68 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
-    public class Recipe
-    {
-        public string Name { get; set; }
-        public string Dish_Description { get; set; }
-        public string Warning_Message { get; set; }
-        public List<string> Directions { get; set; }
-        public TimeSpan CookTime { get; set; }
-        public TimeSpan PrepTime { get; set; }
-        public Difficulty Recipe_Difficulty { get; set; }
-        public bool Warning { get; set; }
-        public Image MyProperty { get; set; }
-        
-        public enum Difficulty
+    public class Recipe : INotifyPropertyChanged
+	{
+		private string name;
+		private string descript;
+		private string warning;
+		private List<string> instruction;
+		private TimeSpan cook;
+		private TimeSpan prep;
+		private Difficulty difficulty;
+		private bool isDangerous;
+		private Image image;
+
+		public string Name { get { return name; } set { name = value; FieldChanged(); } }
+        public string Dish_Description { get { return descript; } set { descript = value; FieldChanged(); } }
+		public string Warning_Message { get { return warning; } set { warning = value; FieldChanged(); } }
+		public List<string> Directions { get { return instruction; } set { instruction = value; FieldChanged(); } }
+		public TimeSpan CookTime { get { return cook; } set { cook = value; FieldChanged(); } }
+		public TimeSpan PrepTime { get { return prep; } set { prep = value; FieldChanged(); } }
+		public Difficulty Recipe_Difficulty { get { return difficulty; } set { difficulty = value; FieldChanged(); } }
+		public bool HasWarning { get { return isDangerous; } set { isDangerous = value; FieldChanged(); } }
+		public Image DishImage { get { return image; } set { image = value; FieldChanged(); } }
+
+		public Recipe()
+		{
+			instruction = new List<string>();
+			cook = new TimeSpan();
+			prep = new TimeSpan();
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected void FieldChanged([CallerMemberName] string field = null)
+		{
+			if (PropertyChanged != null)
+			{
+				PropertyChanged(this, new PropertyChangedEventArgs(field));
+			}
+		}
+
+
+		public void AddDirections(string edit, int index)
+		{
+			Directions.Insert(index, edit);
+		}
+		public void SubDirections(int index)
+		{
+			Directions.RemoveAt(index);
+		}
+		public void SubDirections(string edit)
+		{
+			Directions.Remove(edit);
+		}
+
+		public enum Difficulty
         {
 			simple, easy, medium, intense, hard
         }
