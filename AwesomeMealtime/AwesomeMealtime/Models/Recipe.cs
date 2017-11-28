@@ -49,15 +49,28 @@ namespace AwesomeMealtime.Models
 		}
 
 
-		public void AddDirections(string edit, int index)
+		public void AddDirection(string edit, string reference, bool beforeAfter)
+		{
+			int index = Directions.IndexOf(reference);
+
+			if(beforeAfter)
+			{
+				Directions.Insert(index, edit);
+			}
+			else
+			{
+				Directions.Insert(index + 1, edit);
+			}
+		}
+		public void AddDirection(string edit, int index)
 		{
 			Directions.Insert(index, edit);
 		}
-		public void SubDirections(int index)
+		public void SubDirection(int index)
 		{
 			Directions.RemoveAt(index);
 		}
-		public void SubDirections(string edit)
+		public void SubDirection(string edit)
 		{
 			Directions.Remove(edit);
 		}
