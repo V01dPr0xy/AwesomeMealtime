@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
@@ -27,7 +28,30 @@ namespace AwesomeMealtime.Models
         {
             if (Recipes != null)
                 if (!Recipes.Contains(rec))
-                    Recipes.Add(rec);
+                    Recipes.Remove(rec);
+        }
+
+        public void EditRecipe(Recipe rec, string name, string desc, string warnMess, List<string> dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
+        {
+            rec.Name = name;
+            rec.Dish_Description = desc;
+            rec.Warning_Message = warnMess;
+            rec.Directions = dir;
+            rec.CookTime = cookTime;
+            rec.PrepTime = prepTime;
+            rec.RecipeDifficulty = diff;
+            rec.Warning = warn;
+            rec.MyProperty = image;
+        }
+
+        public void FilterRecipes()
+        {
+            
+        }
+
+        public void SortRecipes()
+        {
+            Recipes.Sort();
         }
     }
 }

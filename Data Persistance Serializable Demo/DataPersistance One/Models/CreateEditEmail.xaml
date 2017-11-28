@@ -1,0 +1,19 @@
+﻿<Window x:Class="DataPersistance_One.Models.CreateEditEmail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataPersistance_One.Models"
+        mc:Ignorable="d"
+        Title="CreateEditEmail" Height="135" Width="300">
+    <Grid Margin="0,0,0.286,1.143">
+        <Button Name="btn_Save" Content="Save" HorizontalAlignment="Left" Height="23" Margin="84,59,0,0" VerticalAlignment="Top" Width="42" Click="btn_Save_Click"/>
+        <Button Name="btn_Undo" Content="Undo" HorizontalAlignment="Left" Height="23" Margin="144,59,0,0" VerticalAlignment="Top" Width="42" Click="btn_Undo_Click"/>
+        <Label Content="Email Address :" HorizontalAlignment="Left" Height="24" Margin="10,0,0,0" VerticalAlignment="Top" Width="106"/>
+        
+        <Label Content="Type :" HorizontalAlignment="Left" Height="33" Margin="181,0,0,0" VerticalAlignment="Top" Width="92"/>
+        <ComboBox Name="cb_Type" HorizontalAlignment="Left" Height="19" Margin="181,24,0,0" VerticalAlignment="Top" Width="80"/>
+        <TextBox Name="tb_Address" HorizontalAlignment="Left" Height="24" Margin="18,24,0,0" TextWrapping="Wrap" Text="AddressGoes@Here" VerticalAlignment="Top" Width="148"/>
+
+    </Grid>
+</Window>

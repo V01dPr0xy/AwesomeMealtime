@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3419E1DB-834D-43E3-8A93-C09579EB791C}</ProjectGuid>
+    <ProjectGuid>{30EDEBBC-067A-4708-B643-C5797CBA6E30}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AwesomeMealtime</RootNamespace>
-    <AssemblyName>AwesomeMealtime</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <RootNamespace>DataPersistance_One</RootNamespace>
+    <AssemblyName>DataPersistance One</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -54,11 +54,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UI Interface Items\IngredientBTN.cs" />
-    <Compile Include="UI Interface Items\RecipeBTN.cs" />
-    <Compile Include="UI Interface Items\Wnd_Ingredient.xaml.cs">
-      <DependentUpon>Wnd_Ingredient.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,17 +66,44 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UI Interface Items\Wnd_Ingredient.xaml">
+    <Page Include="Models\CreateEditContact.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\CreateEditEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\CreateEditPhoneNumber.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\RemoveContactDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Models\UC_Contact.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Ingredient.cs" />
-    <Compile Include="Driver.cs" />
-    <Compile Include="Models\Pantry.cs" />
-    <Compile Include="Models\Recipe.cs" />
-    <Compile Include="Models\RecipeBook.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\CreateEditContact.xaml.cs">
+      <DependentUpon>CreateEditContact.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreateEditEmail.xaml.cs">
+      <DependentUpon>CreateEditEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CreateEditPhoneNumber.xaml.cs">
+      <DependentUpon>CreateEditPhoneNumber.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RemoveContactDialog.xaml.cs">
+      <DependentUpon>RemoveContactDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UC_Contact.xaml.cs">
+      <DependentUpon>UC_Contact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
