@@ -1,0 +1,25 @@
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\bin\Debug\DataPersistance One.exe.config
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\bin\Debug\DataPersistance One.exe
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\bin\Debug\DataPersistance One.pdb
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.csprojResolveAssemblyReference.cache
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\MainWindow.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\App.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One_MarkupCompile.cache
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One_MarkupCompile.lref
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\MainWindow.baml
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.g.resources
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance_One.Properties.Resources.resources
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.csproj.GenerateResource.Cache
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.csproj.CoreCompileInputs.cache
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.exe
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\DataPersistance One.pdb
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\UC_Contact.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\UC_Contact.baml
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditContact.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditContact.baml
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditPhoneNumber.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditPhoneNumber.baml
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditEmail.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\CreateEditEmail.baml
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\RemoveContactDialog.g.cs
+c:\users\wesley\documents\visual studio 2017\Projects\DataPersistance One\DataPersistance One\obj\Debug\Models\RemoveContactDialog.baml
