@@ -48,7 +48,7 @@ namespace AwesomeMealtime
 
         private void ShowPantry_Click(object sender, RoutedEventArgs e)
         {
-            Def_CRecipe.Width = Smalls;
+            Def_CRecipe.Width = Smalls;//You're killing me
             Def_CPantry.Width = Biggie;
 
             LoadPantry();
