@@ -1,0 +1,17 @@
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\bin\Debug\AwesomeMealtime.exe.config
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\bin\Debug\AwesomeMealtime.exe
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\bin\Debug\AwesomeMealtime.pdb
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.csprojResolveAssemblyReference.cache
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\MainWindow.g.cs
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\UI Interface Items\Wnd_Ingredient.g.cs
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\App.g.cs
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime_MarkupCompile.cache
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime_MarkupCompile.lref
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\MainWindow.baml
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\UI Interface Items\Wnd_Ingredient.baml
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.g.resources
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.Properties.Resources.resources
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.csproj.GenerateResource.Cache
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.csproj.CoreCompileInputs.cache
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.exe
+C:\Users\BlazingHoundoom\Documents\Visual Studio 2017\Projects\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\obj\Debug\AwesomeMealtime.pdb
