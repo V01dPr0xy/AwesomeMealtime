@@ -44,9 +44,9 @@ namespace AwesomeMealtime.Models
             rec.MyProperty = image;
         }
 
-        public void FilterRecipesByTime()
+        public void FilterRecipes()
         {
-            Recipes.OrderBy(q => q.CookTime + q.PrepTime);
+            
         }
 
         public void SortRecipes()
