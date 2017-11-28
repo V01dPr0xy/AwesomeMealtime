@@ -9,6 +9,7 @@ using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
+<<<<<<< HEAD
     public class Recipe : INotifyPropertyChanged
 	{
 		private string name;
@@ -47,6 +48,24 @@ namespace AwesomeMealtime.Models
 				PropertyChanged(this, new PropertyChangedEventArgs(field));
 			}
 		}
+=======
+    public class Recipe 
+        //Assigned to Bryan Dorman
+    {
+        public string Name { get; set; }
+        public string Dish_Description { get; set; }
+        public string Warning_Message { get; set; }
+        public List<string> Directions { get; set; }
+        public TimeSpan CookTime { get; set; }
+        public TimeSpan PrepTime { get; set; }
+        public Difficulty Recipe_Difficulty { get; set; }
+        public bool Warning { get; set; }
+        public Image MyProperty { get; set; }
+        public Difficulty RecipeDifficulty { get; set; }
+        
+        public enum Difficulty
+        {
+>>>>>>> origin/master
 
 
 		public void AddDirection(string edit, string reference, bool beforeAfter)

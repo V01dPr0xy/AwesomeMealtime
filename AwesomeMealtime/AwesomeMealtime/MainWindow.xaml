@@ -5,8 +5,98 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AwesomeMealtime"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <StackPanel>
-        
-    </StackPanel>
+        Title="MainWindow" Height="600" Width="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="25*"/>
+        </Grid.RowDefinitions>
+        <StackPanel VerticalAlignment="Top">
+            <Menu Height="20">
+                <MenuItem Header="File">
+                    <MenuItem Name="AppOpen" Header="Open" Click="AppOpen_Click"/>
+                    <MenuItem Name="AppSave" Header="Save" Click="AppSave_Click"/>
+                    <Separator Height="5" />
+                    <MenuItem x:Name="AppExit" Header="Exit" HorizontalAlignment="Left" Width="140" Click="AppExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="Tools">
+                    <MenuItem x:Name="Options" Header="Options" HorizontalAlignment="Right" Width="140"/>
+                </MenuItem>
+                <MenuItem Header="Help">
+                    <MenuItem x:Name="About" Header="About" HorizontalAlignment="Right" Width="140"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Name="Def_CRecipe" Width="20*"/>
+                <ColumnDefinition Name="Def_CPantry" Width="0*"/>
+                <ColumnDefinition Name="Def_DataColum" Width="60*"/>
+                <ColumnDefinition Name="Def_CCanWarnings" Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Background="Aqua">
+                <Label Content="Recipes" FontSize="14pt" FontWeight="Bold" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
+                <Button Name="btn_RecipeAdd" Content="Add" HorizontalAlignment="Left" FontSize="16pt" FontWeight="Bold" Margin="34,174,0,338.429" Width="120" Click="btn_RecipeAdd_Click"/>
+                <Button Name="btn_RecipeRemove" Content="Remove" HorizontalAlignment="Left" FontSize="16pt" FontWeight="Bold" Margin="34,302,0,210.429" Width="120" Click="btn_RecipeRemove_Click"/>
+            </Grid>
+            <Grid Grid.Column="1" Background="DarkRed">
+                <Label Content="Pantry" FontSize="14pt" FontWeight="Bold" Foreground="Aqua" HorizontalAlignment="Left" Margin="55,0,0,0" VerticalAlignment="Top" Height="40" Width="80"/>
+                <Button Name="btn_PantryAdd" Content="Add" HorizontalAlignment="Left" FontSize="16pt" FontWeight="Bold" Margin="34,174,0,338.429" Width="120" Click="btn_PantryAdd_Click"/>
+                <Button Name="btn_PantryRemove" Content="Remove" HorizontalAlignment="Left" FontSize="16pt" FontWeight="Bold" Margin="34,302,0,210.429" Width="120" Click="btn_PantryRemove_Click"/>
+
+            </Grid>
+            <Grid Grid.Column="2" Background="Gray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="22*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,509.571,0.429">
+                    <Button Name="ShowPantry" Content="Pantry" HorizontalAlignment="Left" Height="25" Margin="0,0,0,0" Width="80" Click="ShowPantry_Click">
+                        <Button.LayoutTransform>
+                            <RotateTransform Angle="90"/>
+                        </Button.LayoutTransform>
+                    </Button>
+                    <Button Name="ShowRecipe"  Content="Recipe" HorizontalAlignment="Left" Height="25" Margin="0,0,0,0" Width="80" Click="ShowRecipe_Click">
+                        <Button.LayoutTransform>
+                            <RotateTransform Angle="90"/>
+                        </Button.LayoutTransform>
+                    </Button>
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="24,2,0,0" Grid.Row="0" Grid.Column="1">
+                        <TextBox Name="tb_Search" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Search" MaxLength="30" FontSize="14pt" VerticalAlignment="Top" Width="409" Margin="-14,0,0,-2.143"/>
+                        <Button Name="btn_Search" Content="Search" HorizontalAlignment="Left" Height="30" FontSize="14pt" Margin="395,0,0,-0.143" VerticalAlignment="Top" Width="110" Click="btn_Search_Click"/>
+                    </Grid>
+                    <ScrollViewer Grid.Row="2" Grid.Column="1" Background="LightGray">
+                        <StackPanel Name="sp_Data">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3" Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="5*"/>
+                </Grid.RowDefinitions>
+                <ScrollViewer Grid.Row="0" Background="Azure">
+                    <StackPanel Name="sp_ExSoon"/>
+                </ScrollViewer>
+                <ScrollViewer Grid.Row="2" Background="Azure">
+                    <StackPanel Name="sp_ExWarnings"/>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+    </Grid>
 </Window>

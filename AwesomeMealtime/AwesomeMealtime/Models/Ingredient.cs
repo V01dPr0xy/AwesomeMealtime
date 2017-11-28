@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace AwesomeMealtime.Models
 {
     public class Ingredient
+        //Assigned to Invictus Valkyrius
     {
         public string Name { get; set; }
         public List<Quantity> Quantities { get; set; }
