@@ -1,16 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
-    public class RecipeBook
-        //Assigned to Matthew Guernsey
+    public class RecipeBook : INotifyPropertyChanged
+    //Assigned to Matthew Guernsey
     {
-        public List<Recipe> Recipes { get; set; }
+        private List<Recipe> recipes;
+
+        public List<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void FieldChanged([CallerMemberName] string field = null)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(field));
+            }
+        }
 
         public void AddRecipe(Recipe rec)
         {
@@ -39,9 +53,9 @@ namespace AwesomeMealtime.Models
             rec.Directions = dir;
             rec.CookTime = cookTime;
             rec.PrepTime = prepTime;
-            rec.RecipeDifficulty = diff;
+            rec.Recipe_Difficulty = diff;
             rec.Warning = warn;
-            rec.MyProperty = image;
+            rec.MealPicture = image;
         }
 
         public void FilterRecipes()
