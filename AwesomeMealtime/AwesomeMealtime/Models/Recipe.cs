@@ -21,16 +21,16 @@ namespace AwesomeMealtime.Models
 		private Difficulty difficulty;
 		private bool isDangerous;
 
-		public string Name { get{return name;} set { name = value; } }
-        public string Dish_Description { get; set; }
-        public string Warning_Message { get; set; }
+		public string Name { get { return name; } set { name = value; FieldChanged(); } }
+        public string Dish_Description { get { return descript; } set { descript = value; FieldChanged(); } }
+        public string Warning_Message { get { return warning; } set { warning = value; FieldChanged(); } }
         public List<string> Directions { get; set; }
 		public List<Ingredient> Ingredients { get; set; }
-        public TimeSpan CookTime { get; set; }
-        public TimeSpan PrepTime { get; set; }
-        public Difficulty Recipe_Difficulty { get; set; }
-        public bool Warning { get; set; }
-        public Image MealPicture { get; set; }
+        public TimeSpan CookTime { get { return cook; } set { cook = value; FieldChanged(); } }
+        public TimeSpan PrepTime { get { return prep; } set { prep = value; FieldChanged(); } }
+        public Difficulty Recipe_Difficulty { get { return difficulty; } set { difficulty = value; FieldChanged(); } }
+        public bool Warning { get { return isDangerous; } set { isDangerous = value; FieldChanged(); } }
+        public Image MealPicture { get { return image; } set { image = value; FieldChanged(); } }
 
 		protected void FieldChanged([CallerMemberName] string field = null)
 		{
@@ -52,7 +52,6 @@ namespace AwesomeMealtime.Models
 
 			difficulty = Difficulty.NA;
 		}
-
 
 		public enum Difficulty
         {
