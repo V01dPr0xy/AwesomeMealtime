@@ -25,9 +25,9 @@ namespace AwesomeMealtime.Models
 
         public struct Quantity
         {
-            private double qty;
+            private double? qty;
 
-            public double Qty
+            public double? Qty
             {
                 get
                 {
@@ -41,41 +41,41 @@ namespace AwesomeMealtime.Models
 
             public Measurements Msmt { get; set; }
 
-            double Convert(Measurements m)
+            double? Convert(Measurements m)
             {
-                if(m == Measurements)
+                if(m == Measurements._)
+                {
+                    return null;
+                }
+                else if (m == Measurements.Bushel)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.Cups)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.Gallon)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.Gill)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.HalfBushel)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.Peck)
                 {
 
                 }
-                else if (m == Measurements)
+                else if (m == Measurements.Pint)
                 {
 
                 }
-                else if (m == Measurements)
-                {
-
-                }
-                else if (m == Measurements)
+                else if (m == Measurements.Quart)
                 {
 
                 }
@@ -99,6 +99,10 @@ namespace AwesomeMealtime.Models
             Bushel,
 
             //Metric
+            milliliter,
+            centiliter,
+            deciliter,
+            liter,
 
         }
 
