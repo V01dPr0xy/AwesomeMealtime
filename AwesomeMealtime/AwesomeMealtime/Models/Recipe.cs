@@ -9,7 +9,8 @@ using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
-	public class Recipe : INotifyPropertyChanged
+	[Serializable]
+	public class Recipe
 	//Assigned to Bryan Dorman
 	{
 		private string name;
