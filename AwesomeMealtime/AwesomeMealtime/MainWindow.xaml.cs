@@ -6,6 +6,9 @@ using System.Windows.Controls;
 using AwesomeMealtime.UI_Interface_Items;
 using static AwesomeMealtime.Models.Ingredient;
 using System.ComponentModel;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 
 namespace AwesomeMealtime
 {
@@ -14,6 +17,7 @@ namespace AwesomeMealtime
     /// </summary>
     public partial class MainWindow : Window
     {
+        Driver myDriver = new Driver();
         GridLength Biggie = new GridLength(20.0, GridUnitType.Star);
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
@@ -127,6 +131,36 @@ namespace AwesomeMealtime
         }
         private void OnWindowClosing(object sender, CancelEventArgs e)
         {
+            FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            try
+            {
+                formatter.Serialize(fs, myDriver.Book);
+            }
+            catch (SerializationException a)
+            {
+                Console.WriteLine("My Recipe Failed to Serialize." + a.Message);
+                throw;
+            }
+            finally
+            {
+                fs.Close();
+            }
+
+            FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
+            try
+            {
+                formatter.Serialize(fs2, myDriver.Current_Pantry);
+            }
+            catch (SerializationException b)
+            {
+                Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
+                throw;
+            }
+            finally
+            {
+                fs2.Close();
+            }
             System.Windows.Application.Current.Shutdown();
         }
     }

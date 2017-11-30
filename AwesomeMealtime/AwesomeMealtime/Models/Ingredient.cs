@@ -25,9 +25,9 @@ namespace AwesomeMealtime.Models
 
         public struct Quantity
         {
-            private double? qty;
+            private double qty;
 
-            public double? Qty
+            public double Qty
             {
                 get
                 {
@@ -35,52 +35,79 @@ namespace AwesomeMealtime.Models
                 }
                 set
                 {
-                    
+                    qty = ConvertToOunces(Msmt, value);
                 }
             }
 
             public Measurements Msmt { get; set; }
 
-            double? Convert(Measurements m)
+            double ConvertToOunces(Measurements m, double param)
             {
-                if(m == Measurements._)
-                {
-                    return null;
-                }
-                else if (m == Measurements.Bushel)
-                {
+                double result = new double();
 
-                }
-                else if (m == Measurements.Cups)
+                switch (m)
                 {
+                    case Measurements.Bushel://
+                        result = param * 1191.57;
+                        break;
 
+                    case Measurements.Centiliter://
+                        result = param * 0.33814;
+                        break;
+
+                    case Measurements.Cups://
+                        result = param * 8;
+                        break;
+
+                    case Measurements.Deciliter://
+                        result = param * 3.3814;
+                        break;
+
+                    case Measurements.Gallon://
+                        result = param * 128;
+                        break;
+
+                    case Measurements.Gill://1=4
+                        result = param * 4;
+                        break;
+
+                    case Measurements.HalfBushel://1=595.787
+                        result = param * 595.787;
+                        break;
+
+                    case Measurements.Liter://1=33.814
+                        result = param * 33.814;
+                        break;
+
+                    case Measurements.Milliliter://1=0.033814
+                        result = param * 0.033814;
+                        break;
+
+                    case Measurements.Peck://1=297.894
+                        result = param * 297.894;
+                        break;
+
+                    case Measurements.Pint://1=16
+                        result = param * 16;
+                        break;
+
+                    case Measurements.Quart://1=32
+                        result = param * 32;
+                        break;
+
+                    case Measurements.Tablespoon://1=0.5
+                        result = param * .5;
+                        break;
+
+                    case Measurements.Teaspoon://1=1/6
+                        result = param / 6;
+                        break;
+
+                    default:
+                        break;
                 }
-                else if (m == Measurements.Gallon)
-                {
 
-                }
-                else if (m == Measurements.Gill)
-                {
-
-                }
-                else if (m == Measurements.HalfBushel)
-                {
-
-                }
-                else if (m == Measurements.Peck)
-                {
-
-                }
-                else if (m == Measurements.Pint)
-                {
-
-                }
-                else if (m == Measurements.Quart)
-                {
-
-                }
-
-                throw new NotImplementedException();
+                return result;
             }
         }
 
@@ -97,13 +124,14 @@ namespace AwesomeMealtime.Models
             Peck,
             HalfBushel,
             Bushel,
+            Tablespoon,
+            Teaspoon,
 
             //Metric
-            milliliter,
-            centiliter,
-            deciliter,
-            liter,
-
+            Milliliter,
+            Centiliter,
+            Deciliter,
+            Liter
         }
 
 

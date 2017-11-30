@@ -58,9 +58,14 @@ namespace AwesomeMealtime.Models
             rec.MealPicture = image;
         }
 
-        public void FilterRecipes()
+        public void FilterRecipesByIngredients(Ingredient ing)
         {
-            
+            List<Recipe> filtered = new List<Recipe>();
+            foreach(Recipe r in recipes)
+            {
+                if (r.Ingredients.Contains(ing)) filtered.Add(r);
+            }
+            sp_Data.Children.Add(filtered);
         }
 
         public void SortRecipes()
