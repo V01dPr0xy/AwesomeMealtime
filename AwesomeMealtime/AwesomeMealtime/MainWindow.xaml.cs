@@ -155,6 +155,7 @@ namespace AwesomeMealtime
             catch (SerializationException b)
             {
                 Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
+                throw;
             }
             finally
             {
