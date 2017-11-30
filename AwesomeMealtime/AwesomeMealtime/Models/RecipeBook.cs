@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -60,12 +61,29 @@ namespace AwesomeMealtime.Models
 
         public void FilterRecipesByIngredients(Ingredient ing)
         {
-            List<Recipe> filtered = new List<Recipe>();
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
             foreach(Recipe r in recipes)
             {
                 if (r.Ingredients.Contains(ing)) filtered.Add(r);
             }
-            sp_Data.Children.Add(filtered);
+        }
+
+        public void FilterRecipesByWarning(string warning)
+        {
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
+            foreach (Recipe r in recipes)
+            {
+                if (r.Warning_Message.Equals(warning)) filtered.Add(r);
+            }
+        }
+
+        public void FilterRecipesByTime(TimeSpan time)
+        {
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
+            foreach (Recipe r in recipes)
+            {
+                if (r.CookTime + r.PrepTime == time) filtered.Add(r);
+            }
         }
 
         public void SortRecipes()
