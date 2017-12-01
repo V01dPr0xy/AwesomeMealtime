@@ -5,3 +5,14 @@ AwesomeMealtime/.vs/AwesomeMealtime/v15/Server/sqlite3/storage.ide-wal
 AwesomeMealtime/.vs/AwesomeMealtime/v15/Server/sqlite3/storage.ide-shm
 AwesomeMealtime/.vs/AwesomeMealtime/v15/Server/sqlite3/storage.ide
 AwesomeMealtime/.vs/AwesomeMealtime/v15/Server/sqlite3/db.lock
+AwesomeMealtime/.vs/AwesomeMealtime/v15/.suo
+AwesomeMealtime/.vs/AwesomeMealtime/v15/sqlite3/storage.ide
+AwesomeMealtime/Data Persistance Serializable Demo
+AwesomeMealtime/AwesomeMealtime/obj/Debug/
+<<<<<<< HEAD
+AwesomeMealtime/AwesomeMealtime/bin/Debug/AwesomeMealtime.pdb
+AwesomeMealtime/AwesomeMealtime/bin/Debug/AwesomeMealtime.exe.config
+AwesomeMealtime/AwesomeMealtime/bin/Debug/AwesomeMealtime.exe
+=======
+*.config
+>>>>>>> 50308ffc55c312753e3b1d198682c7c2ee53ccdb
