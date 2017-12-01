@@ -18,16 +18,32 @@ namespace AwesomeMealtime.Models
 		void LoadRecipeBook()
 		{
 			IFormatter recipeFormatter = new BinaryFormatter();
-			Stream recipeStream = new FileStream("MyRecipes.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-			Book = (RecipeBook)recipeFormatter.Deserialize(recipeStream);
-			recipeStream.Close();
+			Stream recipeStream;
+			try
+			{
+				recipeStream = new FileStream("MyRecipes.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+				Book = (RecipeBook)recipeFormatter.Deserialize(recipeStream);
+				recipeStream.Close();
+			}
+			catch
+			{
+				Console.WriteLine("No prior recipes found.");
+			}
 		}
 		void LoadPantry()
 		{
 			IFormatter pantryFormatter = new BinaryFormatter();
-			Stream pantryStream = new FileStream("MyPantry.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
-			Current_Pantry = (Pantry)pantryFormatter.Deserialize(pantryStream);
-			pantryStream.Close();
+			Stream pantryStream;
+			try
+			{
+				pantryStream = new FileStream("MyPantry.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+				Current_Pantry = (Pantry)pantryFormatter.Deserialize(pantryStream);
+				pantryStream.Close();
+			}
+			catch
+			{
+				Console.WriteLine("No prior foods found.");
+			}
 		}
 
 		void RecipeSelect() { }
