@@ -13,11 +13,16 @@ namespace AwesomeMealtime.Models
     public class RecipeBook : INotifyPropertyChanged
     //Assigned to Matthew Guernsey
     {
-        private List<Recipe> recipes;
+        private ObservableCollection<Recipe> recipes;
 
-        public List<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
+        public ObservableCollection<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public RecipeBook()
+        {
+            Recipes = new ObservableCollection<Recipe>();
+        }
 
         protected void FieldChanged([CallerMemberName] string field = null)
         {
@@ -29,14 +34,15 @@ namespace AwesomeMealtime.Models
 
         public void AddRecipe(Recipe rec)
         {
-            if (rec != null)
+            if(Recipes.Count.Equals(0)) Recipes.Add(rec);
+            else
             {
                 for (int i = 0; i < Recipes.Count; i++)
                 {
-                    if (Recipes[i].Name.Equals(rec.Name))
-                        Recipes.Add(rec);
+                    if (!Recipes[i].Name.ToLower().Equals(rec.Name.ToLower())) Recipes.Add(rec);
                 }
             }
+             
         }
 
         public void RemoveRecipe(Recipe rec)
@@ -88,7 +94,7 @@ namespace AwesomeMealtime.Models
 
         public void SortRecipes()
         {
-            Recipes.Sort();
+            Recipes.OrderBy(rec => rec.Name);
         }
     }
 }
