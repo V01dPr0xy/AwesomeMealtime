@@ -23,9 +23,8 @@ namespace AwesomeMealtime
         public MainWindow()
         {
             InitializeComponent();
-            Ingredient ing1_ = new Ingredient
+            Ingredient ing1_ = new Ingredient("Carrot")
             {
-                Name = "Carrot",
                 Quantities = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } },
                 ExpirationDates = new List<ExpDate>() {
                     new ExpDate() {
