@@ -1,22 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace AwesomeMealtime.Models
 {
     public class Pantry
         //Assigned to Micah Ketchum
     {
-        public List<Ingredient> Food_Stuffs { get; set; }
+        public List<Ingredient> ingredients { get; set; }
 
-        void Add(Ingredient ing) { Food_Stuffs.Add(ing); }
-        void Remove(Ingredient ing) { Food_Stuffs.Remove(ing); }
-        void Edit() { }
-        void Filter() { }
-        void Sort() { }
-        void Expiration_Warning() { }
-        void Expiration_Dispose() { }
+        public void Add(Ingredient ingredient) {
+            ingredients.Add(ingredient);
+        }
+
+        public void Remove(Ingredient ingredient) {
+            ingredients.Remove(ingredient);
+        }
+
+        public void Edit() {
+
+        }
+
+        public Dictionary<string, Ingredient> FilterName(string filter) {
+            //search for a specific ingredient by name
+            Dictionary<string, Ingredient> filterIngredients = new Dictionary<string, Ingredient>();
+            foreach(Ingredient ingredient in ingredients)
+            {
+                if (filter.Equals(ingredient.Name))
+                {
+                    filterIngredients.Add(ingredient.Name, ingredient);
+                }
+            }
+            return filterIngredients;
+        }
+
+        public void Sort() {
+            //sorting the ingredients by alphebetical, expiration, etc.
+            ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
+        }
+
+        public void Expiration_Warning() {
+
+        }
+
+        public void Expiration_Dispose() {
+
+        }
     }
 }
