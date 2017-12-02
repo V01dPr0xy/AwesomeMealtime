@@ -5,10 +5,16 @@ namespace AwesomeMealtime.Models
     public class Pantry
         //Assigned to Micah Ketchum
     {
+        public Pantry()
+        {
+            ingredients = new List<Ingredient>();
+        }
+
         public List<Ingredient> ingredients { get; set; }
 
         public void Add(Ingredient ingredient) {
             ingredients.Add(ingredient);
+            System.Console.WriteLine("Added.");
         }
 
         public void Remove(Ingredient ingredient) {

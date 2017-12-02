@@ -17,15 +17,15 @@ namespace AwesomeMealtime
     /// </summary>
     public partial class MainWindow : Window
     {
+        RecipeBook recipeBook = new RecipeBook();
         Driver myDriver = new Driver();
         GridLength Biggie = new GridLength(20.0, GridUnitType.Star);
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
         {
             InitializeComponent();
-            Ingredient ing1_ = new Ingredient
+            Ingredient ing1_ = new Ingredient("Carrot")
             {
-                Name = "Carrot",
                 Quantities = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } },
                 ExpirationDates = new List<ExpDate>() {
                     new ExpDate() {
@@ -94,6 +94,15 @@ namespace AwesomeMealtime
         {
             sp_Data.Children.Clear();
             //TO DO: Load Recipe book from Recipe book data
+            int i = 0;
+            foreach(Recipe rec in recipeBook.Recipes)
+            {
+                Label lbl = new Label();
+                lbl.DataContext = recipeBook.Recipes[i];
+                lbl.Content = recipeBook.Recipes[i].Name;
+                sp_Data.Children.Add(lbl);
+                i++;
+            }
         }
 
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
