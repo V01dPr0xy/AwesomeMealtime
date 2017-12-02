@@ -13,6 +13,13 @@ namespace AwesomeMealtime.Models
         //When setting its value, convert.
         //When getting, convert back?
 
+        public Ingredient(string name)
+        {
+            Name = name;
+            Quantities = new List<Quantity>();
+            ExpirationDates = new List<ExpDate>();
+        }
+
         public string Name { get; set; }
         public List<Quantity> Quantities { get; set; }
         public List<ExpDate> ExpirationDates { get; set; }
