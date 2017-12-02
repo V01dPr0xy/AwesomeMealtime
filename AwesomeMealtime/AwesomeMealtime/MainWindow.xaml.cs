@@ -22,30 +22,6 @@ namespace AwesomeMealtime
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
         {
-            InitializeComponent();
-            Ingredient ing1_ = new Ingredient
-            {
-                Name = "Carrot",
-                Quantities = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } },
-                ExpirationDates = new List<ExpDate>() {
-                    new ExpDate() {
-                        Time = new DateTime(year:2020, month:7, day:19),
-                        Dates = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } }
-                    }
-                }                
-            };
-            //adding an ingredient to the data feild should be as easy as this.
-            IngredientBTN carrot = new IngredientBTN(ing1_);
-            sp_Data.Children.Add(carrot.button);
-            //
-            for (int i = 0; i < 100; i++)
-            {//just a test for now...
-
-                Button hello = new Button();
-                hello.Content = "Hello!";
-
-                sp_Data.Children.Add(hello);
-            }
 
             Closing += OnWindowClosing; //don't remove this
         }
@@ -98,16 +74,21 @@ namespace AwesomeMealtime
 
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
+			
+		}
 
-        }
-
-        private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
+		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
 
         }
         private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
         {
+			IngredientWindow add = new IngredientWindow();
 
+			if(add.ShowDialog() == true)
+			{
+
+			}
         }
 
         private void btn_PantryRemove_Click(object sender, RoutedEventArgs e)
