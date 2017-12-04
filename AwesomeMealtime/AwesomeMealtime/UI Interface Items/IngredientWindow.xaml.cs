@@ -36,7 +36,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 			if (!tbxName.Text.Equals("Name Me!") || tbxName.Text != null)
 			{
-				proto = new Ingredient() { Name = tbxName.Text };
+				proto = new Ingredient(tbxName.Text);
 
 				if (tbxAmount.Text != null && cbbMeasureType.SelectedIndex != -1)
 				{

@@ -55,7 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI Interface Items\AddQuantityMsgBox.xaml.cs">
+      <DependentUpon>AddQuantityMsgBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI Interface Items\IngredientBTN.cs" />
+    <Compile Include="UI Interface Items\IngredientUC.xaml.cs">
+      <DependentUpon>IngredientUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI Interface Items\IngredientWindow.xaml.cs">
       <DependentUpon>IngredientWindow.xaml</DependentUpon>
     </Compile>
@@ -75,6 +81,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI Interface Items\AddQuantityMsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI Interface Items\IngredientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI Interface Items\IngredientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
