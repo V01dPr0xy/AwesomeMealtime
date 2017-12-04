@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AwesomeMealtime.Models
 {
@@ -53,12 +54,19 @@ namespace AwesomeMealtime.Models
             ingredients.Reverse();
         }
 
-        public void Expiration_Warning() {
+        public void Expiration_Warning(DateTime expDate) {
+            if((expDate - DateTime.Now).TotalDays < 7){
+                // Msg "Ingredient Close to Exp Date!"
+            }
 
         }
 
-        public void Expiration_Dispose() {
-
+        public void Expiration_Dispose(DateTime expDate) {
+            if(expDate > DateTime.Now)
+            {
+                //msg "Ingredient Has Exp!"
+                //Remove(ingredient);
+            }
         }
     }
 }
