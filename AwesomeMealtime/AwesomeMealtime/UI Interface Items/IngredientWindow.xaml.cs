@@ -20,8 +20,6 @@ namespace AwesomeMealtime.UI_Interface_Items
 	/// </summary>
 	public partial class IngredientWindow : Window
 	{
-		public Ingredient proto;
-
 		public IngredientWindow()
 		{
 			InitializeComponent();
@@ -36,7 +34,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 			if (!tbxName.Text.Equals("Name Me!") || tbxName.Text != null)
 			{
-				proto = new Ingredient() { Name = tbxName.Text };
+				Ingredient proto = new Ingredient(tbxName.Text);
 
 				if (tbxAmount.Text != null && cbbMeasureType.SelectedIndex != -1)
 				{

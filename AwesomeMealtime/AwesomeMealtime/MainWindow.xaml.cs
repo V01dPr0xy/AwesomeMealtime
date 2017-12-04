@@ -23,8 +23,7 @@ namespace AwesomeMealtime
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
         {
-<<<<<<< HEAD
-=======
+
             InitializeComponent();
             Ingredient ing1_ = new Ingredient("Carrot")
             {
@@ -48,7 +47,6 @@ namespace AwesomeMealtime
 
                 sp_Data.Children.Add(hello);
             }
->>>>>>> origin/master
 
             Closing += OnWindowClosing; //don't remove this
         }
