@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -12,11 +13,16 @@ namespace AwesomeMealtime.Models
     public class RecipeBook : INotifyPropertyChanged
     //Assigned to Matthew Guernsey
     {
-        private List<Recipe> recipes;
+        private ObservableCollection<Recipe> recipes;
 
-        public List<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
+        public ObservableCollection<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public RecipeBook()
+        {
+            Recipes = new ObservableCollection<Recipe>();
+        }
 
         protected void FieldChanged([CallerMemberName] string field = null)
         {
@@ -28,14 +34,15 @@ namespace AwesomeMealtime.Models
 
         public void AddRecipe(Recipe rec)
         {
-            if (rec != null)
+            if(Recipes.Count.Equals(0)) Recipes.Add(rec);
+            else
             {
                 for (int i = 0; i < Recipes.Count; i++)
                 {
-                    if (Recipes[i].Name.Equals(rec.Name))
-                        Recipes.Add(rec);
+                    if (!Recipes[i].Name.ToLower().Equals(rec.Name.ToLower())) Recipes.Add(rec);
                 }
             }
+             
         }
 
         public void RemoveRecipe(Recipe rec)
@@ -60,17 +67,34 @@ namespace AwesomeMealtime.Models
 
         public void FilterRecipesByIngredients(Ingredient ing)
         {
-            List<Recipe> filtered = new List<Recipe>();
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
             foreach(Recipe r in recipes)
             {
                 if (r.Ingredients.Contains(ing)) filtered.Add(r);
             }
-            sp_Data.Children.Add(filtered);
+        }
+
+        public void FilterRecipesByWarning(string warning)
+        {
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
+            foreach (Recipe r in recipes)
+            {
+                if (r.Warning_Message.Equals(warning)) filtered.Add(r);
+            }
+        }
+
+        public void FilterRecipesByTime(TimeSpan time)
+        {
+            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
+            foreach (Recipe r in recipes)
+            {
+                if (r.CookTime + r.PrepTime == time) filtered.Add(r);
+            }
         }
 
         public void SortRecipes()
         {
-            Recipes.Sort();
+            Recipes.OrderBy(rec => rec.Name);
         }
     }
 }

@@ -1,0 +1,22 @@
+﻿<Window x:Class="AwesomeMealtime.UI_Interface_Items.IngredientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AwesomeMealtime.UI_Interface_Items"
+        mc:Ignorable="d"
+        Title="IngredientWindow" Height="164.583" Width="315.626">
+    <Grid x:Name="Add">
+        <Label Content="Name: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Amount: " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Expire: " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="75" Click="btnAccept_Click" IsEnabled="False"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="101,103,0,0" Width="76" IsCancel="True" Height="20" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="cbbMeasureType" HorizontalAlignment="Left" Margin="182,46,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="62,13,0,0" TextWrapping="Wrap" Text="Name Me!" VerticalAlignment="Top" Width="238" TextChanged="tbxName_TextChanged"/>
+        <TextBox x:Name="tbxAmount" HorizontalAlignment="Left" Height="22" Margin="74,45,0,0" TextWrapping="Wrap" Text="Judge Me!" VerticalAlignment="Top" Width="103"/>
+        <TextBox x:Name="tbxExpire" HorizontalAlignment="Left" Height="23" Margin="58,75,0,0" TextWrapping="Wrap" Text="End Me!" VerticalAlignment="Top" Width="244"/>
+
+    </Grid>
+</Window>
