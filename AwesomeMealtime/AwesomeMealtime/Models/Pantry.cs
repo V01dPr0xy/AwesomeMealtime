@@ -9,7 +9,9 @@ namespace AwesomeMealtime.Models
         public Pantry()
         {
             ingredients = new List<Ingredient>();
-        }
+			expWarningMsg = new List<string>();
+			expRemovalMsg = new List<string>();
+		}
 
         public List<Ingredient> ingredients { get; set; }
 
@@ -66,7 +68,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                     if ((expDate - DateTime.Now).TotalDays < 7)
                     {
-                        expWarningMsg.Add(ingredient.Name +" : " + ingredient.Quantities + " Is close to Exp on " + date + "!");
+                        expWarningMsg.Add(ingredient.Name +": " + ingredient.Quantities + " Is close to Exp on " + date + "!");
                     }
 
                 }
@@ -83,7 +85,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                      if (expDate > DateTime.Now)
                      {
-                        expRemovalMsg.Add(ingredient.Name + " : " + ingredient.Quantities + " Has Exp on " + date + "!");
+                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.Quantities + " Has Exp on " + date + "!");
                         Remove(ingredient);
                      }
 
