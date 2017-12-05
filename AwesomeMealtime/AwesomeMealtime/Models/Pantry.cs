@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AwesomeMealtime.Models
 {
@@ -8,9 +9,15 @@ namespace AwesomeMealtime.Models
         public Pantry()
         {
             ingredients = new List<Ingredient>();
-        }
+			expWarningMsg = new List<string>();
+			expRemovalMsg = new List<string>();
+		}
 
         public List<Ingredient> ingredients { get; set; }
+
+        public List<String> expWarningMsg { get; set; }
+
+        public List<String> expRemovalMsg { get; set; }
 
         public void Add(Ingredient ingredient) {
             ingredients.Add(ingredient);
@@ -41,6 +48,23 @@ namespace AwesomeMealtime.Models
             return filterIngredients;
         }
 
+        public Dictionary<double, Ingredient> FilterQuantity(double filter)
+        {
+            Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
+            foreach(Ingredient ingredient in ingredients)
+            {
+                for (int x = 0; x < ingredient.Quantities.Count; x++)
+                {
+                    if (filter == ingredient.Quantities[x].Qty)
+                    {
+                        filterIngredients.Add(ingredient.Quantities[x].Qty, ingredient);
+                    }
+                }
+            }
+
+            return filterIngredients;
+        }
+
         public List<Ingredient> SortAlphabetical() {
             //sort ingredients by alphabetical order
             ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
@@ -54,11 +78,37 @@ namespace AwesomeMealtime.Models
         }
 
         public void Expiration_Warning() {
+            foreach(Ingredient ingredient in ingredients)
+            {   
+                foreach(Ingredient.ExpDate date in ingredient.ExpirationDates )
+                {
+                    DateTime expDate = date.Time;
+                    if ((expDate - DateTime.Now).TotalDays < 7)
+                    {
+                        expWarningMsg.Add(ingredient.Name +": " + ingredient.Quantities + " Is close to Exp on " + date + "!");
+                    }
+
+                }
+
+            }
 
         }
 
         public void Expiration_Dispose() {
+            foreach(Ingredient ingredient in ingredients)
+            {
+                foreach(Ingredient.ExpDate date in ingredient.ExpirationDates)
+                {
+                    DateTime expDate = date.Time;
+                     if (expDate > DateTime.Now)
+                     {
+                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.Quantities + " Has Exp on " + date + "!");
+                        Remove(ingredient);
+                     }
 
+                }
+
+            }
         }
     }
 }

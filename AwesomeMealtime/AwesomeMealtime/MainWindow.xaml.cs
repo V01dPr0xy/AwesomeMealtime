@@ -59,23 +59,22 @@ namespace AwesomeMealtime
 			Models.Pantry p = myDriver.Current_Pantry;
 			Label l;
 
-			foreach (String msg in p.Warnings)
+			foreach (String msg in p.expWarningMsg)
 			{
 				l = new Label();
 				l.Content = msg;
+				l.MouseLeftButtonDown += NotificationWarning_MouseLeftButtonDown;
 				sp_ExSoon.Children.Add(l);
 			}
 
-			foreach (String msg in p.Expires)
+			foreach (String msg in p.expRemovalMsg)
 			{
 				l = new Label();
 				l.Content = msg;
+				l.MouseLeftButtonDown += NotificationDesposal_MouseLeftButtonDown;
 				sp_ExWarnings.Children.Add(l);
 			}
 		}
-
-
-
         private void ShowPantry_Click(object sender, RoutedEventArgs e)
         {
             Def_CRecipe.Width = Smalls;//You're killing me
@@ -83,7 +82,6 @@ namespace AwesomeMealtime
 
             LoadPantry();
         }
-
         private void ShowRecipe_Click(object sender, RoutedEventArgs e)
         {
             Def_CRecipe.Width = Biggie;
@@ -91,7 +89,6 @@ namespace AwesomeMealtime
 
             LoadRecipe();
         }
-
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
             //TO DO: add search functionality
@@ -100,7 +97,8 @@ namespace AwesomeMealtime
             MessageBox.Show(input);
             //TO DO: Something with input
         }
-        /// <summary>
+      
+		/// <summary>
         /// This will load the pantry data from the current pantry
         /// to sp_Data, not to be confused with loading a new pantry
         /// from a file
@@ -135,7 +133,6 @@ namespace AwesomeMealtime
         {
 			
 		}
-
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
 
@@ -149,22 +146,18 @@ namespace AwesomeMealtime
 
 			}
         }
-
         private void btn_PantryRemove_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
         private void AppExit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
         private void AppSave_Click(object sender, RoutedEventArgs e)
         {//TO DO: Run Recipe and Pantry Save operations
             MessageBox.Show(sender.ToString());
         }
-
         private void AppOpen_Click(object sender, RoutedEventArgs e)
         {//TO DO: Run Recipe and Pantry Load operations
             MessageBox.Show(sender.ToString());
@@ -209,5 +202,27 @@ namespace AwesomeMealtime
             }
             System.Windows.Application.Current.Shutdown();
         }
-    }
+		private void NotificationWarning_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			string target = ((Label)sender).Content.ToString();
+
+			if(target != null)
+			{
+				sp_ExSoon.Children.Remove((Label)sender);
+				myDriver.Current_Pantry.expWarningMsg.Remove(target);
+			}
+		}
+
+		private void NotificationDesposal_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+			string target = ((Label)sender).Content.ToString();
+
+			if (target != null)
+			{
+				sp_ExWarnings.Children.Remove((Label)sender);
+				myDriver.Current_Pantry.expRemovalMsg.Remove(target);
+			}
+		}
+
+	}
 }
