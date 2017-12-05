@@ -26,7 +26,8 @@ namespace AwesomeMealtime
             InitializeComponent();
             Ingredient ing1_ = new Ingredient("Carrot")
             {
-                Quantities = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d } },
+                Quantities = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d },
+                    new Quantity() { Msmt = Measurements.Quart} },
                 ExpirationDates = new List<ExpDate>() {
                     new ExpDate() {
                         Time = new DateTime(year:2020, month:7, day:19),

@@ -51,7 +51,7 @@ namespace AwesomeMealtime.Models
                 qty += ConvertToOunces(Msmt, d);
             }
 
-            double ConvertToOunces(Measurements m, double param)
+            public double ConvertToOunces(Measurements m, double param)
             {
                 double result = new double();
 
@@ -121,66 +121,66 @@ namespace AwesomeMealtime.Models
             }
 
 
-            public double ConvertFromOunces()
+            public double ConvertFromOunces(double q)
             {
                 double result = new double();
 
                 switch (Msmt)
                 {
                     case Measurements.Bushel://
-                        result = qty / 1191.57;
+                        result = q / 1191.57;
                         break;
 
                     case Measurements.Centiliter://
-                        result = qty / 0.33814;
+                        result = q / 0.33814;
                         break;
 
                     case Measurements.Cups://
-                        result = qty / 8;
+                        result = q / 8;
                         break;
 
                     case Measurements.Deciliter://
-                        result = qty / 3.3814;
+                        result = q / 3.3814;
                         break;
 
                     case Measurements.Gallon://
-                        result = qty / 128;
+                        result = q / 128;
                         break;
 
                     case Measurements.Gill://1=4
-                        result = qty / 4;
+                        result = q / 4;
                         break;
 
                     case Measurements.HalfBushel://1=595.787
-                        result = qty / 595.787;
+                        result = q / 595.787;
                         break;
 
                     case Measurements.Liter://1=33.814
-                        result = qty / 33.814;
+                        result = q / 33.814;
                         break;
 
                     case Measurements.Milliliter://1=0.033814
-                        result = qty / 0.033814;
+                        result = q / 0.033814;
                         break;
 
                     case Measurements.Peck://1=297.894
-                        result = qty / 297.894;
+                        result = q / 297.894;
                         break;
 
                     case Measurements.Pint://1=16
-                        result = qty / 16;
+                        result = q / 16;
                         break;
 
                     case Measurements.Quart://1=32
-                        result = qty / 32;
+                        result = q / 32;
                         break;
 
                     case Measurements.Tablespoon://1=0.5
-                        result = qty / .5;
+                        result = q / .5;
                         break;
 
                     case Measurements.Teaspoon://1=1/6
-                        result = qty * 6;
+                        result = q * 6;
                         break;
 
                     default:

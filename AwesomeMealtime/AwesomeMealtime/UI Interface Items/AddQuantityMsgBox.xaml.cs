@@ -29,6 +29,7 @@ namespace AwesomeMealtime.UI_Interface_Items
             if (b)
             {
                 btn.Content = "Remove";
+                Title = "RemoveQuantityMsgBox";
             }
         }
 
@@ -40,7 +41,8 @@ namespace AwesomeMealtime.UI_Interface_Items
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            result = Double.Parse(Amount.Text);
+            if (Amount.Text != "")
+                result = Double.Parse(Amount.Text);
             this.Close();
         }
     }

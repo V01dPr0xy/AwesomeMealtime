@@ -38,18 +38,7 @@ namespace AwesomeMealtime.UI_Interface_Items
         public void init()
         {
             tb_Name.Text = theIngredient.Name;
-
-            foreach (Ingredient.Quantity q in theIngredient.Quantities)
-            {
-                Label lb = new Label()
-                {
-                    Content = getQuantityString(q),
-                    Margin = new Thickness(100, 0, 0, 0)
-                };
-                sp_Content.Items.Add(lb);
-            }
-            Label lbl = new Label() { Content = "new", Margin = new Thickness(100, 0, 0, 0) };
-            sp_Content.Items.Add(lbl);
+            itemsRefresh();
         }
 
         public void itemsRefresh()
@@ -99,7 +88,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 
         private void Revert_Click(object sender, RoutedEventArgs e)
         {
-            init();
+            itemsRefresh();
         }
 
         private void btn_Open_Click(object sender, RoutedEventArgs e)
@@ -146,10 +135,17 @@ namespace AwesomeMealtime.UI_Interface_Items
             AddQuantityMsgBox a = new AddQuantityMsgBox(type, true);
             a.ShowDialog();
 
+            double result = theIngredient.Quantities[i].ConvertFromOunces() - a.result;
+
+            if (result < 0.0)
+            {
+                result = 0.0;
+            }
+
             theIngredient.Quantities[i] = new Ingredient.Quantity()
             {
                 Msmt = theIngredient.Quantities[i].Msmt,
-                Qty = theIngredient.Quantities[i].ConvertFromOunces() - a.result
+                Qty = result
             };
             itemsRefresh();
 
