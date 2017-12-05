@@ -48,6 +48,23 @@ namespace AwesomeMealtime.Models
             return filterIngredients;
         }
 
+        public Dictionary<double, Ingredient> FilterQuantity(double filter)
+        {
+            Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
+            foreach(Ingredient ingredient in ingredients)
+            {
+                for (int x = 0; x < ingredient.Quantities.Count; x++)
+                {
+                    if (filter == ingredient.Quantities[x].Qty)
+                    {
+                        filterIngredients.Add(ingredient.Quantities[x].Qty, ingredient);
+                    }
+                }
+            }
+
+            return filterIngredients;
+        }
+
         public List<Ingredient> SortAlphabetical() {
             //sort ingredients by alphabetical order
             ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
