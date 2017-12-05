@@ -69,12 +69,10 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 		private void tbxName_TextChanged(object sender, TextChangedEventArgs e)
 		{
+
 			if(!tbxName.Text.Equals("Name Me!") && tbxName.Text != null)
 			{
-				if (tbxAmount.Text == null || (tbxAmount.Text != null && cbbMeasureType.SelectedIndex != -1))
-				{
-					btnAccept.IsEnabled = true;
-				}
+				btnAccept.IsEnabled = true;
 			}
 		}
 	}
