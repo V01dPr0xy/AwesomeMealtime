@@ -11,8 +11,6 @@ namespace AwesomeMealtime.Models
         }
 
         public List<Ingredient> ingredients { get; set; }
-		public List<string> Expired { get; set; }
-		public List<string> Coming { get; set; }
 
         public void Add(Ingredient ingredient) {
             ingredients.Add(ingredient);
