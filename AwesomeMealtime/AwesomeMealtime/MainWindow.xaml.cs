@@ -48,8 +48,32 @@ namespace AwesomeMealtime
                 sp_Data.Children.Add(hello);
             }
 
+
+
             Closing += OnWindowClosing; //don't remove this
         }
+
+		private void Notifications()
+		{
+			Models.Pantry p = myDriver.Current_Pantry;
+			Label l;
+
+			foreach (String msg in p.Warnings)
+			{
+				l = new Label();
+				l.Content = msg;
+				sp_ExSoon.Children.Add(l);
+			}
+
+			foreach (String msg in p.Expires)
+			{
+				l = new Label();
+				l.Content = msg;
+				sp_ExWarnings.Children.Add(l);
+			}
+		}
+
+
 
         private void ShowPantry_Click(object sender, RoutedEventArgs e)
         {
