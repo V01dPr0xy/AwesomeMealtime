@@ -51,7 +51,7 @@ namespace AwesomeMealtime.Models
                 qty += ConvertToOunces(Msmt, d);
             }
 
-            double ConvertToOunces(Measurements m, double param)
+            public double ConvertToOunces(Measurements m, double param)
             {
                 double result = new double();
 
