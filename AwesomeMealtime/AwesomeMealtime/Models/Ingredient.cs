@@ -33,7 +33,7 @@ namespace AwesomeMealtime.Models
         public struct Quantity
         {
             private double qty;
-
+            public Measurements Msmt { get; set; }
             public double Qty
             {
                 get
@@ -46,7 +46,10 @@ namespace AwesomeMealtime.Models
                 }
             }
 
-            public Measurements Msmt { get; set; }
+            public void AddTo(double d)
+            {
+                qty += ConvertToOunces(Msmt, d);
+            }
 
             double ConvertToOunces(Measurements m, double param)
             {
@@ -108,6 +111,76 @@ namespace AwesomeMealtime.Models
 
                     case Measurements.Teaspoon://1=1/6
                         result = param / 6;
+                        break;
+
+                    default:
+                        break;
+                }
+
+                return result;
+            }
+
+
+            public double ConvertFromOunces()
+            {
+                double result = new double();
+
+                switch (Msmt)
+                {
+                    case Measurements.Bushel://
+                        result = qty / 1191.57;
+                        break;
+
+                    case Measurements.Centiliter://
+                        result = qty / 0.33814;
+                        break;
+
+                    case Measurements.Cups://
+                        result = qty / 8;
+                        break;
+
+                    case Measurements.Deciliter://
+                        result = qty / 3.3814;
+                        break;
+
+                    case Measurements.Gallon://
+                        result = qty / 128;
+                        break;
+
+                    case Measurements.Gill://1=4
+                        result = qty / 4;
+                        break;
+
+                    case Measurements.HalfBushel://1=595.787
+                        result = qty / 595.787;
+                        break;
+
+                    case Measurements.Liter://1=33.814
+                        result = qty / 33.814;
+                        break;
+
+                    case Measurements.Milliliter://1=0.033814
+                        result = qty / 0.033814;
+                        break;
+
+                    case Measurements.Peck://1=297.894
+                        result = qty / 297.894;
+                        break;
+
+                    case Measurements.Pint://1=16
+                        result = qty / 16;
+                        break;
+
+                    case Measurements.Quart://1=32
+                        result = qty / 32;
+                        break;
+
+                    case Measurements.Tablespoon://1=0.5
+                        result = qty / .5;
+                        break;
+
+                    case Measurements.Teaspoon://1=1/6
+                        result = qty * 6;
                         break;
 
                     default:

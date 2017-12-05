@@ -23,21 +23,21 @@ namespace AwesomeMealtime
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
         {
-
             InitializeComponent();
             Ingredient ing1_ = new Ingredient("Carrot")
             {
-                Quantities = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } },
+                Quantities = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d } },
                 ExpirationDates = new List<ExpDate>() {
                     new ExpDate() {
                         Time = new DateTime(year:2020, month:7, day:19),
-                        Dates = new List<Quantity>() { new Quantity() { Qty = 5.0d, Msmt = Measurements._ } }
+                        Dates = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d } }
                     }
                 }                
             };
             //adding an ingredient to the data feild should be as easy as this.
-            IngredientBTN carrot = new IngredientBTN(ing1_);
-            sp_Data.Children.Add(carrot.button);
+            //IngredientBTN carrot = new IngredientBTN(ing1_);
+            IngredientUC carrot = new IngredientUC(this, ing1_);
+            sp_Data.Children.Add(carrot);
             //
             for (int i = 0; i < 100; i++)
             {//just a test for now...
@@ -147,34 +147,40 @@ namespace AwesomeMealtime
         private void OnWindowClosing(object sender, CancelEventArgs e)
         {
             FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
-            BinaryFormatter formatter = new BinaryFormatter();
-            try
+            if (myDriver.Book != null)
             {
-                formatter.Serialize(fs, myDriver.Book);
+                BinaryFormatter formatter = new BinaryFormatter();
+                try
+                {
+                    formatter.Serialize(fs, myDriver.Book);
+                }
+                catch (SerializationException a)
+                {
+                    Console.WriteLine("My Recipe Failed to Serialize." + a.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs.Close();
+                }
             }
-            catch (SerializationException a)
+            if (myDriver.Current_Pantry != null)
             {
-                Console.WriteLine("My Recipe Failed to Serialize." + a.Message);
-                throw;
-            }
-            finally
-            {
-                fs.Close();
-            }
-
-            FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
-            try
-            {
-                formatter.Serialize(fs2, myDriver.Current_Pantry);
-            }
-            catch (SerializationException b)
-            {
-                Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
-                throw;
-            }
-            finally
-            {
-                fs2.Close();
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
+                try
+                {
+                    formatter.Serialize(fs2, myDriver.Current_Pantry);
+                }
+                catch (SerializationException b)
+                {
+                    Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs2.Close();
+                }
             }
             System.Windows.Application.Current.Shutdown();
         }
