@@ -55,7 +55,7 @@ namespace AwesomeMealtime.Models
             {
                 for (int x = 0; x < ingredient.Quantities.Count; x++)
                 {
-                    if (filter == ingredient.Quantities[x].Qty)
+                    if (ingredient.CompareQuantites(filter, ingredient.Quantities[x]))
                     {
                         filterIngredients.Add(ingredient.Quantities[x].Qty, ingredient);
                     }

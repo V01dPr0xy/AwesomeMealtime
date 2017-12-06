@@ -14,7 +14,10 @@ namespace AwesomeMealtime.Models
         public RecipeBook Book { get; set; }
         public Pantry Current_Pantry { get; set; }
 
-        void Init() { }
+        public void Init() {
+			LoadPantry();
+			LoadRecipeBook();
+		}
 		void LoadRecipeBook()
 		{
 			IFormatter recipeFormatter = new BinaryFormatter();
@@ -46,6 +49,6 @@ namespace AwesomeMealtime.Models
 			}
 		}
 
-		void RecipeSelect() { }
+		//void RecipeSelect() { }
     }
 }
