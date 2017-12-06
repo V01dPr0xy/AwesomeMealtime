@@ -61,7 +61,7 @@ namespace AwesomeMealtime.UI_Interface_Items
         {
             string toReturn = "";
 
-            toReturn += q.ConvertFromOunces();
+            //toReturn += q.ConvertFromOunces();
             toReturn += " ";
             if (q.Msmt == Ingredient.Measurements._)
             {
@@ -120,7 +120,7 @@ namespace AwesomeMealtime.UI_Interface_Items
             a.ShowDialog();
 
             theIngredient.Quantities[i] = new Ingredient.Quantity() { Msmt = theIngredient.Quantities[i].Msmt,
-                Qty = theIngredient.Quantities[i].ConvertFromOunces() + a.result };
+                Qty = theIngredient.Quantities[i].ConvertFromOunces(0.0) + a.result };
             itemsRefresh();
 
         }
@@ -135,7 +135,7 @@ namespace AwesomeMealtime.UI_Interface_Items
             AddQuantityMsgBox a = new AddQuantityMsgBox(type, true);
             a.ShowDialog();
 
-            double result = theIngredient.Quantities[i].ConvertFromOunces() - a.result;
+            double result = theIngredient.Quantities[i].ConvertFromOunces(0.0) - a.result;
 
             if (result < 0.0)
             {

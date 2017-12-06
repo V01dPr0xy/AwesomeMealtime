@@ -52,7 +52,7 @@ namespace AwesomeMealtime.Models
                     Recipes.Remove(rec);
         }
 
-        public void EditRecipe(Recipe rec, string name, string desc, string warnMess, List<string> dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
+        public void EditRecipe(Recipe rec, string name, string desc, string warnMess, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
         {
             rec.Name = name;
             rec.Dish_Description = desc;
