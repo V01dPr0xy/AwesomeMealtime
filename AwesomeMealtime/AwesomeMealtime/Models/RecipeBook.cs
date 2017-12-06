@@ -88,13 +88,18 @@ namespace AwesomeMealtime.Models
             ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
             foreach (Recipe r in recipes)
             {
-                if (r.CookTime + r.PrepTime == time) filtered.Add(r);
+                if (r.CookTime + r.PrepTime <= time) filtered.Add(r);
             }
         }
 
         public void SortRecipes()
         {
             Recipes.OrderBy(rec => rec.Name);
+        }
+
+        public void SortRecipesByDifficulty()
+        {
+            Recipes.OrderBy(rec => rec.Recipe_Difficulty);
         }
     }
 }
