@@ -17,37 +17,13 @@ namespace AwesomeMealtime
     /// </summary>
     public partial class MainWindow : Window
     {
-        RecipeBook recipeBook = new RecipeBook();
         Driver myDriver = new Driver();
         GridLength Biggie = new GridLength(20.0, GridUnitType.Star);
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
         public MainWindow()
         {
             InitializeComponent();
-            Ingredient ing1_ = new Ingredient("Carrot")
-            {
-                Quantities = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d },
-                    new Quantity() { Msmt = Measurements.Quart} },
-                ExpirationDates = new List<ExpDate>() {
-                    new ExpDate() {
-                        Time = new DateTime(year:2020, month:7, day:19),
-                        Dates = new List<Quantity>() { new Quantity() { Msmt = Measurements.Cups, Qty = 5.0d } }
-                    }
-                }                
-            };
-            //adding an ingredient to the data feild should be as easy as this.
-            //IngredientBTN carrot = new IngredientBTN(ing1_);
-            IngredientUC carrot = new IngredientUC(this, ing1_);
-            sp_Data.Children.Add(carrot);
-            //
-            for (int i = 0; i < 100; i++)
-            {//just a test for now...
-
-                Button hello = new Button();
-                hello.Content = "Hello!";
-
-                sp_Data.Children.Add(hello);
-            }
+			myDriver.Init();
 
 
 
@@ -119,11 +95,10 @@ namespace AwesomeMealtime
             sp_Data.Children.Clear();
             //TO DO: Load Recipe book from Recipe book data
             int i = 0;
-            foreach(Recipe rec in recipeBook.Recipes)
+            foreach(Recipe rec in myDriver.Book.Recipes)
             {
                 Label lbl = new Label();
-                lbl.DataContext = recipeBook.Recipes[i];
-                lbl.Content = recipeBook.Recipes[i].Name;
+
                 sp_Data.Children.Add(lbl);
                 i++;
             }
@@ -131,7 +106,7 @@ namespace AwesomeMealtime
 
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
-			
+            RecipeWindow newRecipe = new RecipeWindow();
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
