@@ -106,7 +106,7 @@ namespace AwesomeMealtime
 
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
-            RecipeWindow newRecipe = new RecipeWindow();
+            
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
