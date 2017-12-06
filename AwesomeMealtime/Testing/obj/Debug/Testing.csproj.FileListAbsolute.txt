@@ -1,0 +1,10 @@
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\obj\Debug\Testing.csprojResolveAssemblyReference.cache
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\obj\Debug\Testing.csproj.CoreCompileInputs.cache
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\Testing.exe.config
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\Testing.exe
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\Testing.pdb
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\AwesomeMealtime.exe
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\AwesomeMealtime.pdb
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\bin\Debug\AwesomeMealtime.exe.config
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\obj\Debug\Testing.exe
+C:\Users\Vokundiiv\Documents\GitHub\AwesomeMealtime\AwesomeMealtime\AwesomeMealtime\Testing\obj\Debug\Testing.pdb
