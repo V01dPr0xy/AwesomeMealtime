@@ -16,6 +16,7 @@ namespace AwesomeMealtime.Models
 		private string name;
 		private string descript;
 		private string warning;
+		private string instruct;
 		private Image image;
 		private TimeSpan cook;
 		private TimeSpan prep;
@@ -25,7 +26,7 @@ namespace AwesomeMealtime.Models
 		public string Name { get { return name; } set { name = value; FieldChanged(); } }
         public string Dish_Description { get { return descript; } set { descript = value; FieldChanged(); } }
         public string Warning_Message { get { return warning; } set { warning = value; FieldChanged(); } }
-        public List<string> Directions { get; set; }
+        public string Directions { get { return instruct; } set { instruct = value; FieldChanged(); } }
 		public List<Ingredient> Ingredients { get; set; }
         public TimeSpan CookTime { get { return cook; } set { cook = value; FieldChanged(); } }
         public TimeSpan PrepTime { get { return prep; } set { prep = value; FieldChanged(); } }
@@ -45,7 +46,6 @@ namespace AwesomeMealtime.Models
 
 		public Recipe()
 		{
-			Directions = new List<string>();
 			Ingredients = new List<Ingredient>();
 			cook = new TimeSpan();
 			prep = new TimeSpan();
