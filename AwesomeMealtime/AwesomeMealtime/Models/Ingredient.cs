@@ -24,6 +24,14 @@ namespace AwesomeMealtime.Models
         public List<Quantity> Quantities { get; set; }
         public List<ExpDate> ExpirationDates { get; set; }
 
+        public bool CompareQuantites(double filter, Quantity qty)
+        {
+            if (qty.ConvertToOunces(qty.Msmt, filter) == qty.Qty)
+                return true;
+            else
+                return false;
+        }
+
         public struct ExpDate
         {
             public DateTime Time { get; set; }

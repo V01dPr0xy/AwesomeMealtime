@@ -24,7 +24,7 @@ namespace AwesomeMealtime.UI_Interface_Items
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RemoveIngredient(object sender, RoutedEventArgs e)
         {
         }
 
@@ -34,6 +34,11 @@ namespace AwesomeMealtime.UI_Interface_Items
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddIngredient(object sender, RoutedEventArgs e)
         {
 
         }
