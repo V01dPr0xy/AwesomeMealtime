@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AwesomeMealtime.Models;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +21,7 @@ namespace AwesomeMealtime.UI_Interface_Items
     /// </summary>
     public partial class RecipeWindow : Window
     {
+        Recipe recipe = new Recipe();
         public RecipeWindow()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 
         private void RemoveIngredient(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -33,14 +37,36 @@ namespace AwesomeMealtime.UI_Interface_Items
 
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        private void Warning_Checked(object sender, RoutedEventArgs e)
         {
+            recipe.Warning = true;
+        }
 
+        private void Warning_Unchecked(object sender, RoutedEventArgs e)
+        {
+            recipe.Warning = false;
         }
 
         private void AddIngredient(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void AddRecipe(object sender, RoutedEventArgs e)
+        {
+            
+        }
+        private void AddImage(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Title = "Select a picture";
+            open.Filter = "All supported graphics|*.jpg;*.jpeg;*.png|" +
+              "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
+              "Portable Network Graphic (*.png)|*.png";
+            if (open.ShowDialog() == true)
+            {
+                Img.Source = new BitmapImage(new Uri(open.FileName));
+            }
         }
     }
 }

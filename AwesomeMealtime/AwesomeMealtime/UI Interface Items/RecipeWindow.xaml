@@ -12,7 +12,7 @@
         <Label Content="Description:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="50" Margin="88,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
         <Label Content="Warning:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942"/>
-        <CheckBox Content="Has Warning" HorizontalAlignment="Left" Margin="88,99,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+        <CheckBox Content="Has Warning" HorizontalAlignment="Left" Margin="88,99,0,0" VerticalAlignment="Top" Checked="Warning_Checked" Unchecked="Warning_Unchecked"/>
         <Label Content="Message:" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="88,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
         <Label Content="Unit Of Measurement:" HorizontalAlignment="Left" Margin="10,302,0,0" VerticalAlignment="Top"/>
@@ -32,10 +32,10 @@
         <TextBox HorizontalAlignment="Left" Height="22" Margin="88,460,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
         <ComboBox HorizontalAlignment="Left" Margin="88,486,0,0" VerticalAlignment="Top" Width="197"/>
         <Label Content="Difficulty:" HorizontalAlignment="Left" Margin="10,482,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="52,513,0,0" VerticalAlignment="Top" Width="100" />
-        <Button Content="Add Image" HorizontalAlignment="Left" Margin="208,548,0,0" VerticalAlignment="Top" Width="75" Height="25"/>
+        <Image Name="Img" HorizontalAlignment="Left" Height="100" Margin="52,513,0,0" VerticalAlignment="Top" Width="100" />
+        <Button Content="Add Image" HorizontalAlignment="Left" Margin="208,548,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="AddImage"/>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="100" Margin="52,513,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Save Recipe" HorizontalAlignment="Left" Margin="10,648,0,0" VerticalAlignment="Top" Width="109" Height="36"/>
+        <Button Content="Save Recipe" HorizontalAlignment="Left" Margin="10,648,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="AddRecipe"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="174,648,0,0" VerticalAlignment="Top" Width="109" Height="36"/>
 
     </Grid>
