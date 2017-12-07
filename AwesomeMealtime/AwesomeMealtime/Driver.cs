@@ -48,7 +48,51 @@ namespace AwesomeMealtime.Models
 				Console.WriteLine("No prior foods found.");
 			}
 		}
-
-		//void RecipeSelect() { }
+        
+        void SavePantry()
+        {
+            if (Current_Pantry != null)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
+                try
+                {
+                    formatter.Serialize(fs2, Current_Pantry);
+                }
+                catch (SerializationException b)
+                {
+                    Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs2.Close();
+                }
+            }
+        }
+		
+        void SaveRecipe()
+        {
+            FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
+            if (Book != null)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                try
+                {
+                    formatter.Serialize(fs, Book);
+                }
+                catch (SerializationException a)
+                {
+                    Console.WriteLine("My Recipe Failed to Serialize." + a.Message);
+                    throw;
+                }
+                finally
+                {
+                    fs.Close();
+                }
+            }
+        }
+        
+        //void RecipeSelect() { }
     }
 }
