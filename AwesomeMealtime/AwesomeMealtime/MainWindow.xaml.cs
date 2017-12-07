@@ -40,7 +40,7 @@ namespace AwesomeMealtime
 				l = new Label();
 				l.Content = msg;
 				l.MouseLeftButtonDown += NotificationWarning_MouseLeftButtonDown;
-				sp_ExSoon.Children.Add(l);
+				//sp_ExSoon.Children.Add(l);
 			}
 
 			foreach (String msg in p.expRemovalMsg)
@@ -48,20 +48,16 @@ namespace AwesomeMealtime
 				l = new Label();
 				l.Content = msg;
 				l.MouseLeftButtonDown += NotificationDesposal_MouseLeftButtonDown;
-				sp_ExWarnings.Children.Add(l);
+				//sp_ExWarnings.Children.Add(l);
 			}
 		}
         private void ShowPantry_Click(object sender, RoutedEventArgs e)
         {
-            Def_CRecipe.Width = Smalls;//You're killing me
-            Def_CPantry.Width = Biggie;
 
             LoadPantry();
         }
         private void ShowRecipe_Click(object sender, RoutedEventArgs e)
         {
-            Def_CRecipe.Width = Biggie;
-            Def_CPantry.Width = Smalls;
 
             LoadRecipe();
         }
@@ -69,7 +65,7 @@ namespace AwesomeMealtime
         {
             //TO DO: add search functionality
             //Will need a check to see if we are in pantry or in Recipe book
-            string input = tb_Search.Text;
+            //string input = tb_Search.Text;
             MessageBox.Show(input);
             //TO DO: Something with input
         }
@@ -81,7 +77,6 @@ namespace AwesomeMealtime
         /// </summary>
         private void LoadPantry()
         {
-            sp_Data.Children.Clear();
             //TO DO: Load Pantry from Pantry data
         }
 
@@ -92,14 +87,12 @@ namespace AwesomeMealtime
         /// </summary>
         private void LoadRecipe()
         {
-            sp_Data.Children.Clear();
             //TO DO: Load Recipe book from Recipe book data
             int i = 0;
             foreach(Recipe rec in myDriver.Book.Recipes)
             {
                 Label lbl = new Label();
 
-                sp_Data.Children.Add(lbl);
                 i++;
             }
         }
@@ -183,7 +176,6 @@ namespace AwesomeMealtime
 
 			if(target != null)
 			{
-				sp_ExSoon.Children.Remove((Label)sender);
 				myDriver.Current_Pantry.expWarningMsg.Remove(target);
 			}
 		}
@@ -194,7 +186,6 @@ namespace AwesomeMealtime
 
 			if (target != null)
 			{
-				sp_ExWarnings.Children.Remove((Label)sender);
 				myDriver.Current_Pantry.expRemovalMsg.Remove(target);
 			}
 		}
