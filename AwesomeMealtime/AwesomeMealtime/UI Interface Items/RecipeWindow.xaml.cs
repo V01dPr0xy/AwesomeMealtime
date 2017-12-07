@@ -25,16 +25,17 @@ namespace AwesomeMealtime.UI_Interface_Items
         public RecipeWindow()
         {
             InitializeComponent();
+            ComboDifficulty.ItemsSource = Enum.GetValues(typeof(Recipe.Difficulty)).Cast<Recipe.Difficulty>();
         }
 
         private void RemoveIngredient(object sender, RoutedEventArgs e)
         {
-
+            IngredientList.Items.Remove(IngredientList.SelectedItems);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            recipe.Recipe_Difficulty = (Recipe.Difficulty)ComboDifficulty.SelectedItem;
         }
 
         private void Warning_Checked(object sender, RoutedEventArgs e)
@@ -50,6 +51,7 @@ namespace AwesomeMealtime.UI_Interface_Items
         private void AddIngredient(object sender, RoutedEventArgs e)
         {
 
+            Ingredient ing = new Ingredient(IngName.Text);
         }
 
         private void AddRecipe(object sender, RoutedEventArgs e)
