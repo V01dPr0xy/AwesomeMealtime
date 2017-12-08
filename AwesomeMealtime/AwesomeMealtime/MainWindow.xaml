@@ -29,7 +29,7 @@
                 <TextBlock x:Name="tbxSearch" HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Height="34" Width="325" FontSize="24" Background="White"/>
                 <Button x:Name="btnSearch" Content="Submit" HorizontalAlignment="Left" Margin="340,82,0,0" VerticalAlignment="Top" Width="75" Height="30"/>
                 <Button x:Name="btnAdd" Content="Add New" HorizontalAlignment="Left" Margin="568,82,0,0" VerticalAlignment="Top" Width="74" Height="30"/>
-                <ComboBox x:Name="cbbSort" HorizontalAlignment="Left" Margin="443,82,0,0" VerticalAlignment="Top" Width="120"/>
+                <ComboBox x:Name="cbbSort" HorizontalAlignment="Left" Margin="420,82,0,0" VerticalAlignment="Top" Width="143"/>
 
             </Grid>
             <Grid Grid.Column="1" x:Name="NotificationField" Background="CadetBlue">
