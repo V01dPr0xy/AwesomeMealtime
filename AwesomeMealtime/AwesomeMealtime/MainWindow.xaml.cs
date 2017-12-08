@@ -20,14 +20,13 @@ namespace AwesomeMealtime
         Driver myDriver = new Driver();
         GridLength Biggie = new GridLength(20.0, GridUnitType.Star);
         GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
-		private object sp_Expired;
 
 		public MainWindow()
         {
             InitializeComponent();
 			myDriver.Init();
 
-			Notifications();
+			//Notifications();
 
             Closing += OnWindowClosing; //don't remove this
         }
@@ -56,15 +55,9 @@ namespace AwesomeMealtime
         private void ShowRecipe_Click(object sender, RoutedEventArgs e)
         {
 
-            
         }
         private void btn_Search_Click(object sender, RoutedEventArgs e)
         {
-            //TO DO: add search functionality
-            //Will need a check to see if we are in pantry or in Recipe book
-            //string input = tb_Search.Text;
-            //MessageBox.Show(input);
-            //TO DO: Something with input
         }
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -74,7 +67,7 @@ namespace AwesomeMealtime
         {
 
         }
-        private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
+        private void btn_PantryAddNew_Click(object sender, RoutedEventArgs e)
         {
 			IngredientWindow add = new IngredientWindow();
 
@@ -148,7 +141,6 @@ namespace AwesomeMealtime
 				myDriver.Current_Pantry.expWarningMsg.Remove(target);
 			}
 		}
-
 		private void NotificationDesposal_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			string target = ((Label)sender).Content.ToString();
@@ -159,5 +151,9 @@ namespace AwesomeMealtime
 			}
 		}
 
+		private void btnAdd_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

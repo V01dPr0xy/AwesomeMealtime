@@ -5,18 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AwesomeMealtime.UI_Interface_Items"
         mc:Ignorable="d"
-        Title="IngredientWindow" Height="164.583" Width="315.626">
-    <Grid x:Name="Add">
+        Title="IngredientWindow" Height="189.811" Width="315.626">
+    <Grid x:Name="Add" Margin="0,0,0.5,-4.5">
         <Label Content="Name: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Amount: " HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <Label Content="Expire: " HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="75" Click="btnAccept_Click" IsEnabled="False"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="101,103,0,0" Width="76" IsCancel="True" Height="20" VerticalAlignment="Top"/>
-
-        <ComboBox x:Name="cbbMeasureType" HorizontalAlignment="Left" Margin="182,46,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbxName" HorizontalAlignment="Left" Height="23" Margin="62,13,0,0" TextWrapping="Wrap" Text="Name Me!" VerticalAlignment="Top" Width="238" TextChanged="tbxName_TextChanged"/>
-        <TextBox x:Name="tbxAmount" HorizontalAlignment="Left" Height="22" Margin="74,45,0,0" TextWrapping="Wrap" Text="Judge Me!" VerticalAlignment="Top" Width="103"/>
-        <TextBox x:Name="tbxExpire" HorizontalAlignment="Left" Height="23" Margin="58,75,0,0" TextWrapping="Wrap" Text="End Me!" VerticalAlignment="Top" Width="244"/>
-
+        <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnAccept_Click" IsEnabled="False"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,0,0,10" Width="76" IsCancel="True" Height="20" VerticalAlignment="Bottom"/>
+        <TextBox x:Name="tbxName" Height="23" Margin="62,13,10,0" TextWrapping="Wrap" Text="Name Me!" VerticalAlignment="Top" TextChanged="tbxName_TextChanged"/>
+        <ScrollViewer Background="LightGray" Margin="10,71,40,35">
+            <StackPanel x:Name="spl_Stuff" Orientation="Horizontal"/>
+        </ScrollViewer>
+        <Button x:Name="btnAdd" Content="+" Margin="0,38,10,0" VerticalAlignment="Top" Height="23" Click="btnAdd_Click" HorizontalAlignment="Right" Width="24"/>
+        <Button x:Name="btnSub" Content="-" Margin="0,66,10,0" VerticalAlignment="Top" Height="23" Click="btnSub_Click" HorizontalAlignment="Right" Width="24"/>
+        <TextBox x:Name="tbxAmount" HorizontalAlignment="Left" Height="23" Margin="10,38,0,0" TextWrapping="Wrap" Text="Judge Me!" VerticalAlignment="Top" Width="75" TextChanged="tbxName_TextChanged"/>
+        <TextBox x:Name="tbxDate" Height="23" Margin="0,38,39,0" TextWrapping="Wrap" Text="End Me!" VerticalAlignment="Top" TextChanged="tbxName_TextChanged" HorizontalAlignment="Right" Width="68"/>
+        <ComboBox x:Name="cbbMeasureType" HorizontalAlignment="Left" Margin="90,38,0,0" VerticalAlignment="Top" Width="108"/>
     </Grid>
 </Window>
