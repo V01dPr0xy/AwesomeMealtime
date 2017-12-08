@@ -22,6 +22,8 @@ namespace AwesomeMealtime.UI_Interface_Items
 	{
 		public Ingredient proto;
 
+		private StackPanel selected;
+
 		public IngredientWindow()
 		{
 			InitializeComponent();
@@ -31,42 +33,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 		private void btnAccept_Click(object sender, RoutedEventArgs e)
 		{
-			int amount;
-			DateTime time;
 
-			if (!tbxName.Text.Equals("Name Me!") || tbxName.Text != null)
-			{
-				proto = new Ingredient(tbxName.Text);
-
-				if (tbxAmount.Text != null && cbbMeasureType.SelectedIndex != -1)
-				{
-					Int32.TryParse(tbxAmount.Text, out amount);
-					Ingredient.Measurements unit = (Ingredient.Measurements)cbbMeasureType.SelectedIndex;
-
-					Ingredient.Quantity qty = new Ingredient.Quantity() { Msmt = unit, Qty = amount };
-
-					proto.Quantities.Add(qty);
-				}
-				else if (tbxAmount.Text == null)
-				{
-					amount = 0;
-					Ingredient.Measurements unit = Ingredient.Measurements._;
-
-					Ingredient.Quantity qty = new Ingredient.Quantity() { Msmt = unit, Qty = amount };
-
-					proto.Quantities.Add(qty);
-				}
-
-				if (tbxExpire.Text != null)
-				{
-					DateTime.TryParse(tbxExpire.Text, out time);
-
-				}
-
-
-
-				this.Close();
-			}
 		}
 
 		private void tbxName_TextChanged(object sender, TextChangedEventArgs e)
@@ -74,7 +41,49 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 			if(!tbxName.Text.Equals("Name Me!") && tbxName.Text != null)
 			{
-				btnAccept.IsEnabled = true;
+				if (spl_Stuff.Children != null && spl_Stuff.Children.Count > 0)
+				{
+					btnAccept.IsEnabled = true;
+				}
+			}
+		}
+
+		private void btnAdd_Click(object sender, RoutedEventArgs e)
+		{
+			int amount;
+			DateTime time;
+			Label l;
+			if(Int32.TryParse(tbxAmount.Text, out amount) && DateTime.TryParse(tbxDate.Text, out time) && cbbMeasureType.SelectedIndex != -1) {
+				StackPanel stack = new StackPanel();
+				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
+
+				l = new Label();
+				string content = $"{amount.ToString()} + {(Ingredient.Measurements)cbbMeasureType.SelectedIndex}";
+				l.Content = content;
+				stack.Children.Add(l);
+
+				l = new Label();
+				l.Content = time.ToString();
+				stack.Children.Add(l);
+
+				spl_Stuff.Children.Add(stack);
+			}
+		}
+
+		private void ScrollViewer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+		{
+			if ((StackPanel)sender != null)
+			{
+				selected = (StackPanel)sender;
+			}
+		}
+
+		private void btnSub_Click(object sender, RoutedEventArgs e)
+		{
+			if(selected != null)
+			{
+				spl_Stuff.Children.Remove(selected);
+				selected = null;
 			}
 		}
 	}
