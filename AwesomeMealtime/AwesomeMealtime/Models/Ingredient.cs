@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,12 +18,45 @@ namespace AwesomeMealtime.Models
         public Ingredient(string name)
         {
             Name = name;
+<<<<<<< HEAD
+<<<<<<< HEAD
+            ExpirationDates = new ObservableCollection<ExpDate>();
+            ExpirationDates.CollectionChanged += NotifyCollectionChangedEventHandler;
+
+        }
+
+        public void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == NotifyCollectionChangedAction.Add)
+            {
+                if (sender.GetType() == typeof(ExpDate))
+                {
+                    TotalQuantity += ((ExpDate)sender).Size.Qty;
+                }
+            }
+        }
+
+        public string Name { get; set; }
+        public ObservableCollection<ExpDate> ExpirationDates { get; set; }
+
+        private double totalQuantity;
+
+        public double TotalQuantity
+        {
+            get { return totalQuantity; }
+            internal set { totalQuantity = value; }
+        }
+
+=======
+=======
+>>>>>>> 32fca6e779807f202bda7f9a3cc612bd375325ef
             ExpirationDates = new List<ExpDate>();
         }
 
         public string Name { get; set; }
         public Quantity Quantities { get; set; }
         public List<ExpDate> ExpirationDates { get; set; }
+>>>>>>> ce23bdabaf93117800706864a5b9fda7865599cb
 
         public bool CompareQuantites(double filter, Quantity qty)
         {
@@ -34,7 +69,7 @@ namespace AwesomeMealtime.Models
         public struct ExpDate
         {
             public DateTime Time { get; set; }
-            public Quantity Sizes { get; set; }
+            public Quantity Size { get; set; }
         }
 
         public struct Quantity
@@ -120,6 +155,9 @@ namespace AwesomeMealtime.Models
                         result = param / 6;
                         break;
 
+                    case Measurements.Ounce://1=1
+                        break;
+
                     default:
                         break;
                 }
@@ -188,6 +226,8 @@ namespace AwesomeMealtime.Models
                     case Measurements.Teaspoon://1=1/6
                         result = q * 6;
                         break;
+                    case Measurements.Ounce://1=1
+                        break;
 
                     default:
                         break;
@@ -197,65 +237,68 @@ namespace AwesomeMealtime.Models
             }
         }
 
-		public static Measurements GetMeasurementFromString(string input)
-		{
-			Measurements unit;
+        public static Measurements GetMeasurementFromString(string input)
+        {
+            Measurements unit;
 
-			switch(input)
-			{
-				case "_":
-					unit = Measurements._;
-					break;
-				case "Cups":
-					unit = Measurements.Cups;
-					break;
-				case "Gill":
-					unit = Measurements.Gill;
-					break;
-				case "Pint":
-					unit = Measurements.Pint;
-					break;
-				case "Quart":
-					unit = Measurements.Quart;
-					break;
-				case "Gallon":
-					unit = Measurements.Gallon;
-					break;
-				case "Peck":
-					unit = Measurements.Peck;
-					break;
-				case "HalfBushel":
-					unit = Measurements.HalfBushel;
-					break;
-				case "Bushel":
-					unit = Measurements.Bushel;
-					break;
-				case "Tablespoon":
-					unit = Measurements.Tablespoon;
-					break;
-				case "Teaspoon":
-					unit = Measurements.Teaspoon;
-					break;
-				case "Milliliter":
-					unit = Measurements.Milliliter;
-					break;
-				case "Centiliter":
-					unit = Measurements.Centiliter;
-					break;
-				case "Deciliter":
-					unit = Measurements.Deciliter;
-					break;
-				case "Liter":
-					unit = Measurements.Liter;
-					break;
-				default:
-					unit = Measurements._;
-					break;
+            switch (input)
+            {
+                case "_":
+                    unit = Measurements._;
+                    break;
+                case "Cups":
+                    unit = Measurements.Cups;
+                    break;
+                case "Gill":
+                    unit = Measurements.Gill;
+                    break;
+                case "Pint":
+                    unit = Measurements.Pint;
+                    break;
+                case "Quart":
+                    unit = Measurements.Quart;
+                    break;
+                case "Gallon":
+                    unit = Measurements.Gallon;
+                    break;
+                case "Peck":
+                    unit = Measurements.Peck;
+                    break;
+                case "HalfBushel":
+                    unit = Measurements.HalfBushel;
+                    break;
+                case "Bushel":
+                    unit = Measurements.Bushel;
+                    break;
+                case "Tablespoon":
+                    unit = Measurements.Tablespoon;
+                    break;
+                case "Teaspoon":
+                    unit = Measurements.Teaspoon;
+                    break;
+                case "Milliliter":
+                    unit = Measurements.Milliliter;
+                    break;
+                case "Centiliter":
+                    unit = Measurements.Centiliter;
+                    break;
+                case "Deciliter":
+                    unit = Measurements.Deciliter;
+                    break;
+                case "Liter":
+                    unit = Measurements.Liter;
+                    break;
+                case "Ounce":
+                    unit = Measurements.Ounce;
+                    break;
+                default:
+                    unit = Measurements._;
+                    break;
 
-			}
+            }
 
-			return unit;
-		}
+            return unit;
+        }
         public enum Measurements
         {
             _,
@@ -271,6 +314,7 @@ namespace AwesomeMealtime.Models
             Bushel,
             Tablespoon,
             Teaspoon,
+            Ounce,
 
             //Metric
             Milliliter,
