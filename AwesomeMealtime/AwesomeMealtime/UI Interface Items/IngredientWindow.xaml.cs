@@ -41,7 +41,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 				{
 					Ingredient.ExpDate exp = new Ingredient.ExpDate();
 
-					//exp.Dates = DateTime.Parse(((Label)sp.Children[1]).Content.ToString()));
+					exp.Time = DateTime.Parse(((Label)sp.Children[1]).Content.ToString());
 
 					string raw = ((Label)sp.Children[0]).Content.ToString();
 					int index = raw.IndexOf(' ');
