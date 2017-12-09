@@ -29,50 +29,24 @@ namespace AwesomeMealtime
             Closing += OnWindowClosing; //don't remove this
         }
 
-		private void Notifications()
-		{
-			Models.Pantry p = myDriver.Current_Pantry;
-            if (p == null)
-                return;
-			Label l;
 
-			foreach (String msg in p.expWarningMsg)
-			{
-				l = new Label();
-				l.Content = msg;
-				l.MouseLeftButtonDown += NotificationWarning_MouseLeftButtonDown;
-				spl_Warning.Children.Add(l);
-			}
-
-			foreach (String msg in p.expRemovalMsg)
-			{
-				l = new Label();
-				l.Content = msg;
-				l.MouseLeftButtonDown += NotificationDesposal_MouseLeftButtonDown;
-				spl_Expired.Children.Add(l);
-			}
-		}
-        private void ShowRecipe_Click(object sender, RoutedEventArgs e)
-        {
-
-            
-        }
-        private void btn_Search_Click(object sender, RoutedEventArgs e)
-        {
-            //TO DO: add search functionality
-            //Will need a check to see if we are in pantry or in Recipe book
-            //string input = tb_Search.Text;
-            //MessageBox.Show(input);
-            //TO DO: Something with input
-        }
-        private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
+		//Recipe Events
+		private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
 
         }
-        private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
+		private void ShowRecipe_Click(object sender, RoutedEventArgs e)
+		{
+
+
+		}
+
+
+		//Pantry Events
+		private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
         {
 			IngredientWindow add = new IngredientWindow();
 
@@ -81,11 +55,18 @@ namespace AwesomeMealtime
 
 			}
         }
-        private void btn_PantryRemove_Click(object sender, RoutedEventArgs e)
-        {
+		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
+		{
+			//TO DO: add search functionality
+			//Will need a check to see if we are in pantry or in Recipe book
+			//string input = tb_Search.Text;
+			//MessageBox.Show(input);
+			//TO DO: Something with input
+		}
 
-        }
-        private void AppExit_Click(object sender, RoutedEventArgs e)
+
+		//App stuff //
+		private void AppExit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
@@ -98,6 +79,7 @@ namespace AwesomeMealtime
             MessageBox.Show(sender.ToString());
         }
 
+		//On closing
 		private void OnWindowClosing(object sender, CancelEventArgs e)
         {
             FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
@@ -139,6 +121,7 @@ namespace AwesomeMealtime
             System.Windows.Application.Current.Shutdown();
         }
 
+		//Notification stuff
 		private void NotificationWarning_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			string target = ((Label)sender).Content.ToString();
@@ -157,8 +140,33 @@ namespace AwesomeMealtime
 				myDriver.Current_Pantry.expRemovalMsg.Remove(target);
 			}
 		}
-        
-        private void btnBook_Click(object sender, RoutedEventArgs e)
+		private void Notifications()
+		{
+			Models.Pantry p = myDriver.Current_Pantry;
+			if (p == null)
+				return;
+			Label l;
+
+			foreach (String msg in p.expWarningMsg)
+			{
+				l = new Label();
+				l.Content = msg;
+				l.MouseLeftButtonDown += NotificationWarning_MouseLeftButtonDown;
+				spl_Warning.Children.Add(l);
+			}
+
+			foreach (String msg in p.expRemovalMsg)
+			{
+				l = new Label();
+				l.Content = msg;
+				l.MouseLeftButtonDown += NotificationDesposal_MouseLeftButtonDown;
+				spl_Expired.Children.Add(l);
+			}
+		}
+
+
+		//Main Toggle
+		private void btnBook_Click(object sender, RoutedEventArgs e)
         {
             btnBook.IsEnabled = false;
             btnPantry.IsEnabled = true;
@@ -166,7 +174,6 @@ namespace AwesomeMealtime
             GPantry.Visibility = Visibility.Collapsed;
             GRecipe.Visibility = Visibility.Visible;
         }
-
         private void btnPantry_Click(object sender, RoutedEventArgs e)
         {
             btnPantry.IsEnabled = false;
@@ -176,9 +183,6 @@ namespace AwesomeMealtime
             GRecipe.Visibility = Visibility.Collapsed;
             GPantry.Visibility = Visibility.Visible;
         }
-		private void BtnAdd_Click(object sender, RoutedEventArgs e)
-		{
-
-		}
+		
 	}
 }
