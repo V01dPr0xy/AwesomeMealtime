@@ -28,7 +28,8 @@ namespace AwesomeMealtime.UI_Interface_Items
 		{
 			InitializeComponent();
 
-			cbbMeasureType.ItemsSource = Enum.GetValues(typeof(Models.Ingredient.Measurements)).Cast< Models.Ingredient.Measurements> (); 
+			cbbMeasureType.ItemsSource = Enum.GetValues(typeof(Models.Ingredient.Measurements)).Cast<Models.Ingredient.Measurements>();
+
 		}
 
 		private void btnAccept_Click(object sender, RoutedEventArgs e)
@@ -62,10 +63,33 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 		}
 
+		
+
 		private void tbxName_TextChanged(object sender, TextChangedEventArgs e)
 		{
-
 			btnAccept.IsEnabled = AcceptCheck();
+		}
+
+		public void FillValuesForEdit(Ingredient bass)
+		{
+			tbxName.Text = bass.Name;
+
+			foreach (Ingredient.ExpDate ex in bass.ExpirationDates)
+			{
+				StackPanel stack = new StackPanel();
+				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
+
+				Label l = new Label();
+				l.Content = ex.Time.ToString();
+				stack.Children.Add(l);
+
+				l = new Label();
+				l.Content = $"{ex.Size.Qty.ToString()} {ex.Size.Msmt.ToString()}";
+				stack.Children.Add(l);
+
+				spl_Stuff.Children.Add(stack);
+			}
+
 		}
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)

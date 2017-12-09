@@ -37,6 +37,32 @@ namespace AwesomeMealtime.Models
             }
         }
 
+		public static Ingredient GetIngredientFromParts(string name, List<string> dates, List<string> qty)
+		{
+			Ingredient temp = new Ingredient(name);
+
+			int index = 0;
+
+			foreach(string s in dates)
+			{
+				ExpDate date = new ExpDate();
+				date.Time = DateTime.Parse(s);
+				string raw = qty[index];
+
+				int space = raw.IndexOf(' ');
+
+				Quantity q = new Quantity();
+				q.Msmt = GetMeasurementFromString(raw.Substring(space + 1));
+				q.Qty = Double.Parse(raw.Substring(0, space));
+
+				date.Size = q;
+
+				temp.ExpirationDates.Add(date);
+			}
+
+			return temp;
+		}
+
 		//public int Id { get; set; }
         public string Name { get; set; }
         public ObservableCollection<ExpDate> ExpirationDates { get; set; }

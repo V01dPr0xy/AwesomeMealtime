@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace AwesomeMealtime.Models
 {
@@ -8,16 +10,16 @@ namespace AwesomeMealtime.Models
     {
         public Pantry()
         {
-            ingredients = new List<Ingredient>();
-			expWarningMsg = new List<string>();
-			expRemovalMsg = new List<string>();
+			ingredients = new ObservableCollection<Ingredient>();
+			expWarningMsg = new ObservableCollection<string>();
+			expRemovalMsg = new ObservableCollection<string>();
 		}
 
-        public List<Ingredient> ingredients { get; set; }
+		public ObservableCollection<Ingredient> ingredients { get; set; }
 
-        public List<String> expWarningMsg { get; set; }
+		public ObservableCollection<string> expWarningMsg { get; set; }
 
-        public List<String> expRemovalMsg { get; set; }
+        public ObservableCollection<string> expRemovalMsg { get; set; }
 
         public void Add(Ingredient ingredient) {
             ingredients.Add(ingredient);
@@ -61,17 +63,17 @@ namespace AwesomeMealtime.Models
             return filterIngredients;
         }
 
-        public List<Ingredient> SortAlphabetical() {
-            //sort ingredients by alphabetical order
-            ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
-            return ingredients;
-        }
+        //public List<Ingredient> SortAlphabetical() {
+        //    //sort ingredients by alphabetical order
+        //    ingredients = new ObservableCollection<Ingredient>(Ingredients.OrderBy)
+        //    return ingredients;
+        //}
 
-        public void SortReverseAlphabetical(){
-            //sort ingredients by reverse alphabetical order
-            ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
-            ingredients.Reverse();
-        }
+        //public void SortReverseAlphabetical(){
+        //    //sort ingredients by reverse alphabetical order
+        //    ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
+        //    ingredients.Reverse();
+        //}
 
         public void Expiration_Warning() {
             foreach(Ingredient ingredient in ingredients)

@@ -63,7 +63,7 @@ namespace AwesomeMealtime
 			if (add.proto != null)
 			{
 				confirm = add.proto;
-				//myDriver.Current_Pantry.Add(confirm);
+				//myDriver.Current_Pantry.Add(add.proto);
 
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
@@ -83,7 +83,6 @@ namespace AwesomeMealtime
 				foreach(ExpDate ex in confirm.ExpirationDates)
 				{
 					StackPanel dates = new StackPanel();
-					dates.MouseLeftButtonDown += Dates_MouseLeftButtonDown;
 
 					l = new Label();
 					l.Content = ex.Time.ToString();
@@ -102,44 +101,55 @@ namespace AwesomeMealtime
 				stack.Children.Add(view);
 
 				Button btn = new Button();
-				btn.Content = "+";
+				btn.Content = "adjust";
 				btn.Click += BtnAddMore_Click;
-				btn.Width = 26;
+				btn.Width = 50;
 				btn.Height = 26;
 				stack.Children.Add(btn);
-
-				btn = new Button();
-				btn.IsEnabled = false;
-				btn.Content = "-";
-				btn.Click += BtnRemoveSome_Click;
-				btn.Width = 26;
-				btn.Height = 26;
-				stack.Children.Add(btn);
-
-				//l = new Label();
-				//l.Content = confirm.Id;
-				//l.Name = $"ID {confirm.Id}";
-				//l.Visibility = Visibility.Hidden;
-				//stack.Children.Add(l);
 
 				spl_Pantry.Children.Add(stack);
 				
 			}
 		}
 
-		private void Dates_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		private void GetPartsFromButton(Button sender, out string name, ref List<string> dates, ref List<string> sizes)
 		{
+			StackPanel sp = (StackPanel)sender.Parent;
+			var v = sp.Children[2];
+			StackPanel d = (StackPanel)((ScrollViewer)v).Content;
 
-		}
+			name = ((Label)sp.Children[0]).Content.ToString();
 
-		private void BtnRemoveSome_Click(object sender, RoutedEventArgs e)
-		{
-			
+			foreach (var x in d.Children)
+			{
+				Label l = (Label)((StackPanel)x).Children[0];
+				dates.Add(l.Content.ToString());
+
+				l = (Label)((StackPanel)x).Children[1];
+				sizes.Add(l.Content.ToString());
+			}
+
 		}
 
 		private void BtnAddMore_Click(object sender, RoutedEventArgs e)
 		{
-			
+			Button b = (Button)sender;
+
+			string name;
+			List<string> dates = new List<string>();
+			List<string> size = new List<string>();
+
+			GetPartsFromButton(b, out name, ref dates, ref size);
+
+			Ingredient test = Ingredient.GetIngredientFromParts(name, dates, size);
+
+			IngredientWindow add = new IngredientWindow();
+
+			add.FillValuesForEdit(test);
+
+			if (add.ShowDialog() == true) {}
+
+			test = add.proto;
 		}
 
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
