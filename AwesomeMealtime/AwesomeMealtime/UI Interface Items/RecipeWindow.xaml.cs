@@ -70,5 +70,9 @@ namespace AwesomeMealtime.UI_Interface_Items
                 Img.Source = new BitmapImage(new Uri(open.FileName));
             }
         }
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

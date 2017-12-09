@@ -19,6 +19,7 @@ namespace AwesomeMealtime.Models
         {
             Name = name;
 <<<<<<< HEAD
+<<<<<<< HEAD
             ExpirationDates = new ObservableCollection<ExpDate>();
             ExpirationDates.CollectionChanged += NotifyCollectionChangedEventHandler;
 
@@ -47,6 +48,8 @@ namespace AwesomeMealtime.Models
         }
 
 =======
+=======
+>>>>>>> 32fca6e779807f202bda7f9a3cc612bd375325ef
             ExpirationDates = new List<ExpDate>();
         }
 
