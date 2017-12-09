@@ -67,13 +67,6 @@ namespace AwesomeMealtime
         }
         private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
-            //RecipeWindow recwin = new RecipeWindow();
-            //recwin.ShowDialog();
-            //recwin.Close();
-=======
-            
->>>>>>> f127ff63cd4744bee204f241302755bdb1f041a0
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
@@ -174,7 +167,6 @@ namespace AwesomeMealtime
             GRecipe.Visibility = Visibility.Visible;
         }
 
-<<<<<<< HEAD
         private void btnPantry_Click(object sender, RoutedEventArgs e)
         {
             btnPantry.IsEnabled = false;
@@ -188,7 +180,5 @@ namespace AwesomeMealtime
 		{
 
 		}
-=======
->>>>>>> f127ff63cd4744bee204f241302755bdb1f041a0
 	}
 }
