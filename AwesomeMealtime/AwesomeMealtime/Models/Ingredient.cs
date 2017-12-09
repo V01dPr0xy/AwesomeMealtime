@@ -18,6 +18,7 @@ namespace AwesomeMealtime.Models
         public Ingredient(string name)
         {
             Name = name;
+<<<<<<< HEAD
             ExpirationDates = new ObservableCollection<ExpDate>();
             ExpirationDates.CollectionChanged += NotifyCollectionChangedEventHandler;
 
@@ -45,6 +46,14 @@ namespace AwesomeMealtime.Models
             internal set { totalQuantity = value; }
         }
 
+=======
+            ExpirationDates = new List<ExpDate>();
+        }
+
+        public string Name { get; set; }
+        public Quantity Quantities { get; set; }
+        public List<ExpDate> ExpirationDates { get; set; }
+>>>>>>> ce23bdabaf93117800706864a5b9fda7865599cb
 
         public bool CompareQuantites(double filter, Quantity qty)
         {
