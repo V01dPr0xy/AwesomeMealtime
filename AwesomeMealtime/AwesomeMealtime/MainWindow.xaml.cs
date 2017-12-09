@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Windows.Data;
 
 namespace AwesomeMealtime
 {
@@ -46,13 +47,30 @@ namespace AwesomeMealtime
 
 
 		//Pantry Events
-		private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
+		private void btn_PantryAddNew_Click(object sender, RoutedEventArgs e)
         {
 			IngredientWindow add = new IngredientWindow();
+			Ingredient confirm;
 
 			if(add.ShowDialog() == true)
 			{
+				if (add.proto != null)
+				{
+					confirm = add.proto;
+					myDriver.Current_Pantry.Add(confirm);
 
+					StackPanel stack = new StackPanel();
+					stack.Orientation = Orientation.Horizontal;
+					stack.DataContext = confirm;				
+
+					var binding = new Binding("Name");
+					Label l = new Label();
+					l.SetBinding(Label.ContentProperty, binding);
+
+					binding = new Binding("Q");
+					l = new Label();
+
+				}
 			}
         }
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
