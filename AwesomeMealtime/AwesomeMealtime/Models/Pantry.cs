@@ -53,13 +53,9 @@ namespace AwesomeMealtime.Models
             Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
             foreach(Ingredient ingredient in ingredients)
             {
-                for (int x = 0; x < ingredient.Quantities.Count; x++)
-                {
-                    if (ingredient.CompareQuantites(filter, ingredient.Quantities[x]))
-                    {
-                        filterIngredients.Add(ingredient.Quantities[x].Qty, ingredient);
-                    }
-                }
+				if (ingredient.Quantities.Qty >= filter) {
+					filterIngredients.Add(ingredient.Quantities.Qty, ingredient);
+				}
             }
 
             return filterIngredients;

@@ -28,7 +28,7 @@
 				</ScrollViewer>
 				<TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Margin="15,75,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Height="35" Width="300" FontSize="24" Background="White"/>
 				<Button x:Name="btnSearch" Content="Submit" HorizontalAlignment="Left" Margin="325,75,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btn_RecipeAdd_Click"/>
-                <Button x:Name="btnAdd" Content="Add New" HorizontalAlignment="Left" Margin="555,75,0,0" VerticalAlignment="Top" Width="75" Height="35"/>
+                <Button x:Name="btnAdd" Content="Add New" HorizontalAlignment="Left" Margin="555,75,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btn_PantryAdd_Click"/>
                 <ComboBox x:Name="cbbSort" HorizontalAlignment="Left" Margin="410,75,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
 
             </Grid>
