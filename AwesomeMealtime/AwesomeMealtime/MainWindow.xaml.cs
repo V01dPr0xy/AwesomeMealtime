@@ -56,25 +56,34 @@ namespace AwesomeMealtime
 
 			if(add.ShowDialog() == true)
 			{
-				if (add.proto != null)
-				{
-					confirm = add.proto;
-					myDriver.Current_Pantry.Add(confirm);
 
-					StackPanel stack = new StackPanel();
-					stack.Orientation = Orientation.Horizontal;
-					stack.DataContext = confirm;				
-
-					var binding = new Binding("Name");
-					Label l = new Label();
-					l.SetBinding(Label.ContentProperty, binding);
-
-					binding = new Binding("Q");
-					l = new Label();
-
-				}
 			}
-        }
+
+			if (add.proto != null)
+			{
+				//confirm = add.proto;
+				//myDriver.Current_Pantry.Add(confirm);
+
+				StackPanel stack = new StackPanel();
+				stack.Orientation = Orientation.Horizontal;
+				//stack.DataContext = confirm;				
+
+				//var binding = new Binding("Name");
+				Label l = new Label();
+				l.Content = add.proto.Name;
+				//l.SetBinding(Label.ContentProperty, binding);
+				stack.Children.Add(l);
+
+				//binding = new Binding("Quantities");
+				l = new Label();
+				l.Content = add.proto.Name;
+				//l.SetBinding(Label.ContentProperty, binding);
+				stack.Children.Add(l);
+
+				spl_Pantry.Children.Add(stack);
+				
+			}
+		}
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
 			//TO DO: add search functionality
