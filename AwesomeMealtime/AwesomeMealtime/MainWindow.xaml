@@ -13,8 +13,8 @@
 
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" x:Name="Toggle">
-            <Button x:Name="btnBook" Content="RecipeBook" Height="200" />
-            <Button x:Name="btnPantry" Content="Pantry" IsEnabled="false" Height="200"/>
+            <Button x:Name="btnBook" Content="RecipeBook" Height="200" Click="btnBook_Click" />
+            <Button x:Name="btnPantry" Content="Pantry" IsEnabled="false" Height="200" Click="btnPantry_Click"/>
         </StackPanel>
         <Grid Grid.Column="1" x:Name="GPantry">
             <Grid.ColumnDefinitions>
