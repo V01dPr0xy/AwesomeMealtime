@@ -35,6 +35,8 @@ namespace AwesomeMealtime
 		private void Notifications()
 		{
 			Models.Pantry p = myDriver.Current_Pantry;
+            if (p == null)
+                return;
 			Label l;
 
 			foreach (String msg in p.expWarningMsg)
