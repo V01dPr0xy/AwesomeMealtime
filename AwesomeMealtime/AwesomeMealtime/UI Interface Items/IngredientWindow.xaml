@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AwesomeMealtime.UI_Interface_Items"
         mc:Ignorable="d"
-        Title="IngredientWindow" Height="189.811" Width="315.626">
+        Title="IngredientWindow" Height="189.811" Width="327.039">
     <Grid x:Name="Add" Margin="0,0,0.5,-4.5">
         <Label Content="Name: " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnAccept" Content="Accept" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Width="75" Click="btnAccept_Click" IsEnabled="False"/>
