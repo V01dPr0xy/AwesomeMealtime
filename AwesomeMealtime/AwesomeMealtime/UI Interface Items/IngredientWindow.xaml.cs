@@ -52,8 +52,9 @@ namespace AwesomeMealtime.UI_Interface_Items
 					qty.Msmt = Ingredient.GetMeasurementFromString(type);
 					qty.Qty = Double.Parse(samount);
 
+					exp.Sizes = qty;
 
-
+					proto.ExpirationDates.Add(exp);
 				}
 
 				Close();

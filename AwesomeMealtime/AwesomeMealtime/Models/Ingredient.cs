@@ -16,12 +16,11 @@ namespace AwesomeMealtime.Models
         public Ingredient(string name)
         {
             Name = name;
-            Quantities = new List<Quantity>();
             ExpirationDates = new List<ExpDate>();
         }
 
         public string Name { get; set; }
-        public List<Quantity> Quantities { get; set; }
+        public Quantity Quantities { get; set; }
         public List<ExpDate> ExpirationDates { get; set; }
 
         public bool CompareQuantites(double filter, Quantity qty)
