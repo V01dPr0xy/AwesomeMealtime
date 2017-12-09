@@ -161,5 +161,23 @@ namespace AwesomeMealtime
 			}
 		}
 
-	}
+        private void btnBook_Click(object sender, RoutedEventArgs e)
+        {
+            btnBook.IsEnabled = false;
+            btnPantry.IsEnabled = true;
+
+            GPantry.Visibility = Visibility.Collapsed;
+            GRecipe.Visibility = Visibility.Visible;
+        }
+
+        private void btnPantry_Click(object sender, RoutedEventArgs e)
+        {
+            btnPantry.IsEnabled = false;
+            btnBook.IsEnabled = true;
+
+
+            GRecipe.Visibility = Visibility.Collapsed;
+            GPantry.Visibility = Visibility.Visible;
+        }
+    }
 }
