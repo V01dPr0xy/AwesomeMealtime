@@ -53,8 +53,8 @@ namespace AwesomeMealtime.Models
             Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
             foreach(Ingredient ingredient in ingredients)
             {
-				if (ingredient.Quantities.Qty >= filter) {
-					filterIngredients.Add(ingredient.Quantities.Qty, ingredient);
+				if (ingredient.TotalQuantity >= filter) {
+					filterIngredients.Add(ingredient.TotalQuantity, ingredient);
 				}
             }
 
@@ -81,7 +81,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                     if ((expDate - DateTime.Now).TotalDays < 7)
                     {
-                        expWarningMsg.Add(ingredient.Name +": " + ingredient.Quantities + " Is close to Exp on " + date + "!");
+                        expWarningMsg.Add(ingredient.Name +": " + ingredient.TotalQuantity + " Is close to Exp on " + date + "!");
                     }
 
                 }
@@ -98,7 +98,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                      if (expDate > DateTime.Now)
                      {
-                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.Quantities + " Has Exp on " + date + "!");
+                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.TotalQuantity + " Has Exp on " + date + "!");
                         Remove(ingredient);
                      }
 

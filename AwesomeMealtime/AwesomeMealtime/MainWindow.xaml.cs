@@ -63,27 +63,85 @@ namespace AwesomeMealtime
 			if (add.proto != null)
 			{
 				confirm = add.proto;
-				myDriver.Current_Pantry.Add(confirm);
+				//myDriver.Current_Pantry.Add(confirm);
 
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
 
 				Label l = new Label();
-				l.Content = add.proto.Name;
+				l.Content = confirm.Name;
 				stack.Children.Add(l);
 
 				l = new Label();
-				l.Content = add.proto.Quantities.ToString();
+				l.Content = $"{confirm.TotalQuantity} oz";
 				stack.Children.Add(l);
 
+				StackPanel pack = new StackPanel();
+				pack.Orientation = Orientation.Horizontal;
+				pack.Width = 300;
+
+				foreach(ExpDate ex in confirm.ExpirationDates)
+				{
+					StackPanel dates = new StackPanel();
+					dates.MouseLeftButtonDown += Dates_MouseLeftButtonDown;
+
+					l = new Label();
+					l.Content = ex.Time.ToString();
+					dates.Children.Add(l);
+
+					l = new Label();
+					l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
+					dates.Children.Add(l);
+
+					pack.Children.Add(dates);
+				}
+
+				ScrollViewer view = new ScrollViewer();
+				view.Content = pack;
+
+				stack.Children.Add(view);
+
+				Button btn = new Button();
+				btn.Content = "+";
+				btn.Click += BtnAddMore_Click;
+				btn.Width = 26;
+				btn.Height = 26;
+				stack.Children.Add(btn);
+
+				btn = new Button();
+				btn.IsEnabled = false;
+				btn.Content = "-";
+				btn.Click += BtnRemoveSome_Click;
+				btn.Width = 26;
+				btn.Height = 26;
+				stack.Children.Add(btn);
+
 				//l = new Label();
-				//l.Content = add.proto.Quantities.ToString();
+				//l.Content = confirm.Id;
+				//l.Name = $"ID {confirm.Id}";
+				//l.Visibility = Visibility.Hidden;
 				//stack.Children.Add(l);
 
 				spl_Pantry.Children.Add(stack);
 				
 			}
 		}
+
+		private void Dates_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+		{
+
+		}
+
+		private void BtnRemoveSome_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
+		private void BtnAddMore_Click(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
 			//TO DO: add search functionality

@@ -11,18 +11,19 @@ namespace AwesomeMealtime.Models
     public class Ingredient
     //Assigned to Invictus Valkyrius
     {
-        //Create a conversion method, and store into a variable that is to be used.
-        //When setting its value, convert.
-        //When getting, convert back?
+		//Create a conversion method, and store into a variable that is to be used.
+		//When setting its value, convert.
+		//When getting, convert back?
+
+		static int IDstart = 0;
 
         public Ingredient(string name)
         {
+			//Id = IDstart;
             Name = name;
-<<<<<<< HEAD
-<<<<<<< HEAD
             ExpirationDates = new ObservableCollection<ExpDate>();
             ExpirationDates.CollectionChanged += NotifyCollectionChangedEventHandler;
-
+			IDstart++;
         }
 
         public void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e)
@@ -36,6 +37,7 @@ namespace AwesomeMealtime.Models
             }
         }
 
+		//public int Id { get; set; }
         public string Name { get; set; }
         public ObservableCollection<ExpDate> ExpirationDates { get; set; }
 
@@ -46,17 +48,6 @@ namespace AwesomeMealtime.Models
             get { return totalQuantity; }
             internal set { totalQuantity = value; }
         }
-
-=======
-=======
->>>>>>> 32fca6e779807f202bda7f9a3cc612bd375325ef
-            ExpirationDates = new List<ExpDate>();
-        }
-
-        public string Name { get; set; }
-        public Quantity Quantities { get; set; }
-        public List<ExpDate> ExpirationDates { get; set; }
->>>>>>> ce23bdabaf93117800706864a5b9fda7865599cb
 
         public bool CompareQuantites(double filter, Quantity qty)
         {
