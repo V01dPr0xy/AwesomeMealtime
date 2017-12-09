@@ -33,19 +33,38 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 		private void btnAccept_Click(object sender, RoutedEventArgs e)
 		{
+			if(AcceptCheck())
+			{
+				proto = new Ingredient(tbxName.Text);
+
+				foreach (StackPanel sp in spl_Stuff.Children)
+				{
+					Ingredient.ExpDate exp = new Ingredient.ExpDate();
+
+					exp.Time = DateTime.Parse(((Label)sp.Children[1]).Content.ToString());
+
+					string raw = ((Label)sp.Children[0]).Content.ToString();
+					int index = raw.IndexOf(' ');
+					string samount = raw.Substring(0, index);
+					string type = raw.Substring(index+1);
+
+					Ingredient.Quantity qty = new Ingredient.Quantity();
+					qty.Msmt = Ingredient.GetMeasurementFromString(type);
+					qty.Qty = Double.Parse(samount);
+
+
+
+				}
+
+				Close();
+			}
 
 		}
 
 		private void tbxName_TextChanged(object sender, TextChangedEventArgs e)
 		{
 
-			if(!tbxName.Text.Equals("Name Me!") && tbxName.Text != null)
-			{
-				if (spl_Stuff.Children != null && spl_Stuff.Children.Count > 0)
-				{
-					btnAccept.IsEnabled = true;
-				}
-			}
+			btnAccept.IsEnabled = AcceptCheck();
 		}
 
 		private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -58,7 +77,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
 
 				l = new Label();
-				string content = $"{amount.ToString()} + {(Ingredient.Measurements)cbbMeasureType.SelectedIndex}";
+				string content = $"{amount.ToString()} {(Ingredient.Measurements)cbbMeasureType.SelectedIndex}";
 				l.Content = content;
 				stack.Children.Add(l);
 
@@ -68,6 +87,8 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 				spl_Stuff.Children.Add(stack);
 			}
+
+			btnAccept.IsEnabled = AcceptCheck();
 		}
 
 		private void ScrollViewer_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -85,6 +106,20 @@ namespace AwesomeMealtime.UI_Interface_Items
 				spl_Stuff.Children.Remove(selected);
 				selected = null;
 			}
+
+			btnAccept.IsEnabled = AcceptCheck();
+		}
+
+		private bool AcceptCheck()
+		{
+			bool verdict = true;
+
+			if(spl_Stuff == null || spl_Stuff.Children == null || tbxName.Text == null || spl_Stuff.Children.Count < 1 || tbxName.Text.Equals("Name Me!"))
+			{
+				verdict = false;
+			}
+
+			return verdict;
 		}
 	}
 }

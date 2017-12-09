@@ -35,7 +35,7 @@ namespace AwesomeMealtime.Models
         public struct ExpDate
         {
             public DateTime Time { get; set; }
-            public List<Quantity> Dates { get; set; }
+            public Quantity Sizes { get; set; }
         }
 
         public struct Quantity
@@ -199,6 +199,65 @@ namespace AwesomeMealtime.Models
             }
         }
 
+		public static Measurements GetMeasurementFromString(string input)
+		{
+			Measurements unit;
+
+			switch(input)
+			{
+				case "_":
+					unit = Measurements._;
+					break;
+				case "Cups":
+					unit = Measurements.Cups;
+					break;
+				case "Gill":
+					unit = Measurements.Gill;
+					break;
+				case "Pint":
+					unit = Measurements.Pint;
+					break;
+				case "Quart":
+					unit = Measurements.Quart;
+					break;
+				case "Gallon":
+					unit = Measurements.Gallon;
+					break;
+				case "Peck":
+					unit = Measurements.Peck;
+					break;
+				case "HalfBushel":
+					unit = Measurements.HalfBushel;
+					break;
+				case "Bushel":
+					unit = Measurements.Bushel;
+					break;
+				case "Tablespoon":
+					unit = Measurements.Tablespoon;
+					break;
+				case "Teaspoon":
+					unit = Measurements.Teaspoon;
+					break;
+				case "Milliliter":
+					unit = Measurements.Milliliter;
+					break;
+				case "Centiliter":
+					unit = Measurements.Centiliter;
+					break;
+				case "Deciliter":
+					unit = Measurements.Deciliter;
+					break;
+				case "Liter":
+					unit = Measurements.Liter;
+					break;
+				default:
+					unit = Measurements._;
+					break;
+
+			}
+
+			return unit;
+		}
         public enum Measurements
         {
             _,
