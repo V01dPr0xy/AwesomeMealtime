@@ -54,31 +54,31 @@ namespace AwesomeMealtime
 			IngredientWindow add = new IngredientWindow();
 			Ingredient confirm;
 
-			if(add.ShowDialog() == true)
-			{
+			add.tbxName.Text = "Carrot";
+			add.tbxAmount.Text = "1";
+			add.tbxDate.Text = "12/12/20";
 
-			}
+			if(add.ShowDialog() == true) {}
 
 			if (add.proto != null)
 			{
-				//confirm = add.proto;
-				//myDriver.Current_Pantry.Add(confirm);
+				confirm = add.proto;
+				myDriver.Current_Pantry.Add(confirm);
 
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
-				//stack.DataContext = confirm;				
 
-				//var binding = new Binding("Name");
 				Label l = new Label();
 				l.Content = add.proto.Name;
-				//l.SetBinding(Label.ContentProperty, binding);
 				stack.Children.Add(l);
 
-				//binding = new Binding("Quantities");
 				l = new Label();
-				l.Content = add.proto.Name;
-				//l.SetBinding(Label.ContentProperty, binding);
+				l.Content = add.proto.Quantities.ToString();
 				stack.Children.Add(l);
+
+				//l = new Label();
+				//l.Content = add.proto.Quantities.ToString();
+				//stack.Children.Add(l);
 
 				spl_Pantry.Children.Add(stack);
 				

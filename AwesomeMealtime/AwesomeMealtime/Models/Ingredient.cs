@@ -127,8 +127,7 @@ namespace AwesomeMealtime.Models
                 return result;
             }
 
-
-            public double ConvertFromOunces(double q)
+			public double ConvertFromOunces(double q)
             {
                 double result = new double();
 
