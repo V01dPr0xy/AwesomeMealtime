@@ -48,7 +48,7 @@
             </Grid.ColumnDefinitions>
             <Grid x:Name="RecipeBook" Grid.Column="0" Background="Maroon">
                 <Label Content="Recipe Book" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="AliceBlue" Width="302"/>
-                <Button Content="Add" Margin="0,0,95.5,10.5" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom"/>
+                <Button Content="Add" Margin="0,0,95.5,10.5" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeAdd_Click"/>
                 <ScrollViewer Margin="10,86,9.5,86.5" Background="LightGray">
                     <StackPanel x:Name="spl_RecipeList"/>
                 </ScrollViewer>

@@ -34,6 +34,8 @@ namespace AwesomeMealtime
 		//Recipe Events
 		private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
+            RecipeWindow recwin = new RecipeWindow();
+            recwin.ShowDialog();
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {

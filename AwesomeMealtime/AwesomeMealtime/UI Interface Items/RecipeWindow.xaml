@@ -36,7 +36,7 @@
         <Button Content="Add Image" HorizontalAlignment="Left" Margin="142,539,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="AddImage"/>
         <Button Content="Save Recipe" HorizontalAlignment="Left" Margin="10,597,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="AddRecipe"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="176,597,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="Cancel_Click"/>
-        <Image x:Name="Img" HorizontalAlignment="Left" Height="75" Margin="10,513,0,0" VerticalAlignment="Top" Width="75" />
+        <Image x:Name="Img" Stretch="Fill" HorizontalAlignment="Left" Height="75" Margin="10,513,0,0" VerticalAlignment="Top" Width="75" />
 
     </Grid>
 </Window>
