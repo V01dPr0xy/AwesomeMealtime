@@ -18,9 +18,6 @@ namespace AwesomeMealtime
     public partial class MainWindow : Window
     {
         Driver myDriver = new Driver();
-        GridLength Biggie = new GridLength(20.0, GridUnitType.Star);
-        GridLength Smalls = new GridLength(0.0, GridUnitType.Star);
-		private object sp_Expired;
 
 		public MainWindow()
         {
@@ -99,7 +96,8 @@ namespace AwesomeMealtime
         {//TO DO: Run Recipe and Pantry Load operations
             MessageBox.Show(sender.ToString());
         }
-        private void OnWindowClosing(object sender, CancelEventArgs e)
+
+		private void OnWindowClosing(object sender, CancelEventArgs e)
         {
             FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
             if (myDriver.Book != null)
@@ -139,6 +137,7 @@ namespace AwesomeMealtime
             }
             System.Windows.Application.Current.Shutdown();
         }
+
 		private void NotificationWarning_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			string target = ((Label)sender).Content.ToString();
@@ -148,7 +147,6 @@ namespace AwesomeMealtime
 				myDriver.Current_Pantry.expWarningMsg.Remove(target);
 			}
 		}
-
 		private void NotificationDesposal_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			string target = ((Label)sender).Content.ToString();
