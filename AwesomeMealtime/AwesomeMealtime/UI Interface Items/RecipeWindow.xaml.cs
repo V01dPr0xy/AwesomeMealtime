@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,15 +23,21 @@ namespace AwesomeMealtime.UI_Interface_Items
     public partial class RecipeWindow : Window
     {
         Recipe recipe = new Recipe();
+        ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>();
         public RecipeWindow()
         {
             InitializeComponent();
             ComboDifficulty.ItemsSource = Enum.GetValues(typeof(Recipe.Difficulty)).Cast<Recipe.Difficulty>();
+            MeasureBox.ItemsSource = Enum.GetValues(typeof(Ingredient.Measurements)).Cast<Ingredient.Measurements>();
+            IngredientList.ItemsSource = ingredients;
         }
+
 
         private void RemoveIngredient(object sender, RoutedEventArgs e)
         {
-            IngredientList.Items.Remove(IngredientList.SelectedItems);
+            Ingredient ing = (Ingredient)IngredientList.SelectedItem;
+            ingredients.Remove(ing);
+            IngredientList.ItemsSource = ingredients;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -50,13 +57,35 @@ namespace AwesomeMealtime.UI_Interface_Items
 
         private void AddIngredient(object sender, RoutedEventArgs e)
         {
-
             Ingredient ing = new Ingredient(IngName.Text);
+            Ingredient.Quantity quantity = new Ingredient.Quantity();
+            quantity.Msmt = (Ingredient.Measurements) MeasureBox.SelectedItem;
+            quantity.Qty = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
+            ing.Quantities = quantity;
+            ingredients.Add(ing);
+            IngredientList.ItemsSource = ingredients;
         }
 
         private void AddRecipe(object sender, RoutedEventArgs e)
         {
-            
+            recipe.Name = RecName.Text;
+            recipe.Ingredients = ingredients;
+            recipe.MealPicture = Img;
+            recipe.Dish_Description = RecDesc.Text;
+            recipe.Directions = RecDir.Text;
+            int prepHour = (int.TryParse(PrepTime_Hour.Text, out int result) ? result : 0);
+            int prepMin = (int.TryParse(PrepTime_Mint.Text, out int result2) ? result2 : 0);
+            recipe.PrepTime = new TimeSpan(prepHour,prepMin,0);
+            int cookHour = (int.TryParse(PrepTime_Hour.Text, out int cookResult) ? cookResult : 0);
+            int cookMin = (int.TryParse(PrepTime_Mint.Text, out int cookResult2) ? cookResult2 : 0);
+            recipe.CookTime = new TimeSpan(cookHour, cookMin, 0);
+            DialogResult = true;
+            this.Close();
+        }
+
+        public Recipe GetRecipe
+        {
+            get { return recipe; }
         }
         private void AddImage(object sender, RoutedEventArgs e)
         {

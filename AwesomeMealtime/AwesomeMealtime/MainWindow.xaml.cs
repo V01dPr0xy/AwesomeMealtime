@@ -18,6 +18,7 @@ namespace AwesomeMealtime
     public partial class MainWindow : Window
     {
         Driver myDriver = new Driver();
+        RecipeBook recipeBook = new RecipeBook();
 
 		public MainWindow()
         {
@@ -34,7 +35,14 @@ namespace AwesomeMealtime
 		private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
             RecipeWindow recwin = new RecipeWindow();
-            recwin.ShowDialog();
+            if (recwin.ShowDialog() == true)
+            {
+                Recipe r = recwin.GetRecipe;
+                MessageBox.Show(r.Name);
+                recipeBook.AddRecipe(r);
+                RecipeList.ItemsSource = recipeBook.Recipes;
+            }
+               
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {

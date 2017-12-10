@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -17,6 +18,7 @@ namespace AwesomeMealtime.Models
 		private string descript;
 		private string warning;
 		private string instruct;
+        private ObservableCollection<Ingredient> ingredients;
 		private Image image;
 		private TimeSpan cook;
 		private TimeSpan prep;
@@ -27,7 +29,7 @@ namespace AwesomeMealtime.Models
         public string Dish_Description { get { return descript; } set { descript = value; FieldChanged(); } }
         public string Warning_Message { get { return warning; } set { warning = value; FieldChanged(); } }
         public string Directions { get { return instruct; } set { instruct = value; FieldChanged(); } }
-		public List<Ingredient> Ingredients { get; set; }
+		public ObservableCollection<Ingredient> Ingredients { get {return ingredients; } set {ingredients = value; } }
         public TimeSpan CookTime { get { return cook; } set { cook = value; FieldChanged(); } }
         public TimeSpan PrepTime { get { return prep; } set { prep = value; FieldChanged(); } }
         public Difficulty Recipe_Difficulty { get { return difficulty; } set { difficulty = value; FieldChanged(); } }
@@ -46,7 +48,7 @@ namespace AwesomeMealtime.Models
 
 		public Recipe()
 		{
-			Ingredients = new List<Ingredient>();
+			Ingredients = new ObservableCollection<Ingredient>();
 			cook = new TimeSpan();
 			prep = new TimeSpan();
 			image = new Image();
