@@ -12,7 +12,7 @@
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="90,0,0,10" Width="76" IsCancel="True" Height="20" VerticalAlignment="Bottom"/>
         <TextBox x:Name="tbxName" Height="23" Margin="62,13,10,0" TextWrapping="Wrap" Text="Name Me!" VerticalAlignment="Top" TextChanged="tbxName_TextChanged"/>
         <ScrollViewer Background="LightGray" Margin="10,71,40,35">
-            <StackPanel x:Name="spl_Stuff" Orientation="Horizontal"/>
+            <StackPanel x:Name="spl_Stuff"/>
         </ScrollViewer>
         <Button x:Name="btnAdd" Content="+" Margin="0,38,10,0" VerticalAlignment="Top" Height="23" Click="btnAdd_Click" HorizontalAlignment="Right" Width="24"/>
         <Button x:Name="btnSub" Content="-" Margin="0,66,10,0" VerticalAlignment="Top" Height="23" Click="btnSub_Click" HorizontalAlignment="Right" Width="24"/>
