@@ -27,6 +27,7 @@
 					<StackPanel x:Name="spl_Pantry"/>
 				</ScrollViewer>
 				<TextBox x:Name="tbxSearch" HorizontalAlignment="Left" Margin="15,75,0,0" TextWrapping="Wrap" Text="Search" VerticalAlignment="Top" Height="35" Width="300" FontSize="24" Background="White"/>
+
 				<Button x:Name="btnSearch" Content="Submit" HorizontalAlignment="Left" Margin="325,75,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btn_RecipeAdd_Click"/>
                 <Button x:Name="btnAdd" Content="Add New" HorizontalAlignment="Left" Margin="555,75,0,0" VerticalAlignment="Top" Width="75" Height="35" Click="btn_PantryAddNew_Click"/>
                 <ComboBox x:Name="cbbSort" HorizontalAlignment="Left" Margin="410,75,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
@@ -50,7 +51,17 @@
                 <Label Content="Recipe Book" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="AliceBlue" Width="302"/>
                 <Button Content="Add" Margin="0,0,95.5,10.5" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeAdd_Click"/>
                 <ScrollViewer Margin="10,86,9.5,86.5" Background="LightGray">
-                    <StackPanel x:Name="spl_RecipeList"/>
+                    <ListBox x:Name="RecipeList" ItemsSource="{Binding recipeBook}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel x:Name="spl_RecipeList" Orientation="Horizontal">
+                                    <Label Content="{Binding Name}"/>
+                                    <Label Content="{Binding PrepTime}"/>
+                                    <Label Content="{Binding CookTime}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate> 
+                    </ListBox>
                 </ScrollViewer>
             </Grid>
             <Grid x:Name="RecipeDisplay" Grid.Column="1">
