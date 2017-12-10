@@ -58,7 +58,7 @@ namespace AwesomeMealtime
 			add.tbxAmount.Text = "1";
 			add.tbxDate.Text = "12/12/20";
 
-			if(add.ShowDialog() == true) {}
+			if (add.ShowDialog() == true) {}
 
 			if (add.proto != null)
 			{
@@ -94,18 +94,18 @@ namespace AwesomeMealtime
 				StackPanel dates = new StackPanel();
 
 				l = new Label();
-				l.Content = ex.Time.ToString();
+				l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
 				dates.Children.Add(l);
 
 				l = new Label();
-				//l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
-				l.Content = $"{ex.Size.Qty} oz";
+				l.Content = ex.Time.Date;
 				dates.Children.Add(l);
 
 				pack.Children.Add(dates);
 			}
 
 			ScrollViewer view = new ScrollViewer();
+			view.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
 			view.Content = pack;
 
 			parent.Children.Add(view);
@@ -129,10 +129,10 @@ namespace AwesomeMealtime
 			foreach (var x in d.Children)
 			{
 				Label l = (Label)((StackPanel)x).Children[0];
-				dates.Add(l.Content.ToString());
+				sizes.Add(l.Content.ToString());
 
 				l = (Label)((StackPanel)x).Children[1];
-				sizes.Add(l.Content.ToString());
+				dates.Add(l.Content.ToString());
 			}
 
 		}
@@ -156,10 +156,13 @@ namespace AwesomeMealtime
 
 			if (add.ShowDialog() == true) {}
 
-			test = add.proto;
+			if (add.proto != null)
+			{
+				test = add.proto;
 
-			parent.Children.Clear();
-			DisplayIngredient(ref parent, test);
+				parent.Children.Clear();
+				DisplayIngredient(ref parent, test);
+			}
 		}
 
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
