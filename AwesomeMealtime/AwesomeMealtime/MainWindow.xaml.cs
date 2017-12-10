@@ -68,48 +68,54 @@ namespace AwesomeMealtime
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
 
-				Label l = new Label();
-				l.Content = confirm.Name;
-				stack.Children.Add(l);
-
-				l = new Label();
-				l.Content = $"{confirm.TotalQuantity} oz";
-				stack.Children.Add(l);
-
-				StackPanel pack = new StackPanel();
-				pack.Orientation = Orientation.Horizontal;
-				pack.Width = 300;
-
-				foreach(ExpDate ex in confirm.ExpirationDates)
-				{
-					StackPanel dates = new StackPanel();
-
-					l = new Label();
-					l.Content = ex.Time.ToString();
-					dates.Children.Add(l);
-
-					l = new Label();
-					l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
-					dates.Children.Add(l);
-
-					pack.Children.Add(dates);
-				}
-
-				ScrollViewer view = new ScrollViewer();
-				view.Content = pack;
-
-				stack.Children.Add(view);
-
-				Button btn = new Button();
-				btn.Content = "adjust";
-				btn.Click += BtnAddMore_Click;
-				btn.Width = 50;
-				btn.Height = 26;
-				stack.Children.Add(btn);
+				DisplayIngredient(ref stack, confirm);
 
 				spl_Pantry.Children.Add(stack);
 				
 			}
+		}
+
+		private void DisplayIngredient(ref StackPanel parent, Ingredient values)
+		{
+			Label l = new Label();
+			l.Content = values.Name;
+			parent.Children.Add(l);
+
+			l = new Label();
+			l.Content = $"{values.TotalQuantity} oz";
+			parent.Children.Add(l);
+
+			StackPanel pack = new StackPanel();
+			pack.Orientation = Orientation.Horizontal;
+			pack.Width = 300;
+
+			foreach (ExpDate ex in values.ExpirationDates)
+			{
+				StackPanel dates = new StackPanel();
+
+				l = new Label();
+				l.Content = ex.Time.ToString();
+				dates.Children.Add(l);
+
+				l = new Label();
+				//l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
+				l.Content = $"{ex.Size.Qty} oz";
+				dates.Children.Add(l);
+
+				pack.Children.Add(dates);
+			}
+
+			ScrollViewer view = new ScrollViewer();
+			view.Content = pack;
+
+			parent.Children.Add(view);
+
+			Button btn = new Button();
+			btn.Content = "adjust";
+			btn.Click += BtnAddMore_Click;
+			btn.Width = 50;
+			btn.Height = 26;
+			parent.Children.Add(btn);
 		}
 
 		private void GetPartsFromButton(Button sender, out string name, ref List<string> dates, ref List<string> sizes)
@@ -134,6 +140,7 @@ namespace AwesomeMealtime
 		private void BtnAddMore_Click(object sender, RoutedEventArgs e)
 		{
 			Button b = (Button)sender;
+			StackPanel parent = (StackPanel)b.Parent;
 
 			string name;
 			List<string> dates = new List<string>();
@@ -150,6 +157,9 @@ namespace AwesomeMealtime
 			if (add.ShowDialog() == true) {}
 
 			test = add.proto;
+
+			parent.Children.Clear();
+			DisplayIngredient(ref parent, test);
 		}
 
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
