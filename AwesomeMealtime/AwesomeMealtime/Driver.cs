@@ -15,6 +15,9 @@ namespace AwesomeMealtime.Models
         public Pantry Current_Pantry { get; set; }
 
         public void Init() {
+			Book = new RecipeBook();
+			Current_Pantry = new Pantry();
+
 			LoadPantry();
 			LoadRecipeBook();
 		}

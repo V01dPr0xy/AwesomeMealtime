@@ -35,14 +35,14 @@ namespace AwesomeMealtime
 		//Recipe Events
 		private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
-            RecipeWindow recwin = new RecipeWindow();
-            if (recwin.ShowDialog() == true)
-            {
-                Recipe r = recwin.GetRecipe;
-                MessageBox.Show(r.Name);
-                recipeBook.AddRecipe(r);
-                RecipeList.ItemsSource = recipeBook.Recipes;
-            }
+            //RecipeWindow recwin = new RecipeWindow();
+            //if (recwin.ShowDialog() == true)
+            //{
+            //    Recipe r = recwin.GetRecipe;
+            //    MessageBox.Show(r.Name);
+            //    recipeBook.AddRecipe(r);
+            //    RecipeList.ItemsSource = recipeBook.Recipes;
+            //}
                
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
@@ -71,7 +71,7 @@ namespace AwesomeMealtime
 			if (add.proto != null)
 			{
 				confirm = add.proto;
-				//myDriver.Current_Pantry.Add(add.proto);
+				myDriver.Current_Pantry.Add(add.proto);
 
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
