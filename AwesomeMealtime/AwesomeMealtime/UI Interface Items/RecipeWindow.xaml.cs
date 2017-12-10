@@ -61,7 +61,7 @@ namespace AwesomeMealtime.UI_Interface_Items
             Ingredient.Quantity quantity = new Ingredient.Quantity();
             quantity.Msmt = (Ingredient.Measurements) MeasureBox.SelectedItem;
             quantity.Qty = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
-            ing.Quantities = quantity;
+            ing.TotalQuantity = quantity.Qty;
             ingredients.Add(ing);
             IngredientList.ItemsSource = ingredients;
         }
