@@ -26,13 +26,11 @@ namespace AwesomeMealtime
             InitializeComponent();
 			myDriver.Init();
 
-			myDriver.Current_Pantry.expWarningMsg.Add("Testing this");
-			myDriver.Current_Pantry.expWarningMsg.Add("Theses should");
-			myDriver.Current_Pantry.expWarningMsg.Add("Show up");
-
-			myDriver.Current_Pantry.expRemovalMsg.Add("Hopefully");
-			myDriver.Current_Pantry.expRemovalMsg.Add("These will also show");
-			myDriver.Current_Pantry.expRemovalMsg.Add("Testing testing");
+			foreach(Ingredient i in myDriver.Current_Pantry.ingredients)
+			{
+				StackPanel sp = new StackPanel();
+				DisplayIngredient(ref sp, i);
+			}
 
 			Notifications();
 
@@ -158,6 +156,7 @@ namespace AwesomeMealtime
 			GetPartsFromButton(b, out name, ref dates, ref size);
 
 			Ingredient test = Ingredient.GetIngredientFromParts(name, dates, size);
+			int index = myDriver.Current_Pantry.ingredients.IndexOf(test);
 
 			IngredientWindow add = new IngredientWindow();
 
@@ -171,6 +170,11 @@ namespace AwesomeMealtime
 
 				parent.Children.Clear();
 				DisplayIngredient(ref parent, test);
+
+				if (index != -1)
+				{
+					myDriver.Current_Pantry.ingredients[index] = test;
+				}
 			}
 		}
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)

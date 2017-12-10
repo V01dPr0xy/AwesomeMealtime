@@ -45,9 +45,8 @@ namespace AwesomeMealtime.UI_Interface_Items
 					try
 					{
 						exp.Time = DateTime.Parse(((Label)sp.Children[1]).Content.ToString()).Date;
-					}catch(Exception ex)
-					{
-						MessageBox.Show($"Error occured: {ex}");
+					}catch{
+						MessageBox.Show($"Error occured with convverting the date");
 						proto = null;
 						break;
 					}
@@ -88,11 +87,11 @@ namespace AwesomeMealtime.UI_Interface_Items
 				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
 
 				Label l = new Label();
-				l.Content = ex.Time.ToString();
+				l.Content = $"{ex.Size.Qty.ToString()} {ex.Size.Msmt.ToString()}";
 				stack.Children.Add(l);
 
 				l = new Label();
-				l.Content = $"{ex.Size.Qty.ToString()} {ex.Size.Msmt.ToString()}";
+				l.Content = ex.Time.ToString();
 				stack.Children.Add(l);
 
 				spl_Stuff.Children.Add(stack);
@@ -105,7 +104,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 			int amount;
 			DateTime time;
 			Label l;
-			if(Int32.TryParse(tbxAmount.Text, out amount) && DateTime.TryParse(tbxDate.Text, out time) && cbbMeasureType.SelectedIndex != -1) {
+			if(Int32.TryParse(tbxAmount.Text, out amount) && DateTime.TryParse(tbxDate.Text, out time) && cbbMeasureType.SelectedIndex != -1 && time > DateTime.Now) {
 				StackPanel stack = new StackPanel();
 				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
 
