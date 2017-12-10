@@ -39,7 +39,6 @@ namespace AwesomeMealtime
             if (recwin.ShowDialog() == true)
             {
                 Recipe r = recwin.GetRecipe;
-                MessageBox.Show(r.Name);
                 recipeBook.AddRecipe(r);
                 RecipeList.ItemsSource = recipeBook.Recipes;
             }
