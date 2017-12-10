@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
+using System.Windows.Data;
 
 namespace AwesomeMealtime
 {
@@ -56,15 +57,119 @@ namespace AwesomeMealtime
 
 
 		//Pantry Events
-		private void btn_PantryAdd_Click(object sender, RoutedEventArgs e)
+		private void btn_PantryAddNew_Click(object sender, RoutedEventArgs e)
         {
 			IngredientWindow add = new IngredientWindow();
+			Ingredient confirm;
 
-			if(add.ShowDialog() == true)
+			add.tbxName.Text = "Carrot";
+			add.tbxAmount.Text = "1";
+			add.tbxDate.Text = "12/12/20";
+
+			if(add.ShowDialog() == true) {}
+
+			if (add.proto != null)
 			{
+				confirm = add.proto;
+				//myDriver.Current_Pantry.Add(add.proto);
 
+				StackPanel stack = new StackPanel();
+				stack.Orientation = Orientation.Horizontal;
+
+				DisplayIngredient(ref stack, confirm);
+
+				spl_Pantry.Children.Add(stack);
+				
 			}
-        }
+		}
+
+		private void DisplayIngredient(ref StackPanel parent, Ingredient values)
+		{
+			Label l = new Label();
+			l.Content = values.Name;
+			parent.Children.Add(l);
+
+			l = new Label();
+			l.Content = $"{values.TotalQuantity} oz";
+			parent.Children.Add(l);
+
+			StackPanel pack = new StackPanel();
+			pack.Orientation = Orientation.Horizontal;
+			pack.Width = 300;
+
+			foreach (ExpDate ex in values.ExpirationDates)
+			{
+				StackPanel dates = new StackPanel();
+
+				l = new Label();
+				l.Content = ex.Time.ToString();
+				dates.Children.Add(l);
+
+				l = new Label();
+				//l.Content = $"{ex.Size.Qty} {ex.Size.Msmt}";
+				l.Content = $"{ex.Size.Qty} oz";
+				dates.Children.Add(l);
+
+				pack.Children.Add(dates);
+			}
+
+			ScrollViewer view = new ScrollViewer();
+			view.Content = pack;
+
+			parent.Children.Add(view);
+
+			Button btn = new Button();
+			btn.Content = "adjust";
+			btn.Click += BtnAddMore_Click;
+			btn.Width = 50;
+			btn.Height = 26;
+			parent.Children.Add(btn);
+		}
+
+		private void GetPartsFromButton(Button sender, out string name, ref List<string> dates, ref List<string> sizes)
+		{
+			StackPanel sp = (StackPanel)sender.Parent;
+			var v = sp.Children[2];
+			StackPanel d = (StackPanel)((ScrollViewer)v).Content;
+
+			name = ((Label)sp.Children[0]).Content.ToString();
+
+			foreach (var x in d.Children)
+			{
+				Label l = (Label)((StackPanel)x).Children[0];
+				dates.Add(l.Content.ToString());
+
+				l = (Label)((StackPanel)x).Children[1];
+				sizes.Add(l.Content.ToString());
+			}
+
+		}
+
+		private void BtnAddMore_Click(object sender, RoutedEventArgs e)
+		{
+			Button b = (Button)sender;
+			StackPanel parent = (StackPanel)b.Parent;
+
+			string name;
+			List<string> dates = new List<string>();
+			List<string> size = new List<string>();
+
+			GetPartsFromButton(b, out name, ref dates, ref size);
+
+			Ingredient test = Ingredient.GetIngredientFromParts(name, dates, size);
+
+			IngredientWindow add = new IngredientWindow();
+
+			add.FillValuesForEdit(test);
+
+			if (add.ShowDialog() == true) {}
+
+			test = add.proto;
+
+			parent.Children.Clear();
+			DisplayIngredient(ref parent, test);
+		}
+
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
 			//TO DO: add search functionality

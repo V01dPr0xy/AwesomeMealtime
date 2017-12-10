@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 
 namespace AwesomeMealtime.Models
 {
@@ -8,16 +10,16 @@ namespace AwesomeMealtime.Models
     {
         public Pantry()
         {
-            ingredients = new List<Ingredient>();
-			expWarningMsg = new List<string>();
-			expRemovalMsg = new List<string>();
+			ingredients = new ObservableCollection<Ingredient>();
+			expWarningMsg = new ObservableCollection<string>();
+			expRemovalMsg = new ObservableCollection<string>();
 		}
 
-        public List<Ingredient> ingredients { get; set; }
+		public ObservableCollection<Ingredient> ingredients { get; set; }
 
-        public List<String> expWarningMsg { get; set; }
+		public ObservableCollection<string> expWarningMsg { get; set; }
 
-        public List<String> expRemovalMsg { get; set; }
+        public ObservableCollection<string> expRemovalMsg { get; set; }
 
         public void Add(Ingredient ingredient) {
             ingredients.Add(ingredient);
@@ -53,25 +55,25 @@ namespace AwesomeMealtime.Models
             Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
             foreach(Ingredient ingredient in ingredients)
             {
-				if (ingredient.Quantities.Qty >= filter) {
-					filterIngredients.Add(ingredient.Quantities.Qty, ingredient);
+				if (ingredient.TotalQuantity >= filter) {
+					filterIngredients.Add(ingredient.TotalQuantity, ingredient);
 				}
             }
 
             return filterIngredients;
         }
 
-        public List<Ingredient> SortAlphabetical() {
-            //sort ingredients by alphabetical order
-            ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
-            return ingredients;
-        }
+        //public List<Ingredient> SortAlphabetical() {
+        //    //sort ingredients by alphabetical order
+        //    ingredients = new ObservableCollection<Ingredient>(Ingredients.OrderBy)
+        //    return ingredients;
+        //}
 
-        public void SortReverseAlphabetical(){
-            //sort ingredients by reverse alphabetical order
-            ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
-            ingredients.Reverse();
-        }
+        //public void SortReverseAlphabetical(){
+        //    //sort ingredients by reverse alphabetical order
+        //    ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
+        //    ingredients.Reverse();
+        //}
 
         public void Expiration_Warning() {
             foreach(Ingredient ingredient in ingredients)
@@ -81,7 +83,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                     if ((expDate - DateTime.Now).TotalDays < 7)
                     {
-                        expWarningMsg.Add(ingredient.Name +": " + ingredient.Quantities + " Is close to Exp on " + date + "!");
+                        expWarningMsg.Add(ingredient.Name +": " + ingredient.TotalQuantity + " Is close to Exp on " + date + "!");
                     }
 
                 }
@@ -98,7 +100,7 @@ namespace AwesomeMealtime.Models
                     DateTime expDate = date.Time;
                      if (expDate > DateTime.Now)
                      {
-                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.Quantities + " Has Exp on " + date + "!");
+                        expRemovalMsg.Add(ingredient.Name + ": " + ingredient.TotalQuantity + " Has Exp on " + date + "!");
                         Remove(ingredient);
                      }
 
