@@ -26,6 +26,14 @@ namespace AwesomeMealtime
             InitializeComponent();
 			myDriver.Init();
 
+			myDriver.Current_Pantry.expWarningMsg.Add("Testing this");
+			myDriver.Current_Pantry.expWarningMsg.Add("Theses should");
+			myDriver.Current_Pantry.expWarningMsg.Add("Show up");
+
+			myDriver.Current_Pantry.expRemovalMsg.Add("Hopefully");
+			myDriver.Current_Pantry.expRemovalMsg.Add("These will also show");
+			myDriver.Current_Pantry.expRemovalMsg.Add("Testing testing");
+
 			Notifications();
 
             Closing += OnWindowClosing; //don't remove this
@@ -62,10 +70,6 @@ namespace AwesomeMealtime
 			IngredientWindow add = new IngredientWindow();
 			Ingredient confirm;
 
-			add.tbxName.Text = "Carrot";
-			add.tbxAmount.Text = "1";
-			add.tbxDate.Text = "12/12/20";
-
 			if (add.ShowDialog() == true) {}
 
 			if (add.proto != null)
@@ -82,7 +86,6 @@ namespace AwesomeMealtime
 				
 			}
 		}
-
 		private void DisplayIngredient(ref StackPanel parent, Ingredient values)
 		{
 			Label l = new Label();
@@ -125,7 +128,6 @@ namespace AwesomeMealtime
 			btn.Height = 26;
 			parent.Children.Add(btn);
 		}
-
 		private void GetPartsFromButton(Button sender, out string name, ref List<string> dates, ref List<string> sizes)
 		{
 			StackPanel sp = (StackPanel)sender.Parent;
@@ -144,7 +146,6 @@ namespace AwesomeMealtime
 			}
 
 		}
-
 		private void BtnAddMore_Click(object sender, RoutedEventArgs e)
 		{
 			Button b = (Button)sender;
@@ -172,7 +173,6 @@ namespace AwesomeMealtime
 				DisplayIngredient(ref parent, test);
 			}
 		}
-
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
 			//TO DO: add search functionality
@@ -248,6 +248,8 @@ namespace AwesomeMealtime
 			{
 				myDriver.Current_Pantry.expWarningMsg.Remove(target);
 			}
+
+			Notifications();
 		}
 		private void NotificationDesposal_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
@@ -257,10 +259,15 @@ namespace AwesomeMealtime
 			{
 				myDriver.Current_Pantry.expRemovalMsg.Remove(target);
 			}
+
+			Notifications();
 		}
 		private void Notifications()
 		{
 			Models.Pantry p = myDriver.Current_Pantry;
+			spl_Expired.Children.Clear();
+			spl_Warning.Children.Clear();
+
 			if (p == null)
 				return;
 			Label l;
