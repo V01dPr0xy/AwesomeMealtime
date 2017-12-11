@@ -15,14 +15,11 @@ namespace AwesomeMealtime.Models
 		//When setting its value, convert.
 		//When getting, convert back?
 
-		static int IDstart = 0;
-
         public Ingredient(string name)
         {
             Name = name;
             ExpirationDates = new ObservableCollection<ExpDate>();
             ExpirationDates.CollectionChanged += NotifyCollectionChangedEventHandler;
-			IDstart++;
         }
 
         public void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e)

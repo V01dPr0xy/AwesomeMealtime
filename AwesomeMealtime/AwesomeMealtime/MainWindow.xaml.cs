@@ -20,6 +20,7 @@ namespace AwesomeMealtime
     {
         Driver myDriver = new Driver();
         RecipeBook recipeBook = new RecipeBook();
+		bool PantrySearchChanged;
 
 		public MainWindow()
         {
@@ -60,7 +61,6 @@ namespace AwesomeMealtime
 
 
 		}
-
 
 		//Pantry Events
 		private void btn_PantryAddNew_Click(object sender, RoutedEventArgs e)
@@ -173,11 +173,44 @@ namespace AwesomeMealtime
 		}
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
-			//TO DO: add search functionality
-			//Will need a check to see if we are in pantry or in Recipe book
-			//string input = tb_Search.Text;
-			//MessageBox.Show(input);
-			//TO DO: Something with input
+			if (PantrySearchChanged) {
+				FillPantry();
+				Double amount;
+				if (Double.TryParse(tbxSearch.Text, out amount))
+				{
+					myDriver.Current_Pantry.FilterQuantity(amount);
+				}
+				else
+				{
+					myDriver.Current_Pantry.FilterName(tbxSearch.Text);
+				}
+
+				PantrySearchChanged = false;
+				myDriver.Current_Pantry.ingredients.Clear();
+			}
+		}
+		private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			PantrySearchChanged = true;
+		}
+		private void FillPantry()
+		{
+			myDriver.Current_Pantry.ingredients.Clear();
+
+			foreach (var v in spl_Pantry.Children)
+			{
+				StackPanel s = (StackPanel)v;
+
+				List<string> dates = new List<string>();
+				List<string> amount = new List<string>();
+				string name;
+
+				GetPartsFromButton((Button)s.Children[3], out name, ref dates, ref amount);
+				Ingredient i = Ingredient.GetIngredientFromParts(name, dates, amount);
+
+				myDriver.Current_Pantry.ingredients.Add(i);
+			}
+
 		}
 
 
@@ -198,21 +231,7 @@ namespace AwesomeMealtime
 		//On closing
 		private void OnWindowClosing(object sender, CancelEventArgs e)
         {
-			myDriver.Current_Pantry.ingredients.Clear();
-
-			foreach(var v in spl_Pantry.Children)
-			{
-				StackPanel s = (StackPanel)v;
-
-				List<string> dates = new List<string>();
-				List<string> amount = new List<string>();
-				string name;
-
-				GetPartsFromButton((Button)s.Children[3], out name, ref dates, ref amount);
-				Ingredient i = Ingredient.GetIngredientFromParts(name, dates, amount);
-
-				myDriver.Current_Pantry.ingredients.Add(i);
-			}
+			FillPantry();
 
 			myDriver.Close();
 
@@ -269,7 +288,6 @@ namespace AwesomeMealtime
 			}
 		}
 
-
 		//Main Toggle
 		private void btnBook_Click(object sender, RoutedEventArgs e)
         {
@@ -288,6 +306,6 @@ namespace AwesomeMealtime
             GRecipe.Visibility = Visibility.Collapsed;
             GPantry.Visibility = Visibility.Visible;
         }
-		
+
 	}
 }

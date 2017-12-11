@@ -16,23 +16,8 @@ namespace AwesomeMealtime.Models
 		}
 
 		public ObservableCollection<Ingredient> ingredients { get; set; }
-
 		public ObservableCollection<string> expWarningMsg { get; set; }
-
         public ObservableCollection<string> expRemovalMsg { get; set; }
-
-        public void Add(Ingredient ingredient) {
-            ingredients.Add(ingredient);
-            System.Console.WriteLine("Added.");
-        }
-
-        public void Remove(Ingredient ingredient) {
-            ingredients.Remove(ingredient);
-        }
-
-        public void Edit() {
-
-        }
 
         public Dictionary<string, Ingredient> FilterName(string filter) {
             //search for a specific ingredient by name
@@ -49,7 +34,6 @@ namespace AwesomeMealtime.Models
             }
             return filterIngredients;
         }
-
         public Dictionary<double, Ingredient> FilterQuantity(double filter)
         {
             Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
@@ -63,19 +47,46 @@ namespace AwesomeMealtime.Models
             return filterIngredients;
         }
 
-        //public List<Ingredient> SortAlphabetical() {
-        //    //sort ingredients by alphabetical order
-        //    ingredients = new ObservableCollection<Ingredient>(Ingredients.OrderBy)
-        //    return ingredients;
-        //}
+		public void SortAlphabetical()
+		{
+			List<Ingredient> ing = new List<Ingredient>();
 
-        //public void SortReverseAlphabetical(){
-        //    //sort ingredients by reverse alphabetical order
-        //    ingredients.Sort((x, y) => string.Compare(x.Name, y.Name));
-        //    ingredients.Reverse();
-        //}
+			int index = 0;
 
-        public void Expiration_Warning() {
+			foreach (Ingredient i in ingredients)
+			{
+				ing[index] = i;
+			}
+
+			ing.Sort();
+			index = 0;
+
+			foreach (Ingredient i in ing)
+			{
+				ingredients[index] = i;
+			}
+		}
+		public void SortReverseAlphabetical()
+		{
+			List<Ingredient> ing = new List<Ingredient>();
+
+			int index = 0;
+
+			foreach(Ingredient i in ingredients)
+			{
+				ing[index] = i;
+			}
+
+			ing.Reverse();
+			index = 0;
+
+			foreach (Ingredient i in ing)
+			{
+				ingredients[index] = i;
+			}
+		}
+
+		public void Expiration_Warning() {
             foreach(Ingredient ingredient in ingredients)
             {   
                 foreach(Ingredient.ExpDate date in ingredient.ExpirationDates )
@@ -91,7 +102,6 @@ namespace AwesomeMealtime.Models
             }
 
         }
-
         public void Expiration_Dispose() {
             foreach(Ingredient ingredient in ingredients)
             {
@@ -101,7 +111,7 @@ namespace AwesomeMealtime.Models
                      if (expDate > DateTime.Now)
                      {
                         expRemovalMsg.Add(ingredient.Name + ": " + ingredient.TotalQuantity + " Has Exp on " + date + "!");
-                        Remove(ingredient);
+                        ingredients.Remove(ingredient);
                      }
 
                 }
