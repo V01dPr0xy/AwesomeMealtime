@@ -121,7 +121,21 @@ namespace AwesomeMealtime
 		}
 		private void btn_RecipeEdit_Click(object sender, RoutedEventArgs e)
 		{
+			if (selected != null)
+			{
+				RecipeWindow recwin = new RecipeWindow();
 
+				recwin.GetReicpeReadyForEdit((Recipe)selected.DataContext);
+
+				if (recwin.ShowDialog() == true)
+				{
+					Recipe r = recwin.GetRecipe;
+					myDriver.Book.AddRecipe(r);
+					RecipeList.ItemsSource = myDriver.Book.Recipes;
+				}
+
+				selected = null;
+			}
 		}
 
 		//Pantry Events

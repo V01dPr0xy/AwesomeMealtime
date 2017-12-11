@@ -32,6 +32,27 @@ namespace AwesomeMealtime.UI_Interface_Items
             IngredientList.ItemsSource = ingredients;
         }
 
+		public void GetReicpeReadyForEdit(Recipe basis)
+		{
+			RecName.Text = basis.Name;
+			RecDesc.Text = basis.Dish_Description;
+			RecDir.Text = basis.Directions;
+			ckxWarning.IsChecked = basis.Warning;
+			PrepTime_Mint.Text = basis.PrepTime.Minutes.ToString();
+			PrepTime_Hour.Text = basis.PrepTime.Hours.ToString();
+			CookTime_Mint.Text = basis.CookTime.Minutes.ToString();
+			CookTime_Hour.Text = basis.CookTime.Hours.ToString();
+
+			MeasureBox.SelectedIndex = (int)basis.Recipe_Difficulty;
+
+			Img.Source = basis.MealPicture.Source;
+
+			foreach(Ingredient i in basis.Ingredients)
+			{
+				ingredients.Add(i);
+			}
+			IngredientList.ItemsSource = ingredients;
+		}
 
         private void RemoveIngredient(object sender, RoutedEventArgs e)
         {
