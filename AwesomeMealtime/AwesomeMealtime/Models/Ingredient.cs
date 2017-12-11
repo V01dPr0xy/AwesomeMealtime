@@ -58,6 +58,8 @@ namespace AwesomeMealtime.Models
 		}
 
         private double totalQuantity;
+        private Quantity quantity;
+        public Quantity Quan { get { return quantity; } set { quantity = value; } }
         public string Name { get; set; }
         public ObservableCollection<ExpDate> ExpirationDates { get; set; }
         public double TotalQuantity
