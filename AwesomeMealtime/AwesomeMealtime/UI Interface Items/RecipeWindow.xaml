@@ -14,11 +14,9 @@
         <TextBox x:Name="RecDesc" HorizontalAlignment="Left" Height="50" Margin="88,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
         <Label Content="Warning:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942"/>
         <CheckBox x:Name="ckxWarning" Content="Has Warning" HorizontalAlignment="Left" Margin="88,99,0,0" VerticalAlignment="Top" Checked="Warning_Checked" Unchecked="Warning_Unchecked"/>
-        <Label Content="Message:" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="88,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
         <Label Content="Unit Of Measurement:" HorizontalAlignment="Left" Margin="300,40,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RecDir" HorizontalAlignment="Left" Height="120" Margin="88,154,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
-        <Label Content="Directions:" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="RecDir" HorizontalAlignment="Left" Height="154" Margin="88,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
+        <Label Content="Directions:" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="IngName" HorizontalAlignment="Left" Height="22" Margin="378,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Label Content="Ingredients:" HorizontalAlignment="Left" Margin="300,16,0,0" VerticalAlignment="Top"/>
         <Label Content="Qty:" HorizontalAlignment="Left" Margin="498,16,0,0" VerticalAlignment="Top" Width="34"/>
@@ -31,6 +29,7 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}"/>
+                        <Label Content="{Binding TotalQuantity}"/>
                         <Label Content="{Binding Quantities.Qty}"/>
                         <Label Content="{Binding Quantities.Msmt}"/>
                     </StackPanel>

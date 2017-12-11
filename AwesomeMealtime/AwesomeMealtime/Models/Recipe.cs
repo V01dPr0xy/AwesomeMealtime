@@ -15,8 +15,7 @@ namespace AwesomeMealtime.Models
 	//Assigned to Bryan Dorman
 	{
 		private string name;
-		private string descript;
-		private string warning;
+        private string descript;
 		private string instruct;
         private ObservableCollection<Ingredient> ingredients;
 		private Image image;
@@ -27,7 +26,6 @@ namespace AwesomeMealtime.Models
 
 		public string Name { get { return name; } set { name = value; FieldChanged(); } }
         public string Dish_Description { get { return descript; } set { descript = value; FieldChanged(); } }
-        public string Warning_Message { get { return warning; } set { warning = value; FieldChanged(); } }
         public string Directions { get { return instruct; } set { instruct = value; FieldChanged(); } }
 		public ObservableCollection<Ingredient> Ingredients { get {return ingredients; } set {ingredients = value; } }
         public TimeSpan CookTime { get { return cook; } set { cook = value; FieldChanged(); } }
