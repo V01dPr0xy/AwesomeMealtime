@@ -33,7 +33,7 @@ namespace AwesomeMealtime.Models
 			FileStream recipeStream;
 			try
 			{
-				recipeStream = new FileStream("MyRecipes.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
+				recipeStream = new FileStream("MyRecipe.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
 				Book = (RecipeBook)recipeFormatter.Deserialize(recipeStream);
 				recipeStream.Close();
 			}

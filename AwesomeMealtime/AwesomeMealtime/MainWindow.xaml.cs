@@ -37,6 +37,8 @@ namespace AwesomeMealtime
 				spl_Pantry.Children.Add(sp);
 			}
 
+			RecipeList.ItemsSource = myDriver.Book.Recipes;
+
 			Notifications();
 
             Closing += OnWindowClosing; //don't remove this
