@@ -19,8 +19,8 @@ namespace AwesomeMealtime
     public partial class MainWindow : Window
     {
         Driver myDriver = new Driver();
-        RecipeBook recipeBook = new RecipeBook();
 		bool PantrySearchChanged;
+		StackPanel selected;
 
 		public MainWindow()
         {
@@ -42,23 +42,85 @@ namespace AwesomeMealtime
 		//Recipe Events
 		private void btn_RecipeAdd_Click(object sender, RoutedEventArgs e)
         {
-            //RecipeWindow recwin = new RecipeWindow();
-            //if (recwin.ShowDialog() == true)
-            //{
-            //    Recipe r = recwin.GetRecipe;
-            //    MessageBox.Show(r.Name);
-            //    recipeBook.AddRecipe(r);
-            //    RecipeList.ItemsSource = recipeBook.Recipes;
-            //}
-               
+			RecipeWindow recwin = new RecipeWindow();
+			if (recwin.ShowDialog() == true)
+			{
+				Recipe r = recwin.GetRecipe;
+				myDriver.Book.AddRecipe(r);
+				RecipeList.ItemsSource = myDriver.Book.Recipes;
+			}
+
 		}
 		private void btn_RecipeRemove_Click(object sender, RoutedEventArgs e)
         {
+			if (selected != null)
+			{
+				Recipe r = (Recipe)(((StackPanel)selected).DataContext);
+				myDriver.Book.Recipes.Remove(r);
+
+				lblRecName.Content = "";
+				lblRecWarning.Content = "";
+				lblRecPrepTime.Content = "";
+				lblRecInstruct.Content = "";
+				lblRecDifficult.Content = "";
+				lblRecCookTime.Content = "";
+				lblRecDescrib.Content = "";
+
+				imgRecipe.Source = null;
+
+				spl_IngridentList.Children.Clear();
+
+				selected = null;
+			}
 
         }
-		private void ShowRecipe_Click(object sender, RoutedEventArgs e)
+		private void spl_RecipeList_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
+			selected = (StackPanel)sender;
+			Recipe r = (Recipe)selected.DataContext;
 
+			lblRecName.Content = r.Name;
+			lblRecInstruct.Content = r.Directions;
+			lblRecDescrib.Content = r.Dish_Description;
+			lblRecCookTime.Content = r.CookTime.ToString();
+			lblRecPrepTime.Content = r.PrepTime.ToString();
+			imgRecipe.Source = r.MealPicture.Source;
+			
+			if(r.Warning)
+			{
+				lblRecWarning.Content = "Caution!";
+			}
+
+			foreach(Ingredient i in r.Ingredients)
+			{
+				Label l = new Label();
+				l.Content = $"{i.Name} {i.TotalQuantity}";
+
+				spl_IngridentList.Children.Add(l);
+			}
+
+			switch(r.Recipe_Difficulty)
+			{
+				case (Recipe.Difficulty)0:
+					lblRecDifficult.Content = "1";
+					break;
+				case (Recipe.Difficulty)1:
+					lblRecDifficult.Content = "2";
+					break;
+				case (Recipe.Difficulty)2:
+					lblRecDifficult.Content = "3";
+					break;
+				case (Recipe.Difficulty)3:
+					lblRecDifficult.Content = "4";
+					break;
+				case (Recipe.Difficulty)4:
+					lblRecDifficult.Content = "5";
+					break;
+
+			}
+		}
+		private void btn_RecipeEdit_Click(object sender, RoutedEventArgs e)
+		{
 
 		}
 
