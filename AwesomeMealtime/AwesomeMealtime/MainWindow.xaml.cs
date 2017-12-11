@@ -19,7 +19,7 @@ namespace AwesomeMealtime
     public partial class MainWindow : Window
     {
         Driver myDriver = new Driver();
-		bool PantrySearchChanged;
+		//bool PantrySearchChanged;
 		StackPanel selected;
 
 		public MainWindow()
@@ -29,8 +29,11 @@ namespace AwesomeMealtime
 
 			foreach(Ingredient i in myDriver.Current_Pantry.ingredients)
 			{
-				StackPanel sp = new StackPanel();
-				DisplayIngredient(ref sp, i);
+				if (i.TotalQuantity > 0)
+				{
+					StackPanel sp = new StackPanel();
+					DisplayIngredient(ref sp, i);
+				}
 			}
 
 			Notifications();
@@ -200,6 +203,20 @@ namespace AwesomeMealtime
 			btn.Width = 50;
 			btn.Height = 26;
 			parent.Children.Add(btn);
+
+			btn = new Button();
+			btn.Content = "remove";
+			btn.Click += BtnRemoveIngredient_Click;
+			btn.Width = 50;
+			btn.Height = 26;
+			parent.Children.Add(btn);
+
+		}
+		private void BtnRemoveIngredient_Click(object sender, RoutedEventArgs e)
+		{
+			Button b = (Button)sender;
+			StackPanel parent = (StackPanel)b.Parent;
+			spl_Pantry.Children.Remove(parent);
 		}
 		private void GetPartsFromButton(Button sender, out string name, ref List<string> dates, ref List<string> sizes)
 		{
@@ -253,7 +270,7 @@ namespace AwesomeMealtime
 		}
 		private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{
-			PantrySearchChanged = true;
+			//PantrySearchChanged = true;
 		}
 		private void FillPantry()
 		{

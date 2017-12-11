@@ -104,7 +104,7 @@ namespace AwesomeMealtime.UI_Interface_Items
 			int amount;
 			DateTime time;
 			Label l;
-			if(Int32.TryParse(tbxAmount.Text, out amount) && DateTime.TryParse(tbxDate.Text, out time) && cbbMeasureType.SelectedIndex != -1 && time > DateTime.Now) {
+			if(Int32.TryParse(tbxAmount.Text, out amount) && DateTime.TryParse(tbxDate.Text, out time) && cbbMeasureType.SelectedIndex != -1 && time > DateTime.Now && amount > 0) {
 				StackPanel stack = new StackPanel();
 				stack.MouseLeftButtonDown += ScrollViewer_MouseLeftButtonDown;
 
