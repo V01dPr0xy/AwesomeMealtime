@@ -6,53 +6,52 @@
         xmlns:local="clr-namespace:AwesomeMealtime.UI_Interface_Items"
         mc:Ignorable="d"
         Title="Recipe Window" Height="481.294" Width="589.077">
-    <Grid Background="#FFBC7B" Margin="0,0,0,0.5">
+    <Grid Background="#AAC789" Margin="0,0,0,0.5">
         <Border Background="AliceBlue" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="75" Margin="44,281,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RecName" HorizontalAlignment="Left" Height="23" Margin="88,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197"/>
-        <Label Content="Description:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RecDesc" HorizontalAlignment="Left" Height="50" Margin="88,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
-        <Label Content="Warning:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942"/>
-        <CheckBox x:Name="ckxWarning" Content="Has Warning" HorizontalAlignment="Left" Margin="88,99,0,0" VerticalAlignment="Top" Checked="Warning_Checked" Unchecked="Warning_Unchecked"/>
-        <Label Content="Unit Of Measurement:" HorizontalAlignment="Left" Margin="300,40,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="RecDir" HorizontalAlignment="Left" Height="154" Margin="88,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197"/>
-        <Label Content="Directions:" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="IngName" HorizontalAlignment="Left" Height="22" Margin="378,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Label Content="Ingredients:" HorizontalAlignment="Left" Margin="300,16,0,0" VerticalAlignment="Top"/>
-        <Label Content="Qty:" HorizontalAlignment="Left" Margin="498,16,0,0" VerticalAlignment="Top" Width="34"/>
-        <TextBox x:Name="IngQty" HorizontalAlignment="Left" Height="22" Margin="532,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
-        <ComboBox x:Name="MeasureBox" HorizontalAlignment="Left" Margin="432,44,0,0" VerticalAlignment="Top" Width="143" ItemsSource="{Binding Path=Ingredient}"/>
-        <Button Content="Add Ingredient" HorizontalAlignment="Left" Margin="300,70,0,0" VerticalAlignment="Top" Width="109" Height="24" Click="AddIngredient"/>
-        <Button Content="Remove Ingredient" HorizontalAlignment="Left" Margin="466,71,0,0" VerticalAlignment="Top" Width="109" Height="24" Click="RemoveIngredient"/>
-        <ListBox x:Name="IngredientList" HorizontalAlignment="Left" Height="173" Margin="300,100,0,0" VerticalAlignment="Top" Width="275" ItemsSource="{Binding ingredients}">
+        <Label Content="Name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="RecName" HorizontalAlignment="Left" Height="23" Margin="88,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Background="#FAE3B4"/>
+        <Label Content="Description:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="RecDesc" HorizontalAlignment="Left" Height="50" Margin="88,41,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197" Background="#FAE3B4"/>
+        <Label Content="Warning:" HorizontalAlignment="Left" Margin="10,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,1.942" Background="#FAE3B4"/>
+        <CheckBox x:Name="ckxWarning" Content="Has Warning" HorizontalAlignment="Left" Margin="88,99,0,0" VerticalAlignment="Top" Checked="Warning_Checked" Unchecked="Warning_Unchecked" Background="#FAE3B4"/>
+        <Label Content="Unit Of Measurement:" HorizontalAlignment="Left" Margin="300,40,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="RecDir" HorizontalAlignment="Left" Height="154" Margin="88,119,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="197" Background="#FAE3B4"/>
+        <Label Content="Directions:" HorizontalAlignment="Left" Margin="10,124,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="IngName" HorizontalAlignment="Left" Height="22" Margin="378,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Background="#FAE3B4"/>
+        <Label Content="Ingredients:" HorizontalAlignment="Left" Margin="300,16,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <Label Content="Qty:" HorizontalAlignment="Left" Margin="498,16,0,0" VerticalAlignment="Top" Width="34" Background="#FAE3B4"/>
+        <TextBox x:Name="IngQty" HorizontalAlignment="Left" Height="22" Margin="532,16,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43" Background="#FAE3B4"/>
+        <ComboBox x:Name="MeasureBox" HorizontalAlignment="Left" Margin="432,44,0,0" VerticalAlignment="Top" Width="143" ItemsSource="{Binding Path=Ingredient}" Background="#FAE3B4"/>
+        <Button Content="Add Ingredient" HorizontalAlignment="Left" Margin="300,70,0,0" VerticalAlignment="Top" Width="109" Height="24" Click="AddIngredient" Background="#F34A53"/>
+        <Button Content="Remove Ingredient" HorizontalAlignment="Left" Margin="466,71,0,0" VerticalAlignment="Top" Width="109" Height="24" Click="RemoveIngredient" Background="#F34A53"/>
+        <ListBox x:Name="IngredientList" HorizontalAlignment="Left" Height="173" Margin="300,100,0,0" VerticalAlignment="Top" Width="275" Background="#FAE3B4" ItemsSource="{Binding ingredients}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}"/>
-                        <Label Content="{Binding TotalQuantity}"/>
-                        <Label Content="{Binding Quantities.Qty}"/>
-                        <Label Content="{Binding Quantities.Msmt}"/>
+                        <Label Content="{Binding Quan.Qty}"/>
+                        <Label Content="{Binding Quan.Msmt}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Label Content="Prep Time:" HorizontalAlignment="Left" Margin="300,278,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="PrepTime_Hour" HorizontalAlignment="Left" Height="22" Margin="427,281,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="36"/>
-        <Label Content="Cook Time:" HorizontalAlignment="Left" Margin="300,304,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prep Time:" HorizontalAlignment="Left" Margin="300,278,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="PrepTime_Hour" HorizontalAlignment="Left" Height="22" Margin="427,281,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="36" Background="#FAE3B4"/>
+        <Label Content="Cook Time:" HorizontalAlignment="Left" Margin="300,304,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
         <ComboBox x:Name="ComboDifficulty" HorizontalAlignment="Left" Margin="378,334,0,0" VerticalAlignment="Top" Width="197"/>
-        <Label Content="Difficulty:" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top"/>
-        <Button Content="Add Image" HorizontalAlignment="Left" Margin="176,307,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="AddImage"/>
-        <Button Content="Save Recipe" HorizontalAlignment="Left" Margin="152,407,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="AddRecipe"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="318,407,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="Cancel_Click"/>
+        <Label Content="Difficulty:" HorizontalAlignment="Left" Margin="300,330,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <Button Content="Add Image" HorizontalAlignment="Left" Margin="176,307,0,0" VerticalAlignment="Top" Width="75" Height="25" Click="AddImage" Background="#F34A53"/>
+        <Button Content="Save Recipe" HorizontalAlignment="Left" Margin="152,407,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="AddRecipe" Background="#F34A53"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="318,407,0,0" VerticalAlignment="Top" Width="109" Height="36" Click="Cancel_Click" Background="#F34A53"/>
         <Image x:Name="Img" Stretch="Fill" HorizontalAlignment="Left" Height="75" Margin="44,281,0,0" VerticalAlignment="Top" Width="75" />
-        <GridSplitter Background="#ABEDB7" HorizontalAlignment="Left" Height="343" Margin="290,13,0,0" VerticalAlignment="Top" Width="5"/>
-        <TextBox x:Name="PrepTime_Mint" HorizontalAlignment="Left" Height="22" Margin="528,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46"/>
-        <Label Content="Hour(s):" HorizontalAlignment="Left" Margin="378,278,0,0" VerticalAlignment="Top"/>
-        <Label Content="Minute(s):" HorizontalAlignment="Left" Margin="466,278,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CookTime_Hour" HorizontalAlignment="Left" Height="22" Margin="427,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="36"/>
-        <TextBox x:Name="CookTime_Mint" HorizontalAlignment="Left" Height="22" Margin="528,305,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46"/>
-        <Label Content="Hour(s):" HorizontalAlignment="Left" Margin="378,303,0,0" VerticalAlignment="Top"/>
-        <Label Content="Minute(s):" HorizontalAlignment="Left" Margin="466,303,0,0" VerticalAlignment="Top"/>
+        <GridSplitter Background="#437356" HorizontalAlignment="Left" Height="343" Margin="290,13,0,0" VerticalAlignment="Top" Width="5"/>
+        <TextBox x:Name="PrepTime_Mint" HorizontalAlignment="Left" Height="22" Margin="528,280,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" Background="#FAE3B4"/>
+        <Label Content="Hour(s):" HorizontalAlignment="Left" Margin="378,278,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <Label Content="Minute(s):" HorizontalAlignment="Left" Margin="466,278,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <TextBox x:Name="CookTime_Hour" HorizontalAlignment="Left" Height="22" Margin="427,306,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="36" Background="#FAE3B4"/>
+        <TextBox x:Name="CookTime_Mint" HorizontalAlignment="Left" Height="22" Margin="528,305,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="46" Background="#FAE3B4"/>
+        <Label Content="Hour(s):" HorizontalAlignment="Left" Margin="378,303,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
+        <Label Content="Minute(s):" HorizontalAlignment="Left" Margin="466,303,0,0" VerticalAlignment="Top" Background="#FAE3B4"/>
 
     </Grid>
 </Window>
