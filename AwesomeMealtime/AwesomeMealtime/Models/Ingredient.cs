@@ -58,6 +58,8 @@ namespace AwesomeMealtime.Models
 		}
 
         private double totalQuantity;
+        private Quantity quantity;
+        public Quantity Quan { get { return quantity; } set { quantity = value; } }
         public string Name { get; set; }
         public ObservableCollection<ExpDate> ExpirationDates { get; set; }
         public double TotalQuantity
@@ -65,13 +67,71 @@ namespace AwesomeMealtime.Models
             get { return totalQuantity; }
             internal set { totalQuantity = value; }
         }
+		public static Measurements GetMeasurementFromString(string input)
+		{
+			Measurements unit;
 
+			switch (input)
+			{
+				case "Cups":
+					unit = Measurements.Cups;
+					break;
+				case "Gill":
+					unit = Measurements.Gill;
+					break;
+				case "Pint":
+					unit = Measurements.Pint;
+					break;
+				case "Quart":
+					unit = Measurements.Quart;
+					break;
+				case "Gallon":
+					unit = Measurements.Gallon;
+					break;
+				case "Peck":
+					unit = Measurements.Peck;
+					break;
+				case "HalfBushel":
+					unit = Measurements.HalfBushel;
+					break;
+				case "Bushel":
+					unit = Measurements.Bushel;
+					break;
+				case "Tablespoon":
+					unit = Measurements.Tablespoon;
+					break;
+				case "Teaspoon":
+					unit = Measurements.Teaspoon;
+					break;
+				case "Milliliter":
+					unit = Measurements.Milliliter;
+					break;
+				case "Centiliter":
+					unit = Measurements.Centiliter;
+					break;
+				case "Deciliter":
+					unit = Measurements.Deciliter;
+					break;
+				case "Liter":
+					unit = Measurements.Liter;
+					break;
+				default:
+					unit = Measurements.Ounce;
+					break;
+
+			}
+
+			return unit;
+		}
+
+		[Serializable]
         public struct ExpDate
         {
             public DateTime Time { get; set; }
             public Quantity Size { get; set; }
         }
 
+		[Serializable]
         public struct Quantity
         {
             private double qty;
@@ -237,62 +297,8 @@ namespace AwesomeMealtime.Models
             }
         }
 
-        public static Measurements GetMeasurementFromString(string input)
-        {
-            Measurements unit;
 
-            switch (input)
-            {
-                case "Cups":
-                    unit = Measurements.Cups;
-                    break;
-                case "Gill":
-                    unit = Measurements.Gill;
-                    break;
-                case "Pint":
-                    unit = Measurements.Pint;
-                    break;
-                case "Quart":
-                    unit = Measurements.Quart;
-                    break;
-                case "Gallon":
-                    unit = Measurements.Gallon;
-                    break;
-                case "Peck":
-                    unit = Measurements.Peck;
-                    break;
-                case "HalfBushel":
-                    unit = Measurements.HalfBushel;
-                    break;
-                case "Bushel":
-                    unit = Measurements.Bushel;
-                    break;
-                case "Tablespoon":
-                    unit = Measurements.Tablespoon;
-                    break;
-                case "Teaspoon":
-                    unit = Measurements.Teaspoon;
-                    break;
-                case "Milliliter":
-                    unit = Measurements.Milliliter;
-                    break;
-                case "Centiliter":
-                    unit = Measurements.Centiliter;
-                    break;
-                case "Deciliter":
-                    unit = Measurements.Deciliter;
-                    break;
-                case "Liter":
-                    unit = Measurements.Liter;
-                    break;
-                default:
-                    unit = Measurements.Ounce;
-                    break;
-
-            }
-
-            return unit;
-        }
+		[Serializable]
         public enum Measurements
         {
             //Imperial

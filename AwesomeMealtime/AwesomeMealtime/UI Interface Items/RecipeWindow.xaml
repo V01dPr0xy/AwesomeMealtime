@@ -29,9 +29,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="{Binding Name}"/>
-                        <Label Content="{Binding TotalQuantity}"/>
-                        <Label Content="{Binding Quantities.Qty}"/>
-                        <Label Content="{Binding Quantities.Msmt}"/>
+                        <Label Content="{Binding Quan.Qty}"/>
+                        <Label Content="{Binding Quan.Msmt}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>

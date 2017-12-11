@@ -54,6 +54,7 @@ namespace AwesomeMealtime.Models
 			difficulty = Difficulty.NA;
 		}
 
+		[Serializable]
 		public enum Difficulty
         {
 			simple, easy, medium, intense, hard, NA
