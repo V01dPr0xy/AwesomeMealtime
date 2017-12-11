@@ -50,39 +50,67 @@ namespace AwesomeMealtime.Models
 		public void SortAlphabetical()
 		{
 			List<Ingredient> ing = new List<Ingredient>();
+			List<string> names = new List<string>();
 
 			int index = 0;
 
 			foreach (Ingredient i in ingredients)
 			{
-				ing[index] = i;
+				names.Add(i.Name);
 			}
 
-			ing.Sort();
+			names.Sort();
+			foreach(string s in names)
+			{
+				foreach(Ingredient i in ingredients)
+				{
+					if(i.Name.Equals(s))
+					{
+						ing.Add(i);
+					}
+				}
+			}
+
 			index = 0;
 
 			foreach (Ingredient i in ing)
 			{
 				ingredients[index] = i;
+				index++;
 			}
 		}
 		public void SortReverseAlphabetical()
 		{
 			List<Ingredient> ing = new List<Ingredient>();
+			List<string> names = new List<string>();
 
 			int index = 0;
 
 			foreach(Ingredient i in ingredients)
 			{
-				ing[index] = i;
+				names.Add(i.Name);
 			}
 
+			ing.Sort();
 			ing.Reverse();
+			foreach (string s in names)
+			{
+				foreach (Ingredient i in ingredients)
+				{
+					if (i.Name.Equals(s))
+					{
+						ing.Add(i);
+					}
+				}
+			}
+
+
 			index = 0;
 
 			foreach (Ingredient i in ing)
 			{
 				ingredients[index] = i;
+				index++;
 			}
 		}
 

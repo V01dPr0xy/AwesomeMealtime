@@ -210,7 +210,32 @@ namespace AwesomeMealtime
 
 				myDriver.Current_Pantry.ingredients.Add(i);
 			}
+			spl_Pantry.Children.Clear();
 
+		}
+		private void cbbSort_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			FillPantry();
+
+			if(cbbSort.SelectedIndex == -1 || cbbSort.SelectedIndex == 0)
+			{
+				myDriver.Current_Pantry.SortAlphabetical();
+			}
+			else if(cbbSort.SelectedIndex == 1)
+			{
+				myDriver.Current_Pantry.SortReverseAlphabetical();
+			}
+
+			foreach (Ingredient i in myDriver.Current_Pantry.ingredients)
+			{
+				StackPanel s = new StackPanel();
+				s.Orientation = Orientation.Horizontal;
+
+				DisplayIngredient(ref s, i);
+				spl_Pantry.Children.Add(s);
+			}
+
+			myDriver.Current_Pantry.ingredients.Clear();
 		}
 
 
