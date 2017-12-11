@@ -64,7 +64,7 @@ namespace AwesomeMealtime.Models
             {
                 BinaryFormatter formatter = new BinaryFormatter();
 
-				FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Append);
+				FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Append, FileAccess.Write, FileShare.None);
 
                 try
                 {
@@ -87,7 +87,7 @@ namespace AwesomeMealtime.Models
             if (Book != null)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-				FileStream fs = new FileStream("MyRecipe.bin", FileMode.Append);
+				FileStream fs = new FileStream("MyRecipe.bin", FileMode.Append, FileAccess.Write, FileShare.None);
 
                 try
                 {

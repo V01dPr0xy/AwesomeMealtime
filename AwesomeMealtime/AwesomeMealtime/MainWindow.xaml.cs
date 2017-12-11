@@ -29,11 +29,11 @@ namespace AwesomeMealtime
 
 			foreach(Ingredient i in myDriver.Current_Pantry.ingredients)
 			{
-				if (i.TotalQuantity > 0)
-				{
-					StackPanel sp = new StackPanel();
-					DisplayIngredient(ref sp, i);
-				}
+				StackPanel sp = new StackPanel();
+				sp.Orientation = Orientation.Horizontal;
+				DisplayIngredient(ref sp, i);
+
+				spl_Pantry.Children.Add(sp);
 			}
 
 			Notifications();

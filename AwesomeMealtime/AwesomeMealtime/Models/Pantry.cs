@@ -20,33 +20,33 @@ namespace AwesomeMealtime.Models
 		public ObservableCollection<string> expWarningMsg { get; set; }
         public ObservableCollection<string> expRemovalMsg { get; set; }
 
-        public Dictionary<string, Ingredient> FilterName(string filter) {
-            //search for a specific ingredient by name
-            Dictionary<string, Ingredient> filterIngredients = new Dictionary<string, Ingredient>();
-            filter = filter.ToLower();
+    //    public Dictionary<string, Ingredient> FilterName(string filter) {
+    //        //search for a specific ingredient by name
+    //        Dictionary<string, Ingredient> filterIngredients = new Dictionary<string, Ingredient>();
+    //        filter = filter.ToLower();
 
-            foreach(Ingredient ingredient in ingredients)
-            {
-                string name = ingredient.Name.ToLower();
-                if (name.Contains(filter))
-                {
-                    filterIngredients.Add(ingredient.Name, ingredient);
-                }
-            }
-            return filterIngredients;
-        }
-        public Dictionary<double, Ingredient> FilterQuantity(double filter)
-        {
-            Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
-            foreach(Ingredient ingredient in ingredients)
-            {
-				if (ingredient.TotalQuantity >= filter) {
-					filterIngredients.Add(ingredient.TotalQuantity, ingredient);
-				}
-            }
+    //        foreach(Ingredient ingredient in ingredients)
+    //        {
+    //            string name = ingredient.Name.ToLower();
+    //            if (name.Contains(filter))
+    //            {
+    //                filterIngredients.Add(ingredient.Name, ingredient);
+    //            }
+    //        }
+    //        return filterIngredients;
+    //    }
+    //    public Dictionary<double, Ingredient> FilterQuantity(double filter)
+    //    {
+    //        Dictionary<double, Ingredient> filterIngredients = new Dictionary<double, Ingredient>();
+    //        foreach(Ingredient ingredient in ingredients)
+    //        {
+				//if (ingredient.TotalQuantity >= filter) {
+				//	filterIngredients.Add(ingredient.TotalQuantity, ingredient);
+				//}
+    //        }
 
-            return filterIngredients;
-        }
+    //        return filterIngredients;
+    //    }
 
 		public void SortAlphabetical()
 		{
