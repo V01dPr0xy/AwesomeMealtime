@@ -12,11 +12,11 @@
             <ColumnDefinition Width="93*"/>
 
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" x:Name="Toggle" Background="#ABEDB7">
-            <Button x:Name="btnBook" Content="RecipeBook" Height="200" Click="btnBook_Click" Background="#F34A53"/>
-            <Button x:Name="btnPantry" Content="Pantry" IsEnabled="false" Height="200" Click="btnPantry_Click" Background="#FFB37B"/>
+        <StackPanel Grid.Column="0" x:Name="Toggle" Background="#ABEDB7" VerticalAlignment="Center">
+            <Button x:Name="btnBook" Content="RecipeBook" Height="200" Click="btnBook_Click" Background="#F34A53" Margin="0 40"/>
+            <Button x:Name="btnPantry" Content="Pantry" IsEnabled="false" Height="200" Click="btnPantry_Click" Background="#FFB37B" Margin="0 43"/>
         </StackPanel>
-        <Grid Grid.Column="1" x:Name="GPantry" Visibility="Visible">
+        <Grid Grid.Column="1" x:Name="GPantry" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
@@ -45,7 +45,7 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" x:Name="GRecipe" Visibility="Collapsed">
+        <Grid Grid.Column="1" x:Name="GRecipe" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
@@ -73,7 +73,7 @@
                 <Label x:Name="lblRecName" Background="#FAE3B4" Margin="223,10,84.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
                 <Label x:Name="lblRecDifficult" Background="#FAE3B4" Margin="563,10,10.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
                 <Label x:Name="lblRecInstruct" Background="#FAE3B4" Margin="10,0,10.5,10.5" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="206" VerticalAlignment="Bottom"/>
-                <Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="223,0,10.5,407.5" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="95" VerticalAlignment="Bottom"/>
+                <Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="223,0,10.5,390" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="95" VerticalAlignment="Bottom"/>
                 <ScrollViewer Margin="223,170,10.5,221.5" Background="#FAE3B4">
                     <StackPanel x:Name="spl_IngridentList"/>
                 </ScrollViewer>
