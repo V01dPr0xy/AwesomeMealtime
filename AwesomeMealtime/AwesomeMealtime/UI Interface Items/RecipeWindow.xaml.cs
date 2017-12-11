@@ -79,9 +79,6 @@ namespace AwesomeMealtime.UI_Interface_Items
         private void AddIngredient(object sender, RoutedEventArgs e)
         {
             Ingredient ing = new Ingredient(IngName.Text);
-            //Ingredient.Quantity quantity = new Ingredient.Quantity();
-           // quantity.Msmt = (Ingredient.Measurements) MeasureBox.SelectedItem;
-            //quantity.Qty = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
             ing.TotalQuantity = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
             ingredients.Add(ing);
             IngredientList.ItemsSource = ingredients;
@@ -97,9 +94,10 @@ namespace AwesomeMealtime.UI_Interface_Items
             int prepHour = (int.TryParse(PrepTime_Hour.Text, out int result) ? result : 0);
             int prepMin = (int.TryParse(PrepTime_Mint.Text, out int result2) ? result2 : 0);
             recipe.PrepTime = new TimeSpan(prepHour,prepMin,0);
-            int cookHour = (int.TryParse(PrepTime_Hour.Text, out int cookResult) ? cookResult : 0);
-            int cookMin = (int.TryParse(PrepTime_Mint.Text, out int cookResult2) ? cookResult2 : 0);
+            int cookHour = (int.TryParse(CookTime_Hour.Text, out int cookResult) ? cookResult : 0);
+            int cookMin = (int.TryParse(CookTime_Mint.Text, out int cookResult2) ? cookResult2 : 0);
             recipe.CookTime = new TimeSpan(cookHour, cookMin, 0);
+			recipe.Recipe_Difficulty = (Recipe.Difficulty)ComboDifficulty.SelectedIndex;
             DialogResult = true;
             this.Close();
         }

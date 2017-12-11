@@ -80,6 +80,7 @@ namespace AwesomeMealtime
 		private void spl_RecipeList_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
 		{
 			selected = (StackPanel)sender;
+			spl_IngridentList.Children.Clear();
 			Recipe r = (Recipe)selected.DataContext;
 
 			lblRecName.Content = r.Name;
@@ -93,6 +94,10 @@ namespace AwesomeMealtime
 			{
 				lblRecWarning.Content = "Caution!";
 			}
+			else
+			{
+				lblRecWarning.Content = "";
+			}
 
 			foreach(Ingredient i in r.Ingredients)
 			{
@@ -102,25 +107,9 @@ namespace AwesomeMealtime
 				spl_IngridentList.Children.Add(l);
 			}
 
-			switch(r.Recipe_Difficulty)
-			{
-				case (Recipe.Difficulty)0:
-					lblRecDifficult.Content = "1";
-					break;
-				case (Recipe.Difficulty)1:
-					lblRecDifficult.Content = "2";
-					break;
-				case (Recipe.Difficulty)2:
-					lblRecDifficult.Content = "3";
-					break;
-				case (Recipe.Difficulty)3:
-					lblRecDifficult.Content = "4";
-					break;
-				case (Recipe.Difficulty)4:
-					lblRecDifficult.Content = "5";
-					break;
+			int diff = (int)r.Recipe_Difficulty + 1;
 
-			}
+			lblRecDifficult.Content = $"D {diff}";
 		}
 		private void btn_RecipeEdit_Click(object sender, RoutedEventArgs e)
 		{
@@ -133,7 +122,7 @@ namespace AwesomeMealtime
 				if (recwin.ShowDialog() == true)
 				{
 					Recipe r = recwin.GetRecipe;
-					myDriver.Book.AddRecipe(r);
+					Models.RecipeBook.EditRecipe((Recipe)selected.DataContext, r);
 					RecipeList.ItemsSource = myDriver.Book.Recipes;
 				}
 

@@ -14,23 +14,11 @@ namespace AwesomeMealtime.Models
     public class RecipeBook
     //Assigned to Matthew Guernsey
     {
-        private ObservableCollection<Recipe> recipes;
-
-        public ObservableCollection<Recipe> Recipes { get {return recipes;} set {recipes = value;} }
-
-        public event PropertyChangedEventHandler PropertyChanged;
+        public ObservableCollection<Recipe> Recipes { get; set; }
 
         public RecipeBook()
         {
             Recipes = new ObservableCollection<Recipe>();
-        }
-
-        protected void FieldChanged([CallerMemberName] string field = null)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(field));
-            }
         }
 
         public void AddRecipe(Recipe rec)
@@ -53,7 +41,7 @@ namespace AwesomeMealtime.Models
                     Recipes.Remove(rec);
         }
 
-        public void EditRecipe(Recipe rec, string name, string desc, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
+        public static void EditRecipe(Recipe rec, string name, string desc, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image, ObservableCollection<Ingredient> ing)
         {
             rec.Name = name;
             rec.Dish_Description = desc;
@@ -63,12 +51,19 @@ namespace AwesomeMealtime.Models
             rec.Recipe_Difficulty = diff;
             rec.Warning = warn;
             rec.MealPicture = image;
+			rec.Ingredients = ing;
         }
 
-        public void FilterRecipesByIngredients(Ingredient ing)
+		public static void EditRecipe(Recipe rec, Recipe edit)
+		{
+			EditRecipe(rec, edit.Name, edit.Dish_Description, edit.Directions, edit.CookTime, edit.PrepTime, edit.Recipe_Difficulty, edit.Warning, edit.MealPicture, edit.Ingredients);
+		}
+
+
+		public void FilterRecipesByIngredients(Ingredient ing)
         {
             ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
-            foreach(Recipe r in recipes)
+            foreach(Recipe r in Recipes)
             {
                 if (r.Ingredients.Contains(ing)) filtered.Add(r);
             }
@@ -77,7 +72,7 @@ namespace AwesomeMealtime.Models
         public void FilterRecipesByTime(TimeSpan time)
         {
             ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
-            foreach (Recipe r in recipes)
+            foreach (Recipe r in Recipes)
             {
                 if (r.CookTime + r.PrepTime <= time) filtered.Add(r);
             }

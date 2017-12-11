@@ -16,7 +16,7 @@
             <Button x:Name="btnBook" Content="RecipeBook" Height="200" Click="btnBook_Click" />
             <Button x:Name="btnPantry" Content="Pantry" IsEnabled="false" Height="200" Click="btnPantry_Click"/>
         </StackPanel>
-        <Grid Grid.Column="1" x:Name="GPantry" Visibility="Visible">
+        <Grid Grid.Column="1" x:Name="GPantry" Visibility="Collapsed">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1*"/>
@@ -45,7 +45,7 @@
                 </ScrollViewer>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1" x:Name="GRecipe" Visibility="Collapsed">
+        <Grid Grid.Column="1" x:Name="GRecipe" Visibility="Visible">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2*"/>
