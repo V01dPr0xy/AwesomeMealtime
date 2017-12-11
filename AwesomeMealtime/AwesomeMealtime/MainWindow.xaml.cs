@@ -10,6 +10,7 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace AwesomeMealtime
 {
@@ -88,7 +89,17 @@ namespace AwesomeMealtime
 			lblRecDescrib.Content = r.Dish_Description;
 			lblRecCookTime.Content = r.CookTime.ToString();
 			lblRecPrepTime.Content = r.PrepTime.ToString();
-			imgRecipe.Source = r.MealPicture.Source;
+
+			var converter = new ImageSourceConverter();
+
+			try
+			{
+				imgRecipe.Source = (ImageSource)converter.ConvertFromString(r.MealPicture);
+			}
+			catch
+			{
+				MessageBox.Show("Image didn't load");
+			}
 			
 			if(r.Warning)
 			{

@@ -18,7 +18,8 @@ namespace AwesomeMealtime.Models
         private string descript;
 		private string instruct;
         private ObservableCollection<Ingredient> ingredients;
-		private Image image;
+		//private Image image;
+		private string image;
 		private TimeSpan cook;
 		private TimeSpan prep;
 		private Difficulty difficulty;
@@ -32,7 +33,8 @@ namespace AwesomeMealtime.Models
         public TimeSpan PrepTime { get { return prep; } set { prep = value; FieldChanged(); } }
         public Difficulty Recipe_Difficulty { get { return difficulty; } set { difficulty = value; FieldChanged(); } }
         public bool Warning { get { return isDangerous; } set { isDangerous = value; FieldChanged(); } }
-        public Image MealPicture { get { return image; } set { image = value; FieldChanged(); } }
+        //public Image MealPicture { get { return image; } set { image = value; FieldChanged(); } }
+		public string MealPicture { get { return image; } set { image = value; FieldChanged(); } }
 
 		protected void FieldChanged([CallerMemberName] string field = null)
 		{
@@ -49,7 +51,7 @@ namespace AwesomeMealtime.Models
 			Ingredients = new ObservableCollection<Ingredient>();
 			cook = new TimeSpan();
 			prep = new TimeSpan();
-			image = new Image();
+			//image = new Image();
 
 			difficulty = Difficulty.NA;
 		}

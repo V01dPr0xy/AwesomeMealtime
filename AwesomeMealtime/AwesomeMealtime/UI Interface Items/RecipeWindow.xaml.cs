@@ -45,9 +45,10 @@ namespace AwesomeMealtime.UI_Interface_Items
 
 			MeasureBox.SelectedIndex = (int)basis.Recipe_Difficulty;
 
-			Img.Source = basis.MealPicture.Source;
+			var converter = new ImageSourceConverter();
+			Img.Source = (ImageSource)converter.ConvertFromString(basis.MealPicture);
 
-			foreach(Ingredient i in basis.Ingredients)
+			foreach (Ingredient i in basis.Ingredients)
 			{
 				ingredients.Add(i);
 			}
@@ -91,7 +92,7 @@ namespace AwesomeMealtime.UI_Interface_Items
         {
             recipe.Name = RecName.Text;
             recipe.Ingredients = ingredients;
-            recipe.MealPicture = Img;
+            recipe.MealPicture = $"{Img.Source}";
             recipe.Dish_Description = RecDesc.Text;
             recipe.Directions = RecDir.Text;
             int prepHour = (int.TryParse(PrepTime_Hour.Text, out int result) ? result : 0);

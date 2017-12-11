@@ -41,7 +41,7 @@ namespace AwesomeMealtime.Models
                     Recipes.Remove(rec);
         }
 
-        public static void EditRecipe(Recipe rec, string name, string desc, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image, ObservableCollection<Ingredient> ing)
+        public static void EditRecipe(Recipe rec, string name, string desc, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, string image, ObservableCollection<Ingredient> ing)
         {
             rec.Name = name;
             rec.Dish_Description = desc;

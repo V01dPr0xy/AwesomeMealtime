@@ -91,7 +91,7 @@ namespace AwesomeMealtime.Models
 
                 try
                 {
-                    formatter.Serialize(fs, Book);
+					formatter.Serialize(fs, Book);
                 }
                 catch (SerializationException a)
                 {
