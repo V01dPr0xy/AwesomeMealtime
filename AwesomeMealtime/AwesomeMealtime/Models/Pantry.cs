@@ -5,7 +5,8 @@ using System.Collections.Specialized;
 
 namespace AwesomeMealtime.Models
 {
-    public class Pantry
+	[Serializable]
+	public class Pantry
         //Assigned to Micah Ketchum
     {
         public Pantry()

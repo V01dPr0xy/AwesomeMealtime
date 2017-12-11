@@ -29,8 +29,8 @@ namespace AwesomeMealtime.Models
 
 		void LoadRecipeBook()
 		{
-			IFormatter recipeFormatter = new BinaryFormatter();
-			Stream recipeStream;
+			BinaryFormatter recipeFormatter = new BinaryFormatter();
+			FileStream recipeStream;
 			try
 			{
 				recipeStream = new FileStream("MyRecipes.bin", FileMode.Open, FileAccess.Read, FileShare.Read);
@@ -44,8 +44,8 @@ namespace AwesomeMealtime.Models
 		}
 		void LoadPantry()
 		{
-			IFormatter pantryFormatter = new BinaryFormatter();
-			Stream pantryStream;
+			BinaryFormatter pantryFormatter = new BinaryFormatter();
+			FileStream pantryStream;
 			try
 			{
 				pantryStream = new FileStream("MyPantry.bin", FileMode.Open, FileAccess.Read, FileShare.Read);

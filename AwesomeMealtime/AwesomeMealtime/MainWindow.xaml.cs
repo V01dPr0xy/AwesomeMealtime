@@ -249,21 +249,7 @@ namespace AwesomeMealtime
 		}
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
 		{
-			if (PantrySearchChanged) {
-				FillPantry();
-				Double amount;
-				if (Double.TryParse(tbxSearch.Text, out amount))
-				{
-					myDriver.Current_Pantry.FilterQuantity(amount);
-				}
-				else
-				{
-					myDriver.Current_Pantry.FilterName(tbxSearch.Text);
-				}
-
-				PantrySearchChanged = false;
-				myDriver.Current_Pantry.ingredients.Clear();
-			}
+			MessageBox.Show("This is will do something someday");
 		}
 		private void tbxSearch_TextChanged(object sender, TextChangedEventArgs e)
 		{

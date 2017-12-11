@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace AwesomeMealtime.Models
 {
-    public class Ingredient
+	[Serializable]
+	public class Ingredient
     //Assigned to Invictus Valkyrius
     {
 		//Create a conversion method, and store into a variable that is to be used.
 		//When setting its value, convert.
 		//When getting, convert back?
-
-        public Ingredient(string name)
+		public Ingredient(string name)
         {
             Name = name;
             ExpirationDates = new ObservableCollection<ExpDate>();

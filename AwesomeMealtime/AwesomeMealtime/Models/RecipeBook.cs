@@ -10,6 +10,7 @@ using System.Windows.Controls;
 
 namespace AwesomeMealtime.Models
 {
+	[Serializable]
     public class RecipeBook : INotifyPropertyChanged
     //Assigned to Matthew Guernsey
     {
