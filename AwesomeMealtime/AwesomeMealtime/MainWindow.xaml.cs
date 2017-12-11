@@ -198,6 +198,8 @@ namespace AwesomeMealtime
 		//On closing
 		private void OnWindowClosing(object sender, CancelEventArgs e)
         {
+			myDriver.Current_Pantry.ingredients.Clear();
+
 			foreach(var v in spl_Pantry.Children)
 			{
 				StackPanel s = (StackPanel)v;
