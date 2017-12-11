@@ -24,13 +24,11 @@ namespace AwesomeMealtime.Models
 
         public void NotifyCollectionChangedEventHandler(object sender, NotifyCollectionChangedEventArgs e)
         {
-            if (e.Action == NotifyCollectionChangedAction.Add)
-            {
-                if (sender.GetType() == typeof(ExpDate))
-                {
-                    TotalQuantity += ((ExpDate)sender).Size.Qty;
-                }
-            }
+			TotalQuantity = 0;
+			foreach (ExpDate ex in ExpirationDates)
+			{
+				TotalQuantity += Quantity.ConvertToOunces(ex.Size.Msmt, ex.Size.Qty);
+			}
         }
 
 		public static Ingredient GetIngredientFromParts(string name, List<string> dates, List<string> qty)
@@ -68,14 +66,6 @@ namespace AwesomeMealtime.Models
             internal set { totalQuantity = value; }
         }
 
-        public bool CompareQuantites(double filter, Quantity qty)
-        {
-            if (qty.ConvertToOunces(qty.Msmt, filter) == qty.Qty)
-                return true;
-            else
-                return false;
-        }
-
         public struct ExpDate
         {
             public DateTime Time { get; set; }
@@ -94,7 +84,6 @@ namespace AwesomeMealtime.Models
                 }
                 set
                 {
-					//qty = ConvertToOunces(Msmt, value);
 					qty = value;
                 }
             }
@@ -104,7 +93,7 @@ namespace AwesomeMealtime.Models
                 qty += ConvertToOunces(Msmt, d);
             }
 
-            public double ConvertToOunces(Measurements m, double param)
+            public static double ConvertToOunces(Measurements m, double param)
             {
                 double result = new double();
 
@@ -254,9 +243,6 @@ namespace AwesomeMealtime.Models
 
             switch (input)
             {
-                case "_":
-                    unit = Measurements._;
-                    break;
                 case "Cups":
                     unit = Measurements.Cups;
                     break;
@@ -299,11 +285,8 @@ namespace AwesomeMealtime.Models
                 case "Liter":
                     unit = Measurements.Liter;
                     break;
-                case "Ounce":
-                    unit = Measurements.Ounce;
-                    break;
                 default:
-                    unit = Measurements._;
+                    unit = Measurements.Ounce;
                     break;
 
             }
@@ -312,8 +295,6 @@ namespace AwesomeMealtime.Models
         }
         public enum Measurements
         {
-            _,
-
             //Imperial
             Cups,
             Gill,
