@@ -53,11 +53,10 @@ namespace AwesomeMealtime.Models
                     Recipes.Remove(rec);
         }
 
-        public void EditRecipe(Recipe rec, string name, string desc, string warnMess, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
+        public void EditRecipe(Recipe rec, string name, string desc, string dir, TimeSpan cookTime, TimeSpan prepTime, Recipe.Difficulty diff, bool warn, Image image)
         {
             rec.Name = name;
             rec.Dish_Description = desc;
-            rec.Warning_Message = warnMess;
             rec.Directions = dir;
             rec.CookTime = cookTime;
             rec.PrepTime = prepTime;
@@ -72,15 +71,6 @@ namespace AwesomeMealtime.Models
             foreach(Recipe r in recipes)
             {
                 if (r.Ingredients.Contains(ing)) filtered.Add(r);
-            }
-        }
-
-        public void FilterRecipesByWarning(string warning)
-        {
-            ObservableCollection<Recipe> filtered = new ObservableCollection<Recipe>();
-            foreach (Recipe r in recipes)
-            {
-                if (r.Warning_Message.Equals(warning)) filtered.Add(r);
             }
         }
 

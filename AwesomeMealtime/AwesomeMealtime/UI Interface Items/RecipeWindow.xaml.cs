@@ -79,10 +79,10 @@ namespace AwesomeMealtime.UI_Interface_Items
         private void AddIngredient(object sender, RoutedEventArgs e)
         {
             Ingredient ing = new Ingredient(IngName.Text);
-            Ingredient.Quantity quantity = new Ingredient.Quantity();
-            quantity.Msmt = (Ingredient.Measurements) MeasureBox.SelectedItem;
-            quantity.Qty = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
-            ing.TotalQuantity = quantity.Qty;
+            //Ingredient.Quantity quantity = new Ingredient.Quantity();
+           // quantity.Msmt = (Ingredient.Measurements) MeasureBox.SelectedItem;
+            //quantity.Qty = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
+            ing.TotalQuantity = (int.TryParse(IngQty.Text, out int result)) ? result : 0;
             ingredients.Add(ing);
             IngredientList.ItemsSource = ingredients;
         }
