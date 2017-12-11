@@ -11,7 +11,7 @@ using System.Windows.Controls;
 namespace AwesomeMealtime.Models
 {
 	[Serializable]
-    public class RecipeBook : INotifyPropertyChanged
+    public class RecipeBook
     //Assigned to Matthew Guernsey
     {
         private ObservableCollection<Recipe> recipes;

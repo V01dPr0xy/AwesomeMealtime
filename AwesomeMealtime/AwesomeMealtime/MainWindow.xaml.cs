@@ -317,7 +317,6 @@ namespace AwesomeMealtime
 			myDriver.Current_Pantry.ingredients.Clear();
 		}
 
-
 		//App stuff //
 		private void AppExit_Click(object sender, RoutedEventArgs e)
         {

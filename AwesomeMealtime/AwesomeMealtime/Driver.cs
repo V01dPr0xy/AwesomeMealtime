@@ -63,7 +63,9 @@ namespace AwesomeMealtime.Models
             if (Current_Pantry != null)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
+
+				FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Append);
+
                 try
                 {
                     formatter.Serialize(fs2, Current_Pantry);
@@ -81,10 +83,12 @@ namespace AwesomeMealtime.Models
         }
 		void SaveRecipe()
         {
-            FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
+
             if (Book != null)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
+				FileStream fs = new FileStream("MyRecipe.bin", FileMode.Append);
+
                 try
                 {
                     formatter.Serialize(fs, Book);
@@ -101,6 +105,5 @@ namespace AwesomeMealtime.Models
             }
         }
         
-        //void RecipeSelect() { }
     }
 }
