@@ -67,7 +67,7 @@ namespace AwesomeMealtime
 				lblRecName.Content = "";
 				lblRecWarning.Content = "";
 				lblRecPrepTime.Content = "";
-				lblRecInstruct.Content = "";
+				tblRecInstruct.Text = "";
 				lblRecDifficult.Content = "";
 				lblRecCookTime.Content = "";
 				lblRecDescrib.Content = "";
@@ -87,7 +87,7 @@ namespace AwesomeMealtime
 			Recipe r = (Recipe)selected.DataContext;
 
 			lblRecName.Content = r.Name;
-			lblRecInstruct.Content = r.Directions;
+			tblRecInstruct.Text = r.Directions;
 			lblRecDescrib.Content = r.Dish_Description;
 			lblRecCookTime.Content = r.CookTime.ToString();
 			lblRecPrepTime.Content = r.PrepTime.ToString();

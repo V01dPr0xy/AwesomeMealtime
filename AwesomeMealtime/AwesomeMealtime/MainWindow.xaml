@@ -72,8 +72,10 @@
             <Grid x:Name="RecipeDisplay" Grid.Column="1" Background="#F34A53">
                 <Label x:Name="lblRecName" Background="#FAE3B4" Margin="217,10,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55" HorizontalAlignment="Left" Width="335"/>
                 <Label x:Name="lblRecDifficult" Background="#FAE3B4" Margin="0,10,10,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55" HorizontalAlignment="Right" Width="68"/>
-                <Label x:Name="lblRecInstruct" Background="#FAE3B4" Margin="10,390,10,10" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black"/>
-                <Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="0,75,10,0" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="120" VerticalAlignment="Top" HorizontalAlignment="Right" Width="385"/>
+				<ScrollViewer Margin="10,390,10,10" Background="#FAE3B4">
+					<TextBlock x:Name="tblRecInstruct" Background="#FAE3B4" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" TextWrapping="Wrap"/>
+				</ScrollViewer>
+				<Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="0,75,10,0" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="120" VerticalAlignment="Top" HorizontalAlignment="Right" Width="385"/>
                 <ScrollViewer Margin="0,202,10,0" Background="#FAE3B4" HorizontalAlignment="Right" Width="385" Height="182" VerticalAlignment="Top">
                     <StackPanel x:Name="spl_IngridentList"/>
                 </ScrollViewer>
