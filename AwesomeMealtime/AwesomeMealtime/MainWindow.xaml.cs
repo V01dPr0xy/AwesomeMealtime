@@ -214,42 +214,8 @@ namespace AwesomeMealtime
 				myDriver.Current_Pantry.ingredients.Add(i);
 			}
 
-            FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
-            if (myDriver.Book != null)
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                try
-                {
-                    formatter.Serialize(fs, myDriver.Book);
-                }
-                catch (SerializationException a)
-                {
-                    Console.WriteLine("My Recipe Failed to Serialize." + a.Message);
-                    throw;
-                }
-                finally
-                {
-                    fs.Close();
-                }
-            }
-            if (myDriver.Current_Pantry != null)
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                FileStream fs2 = new FileStream("MyPantry.bin", FileMode.Create);
-                try
-                {
-                    formatter.Serialize(fs2, myDriver.Current_Pantry);
-                }
-                catch (SerializationException b)
-                {
-                    Console.WriteLine("My Pantry Failed to Serialize " + b.Message);
-                    throw;
-                }
-                finally
-                {
-                    fs2.Close();
-                }
-            }
+			myDriver.Close();
+
             System.Windows.Application.Current.Shutdown();
         }
 

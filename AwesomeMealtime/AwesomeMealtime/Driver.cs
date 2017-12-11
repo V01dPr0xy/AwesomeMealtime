@@ -21,6 +21,12 @@ namespace AwesomeMealtime.Models
 			LoadPantry();
 			LoadRecipeBook();
 		}
+		public void Close()
+		{
+			SavePantry();
+			SaveRecipe();
+		}
+
 		void LoadRecipeBook()
 		{
 			IFormatter recipeFormatter = new BinaryFormatter();
@@ -73,8 +79,7 @@ namespace AwesomeMealtime.Models
                 }
             }
         }
-		
-        void SaveRecipe()
+		void SaveRecipe()
         {
             FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
             if (Book != null)
