@@ -52,10 +52,10 @@
             </Grid.ColumnDefinitions>
             <Grid x:Name="RecipeBook" Grid.Column="0" Background="#437356">
                 <Label Content="Recipe Book" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="AliceBlue" Width="302"/>
-                <Button Content="Add" Margin="0,0,180.5,41.5" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeAdd_Click" Background="#FAE3B4"/>
-                <Button Content="Edit" Margin="0,0,9.5,41.5" HorizontalAlignment="Right" Width="132" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeEdit_Click" Background="#FAE3B4"/>
-                <Button Content="Remove" Margin="0,0,9.5,0.5" HorizontalAlignment="Right" Width="132" FontSize="20" Height="36" VerticalAlignment="Bottom" Click="btn_RecipeRemove_Click" Background="#FAE3B4"/>
-                <ScrollViewer Margin="10,86,9.5,86.5" Background="LightGray">
+                <Button Content="Add" Margin="10,0,0,50" HorizontalAlignment="Left" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeAdd_Click" Background="#FAE3B4"/>
+                <Button Content="Edit" Margin="0,0,10,50" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeEdit_Click" Background="#FAE3B4"/>
+                <Button Content="Remove" Margin="0,0,10,5" HorizontalAlignment="Right" Width="131" FontSize="20" Height="40" VerticalAlignment="Bottom" Click="btn_RecipeRemove_Click" Background="#FAE3B4"/>
+                <ScrollViewer Margin="10,86,10,96" Background="LightGray">
                     <ListBox x:Name="RecipeList" ItemsSource="{Binding recipeBook}" Background="#AAC789">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
@@ -70,17 +70,17 @@
                 </ScrollViewer>
             </Grid>
             <Grid x:Name="RecipeDisplay" Grid.Column="1" Background="#F34A53">
-                <Label x:Name="lblRecName" Background="#FAE3B4" Margin="223,10,84.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
-                <Label x:Name="lblRecDifficult" Background="#FAE3B4" Margin="563,10,10.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
-                <Label x:Name="lblRecInstruct" Background="#FAE3B4" Margin="10,0,10.5,10.5" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="206" VerticalAlignment="Bottom"/>
-                <Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="223,0,10.5,407.5" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="95" VerticalAlignment="Bottom"/>
-                <ScrollViewer Margin="223,170,10.5,221.5" Background="#FAE3B4">
+                <Label x:Name="lblRecName" Background="#FAE3B4" Margin="217,10,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55" HorizontalAlignment="Left" Width="335"/>
+                <Label x:Name="lblRecDifficult" Background="#FAE3B4" Margin="0,10,10,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55" HorizontalAlignment="Right" Width="68"/>
+                <Label x:Name="lblRecInstruct" Background="#FAE3B4" Margin="10,390,10,10" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black"/>
+                <Label x:Name="lblRecDescrib" Background="#FAE3B4" Margin="0,75,10,0" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="120" VerticalAlignment="Top" HorizontalAlignment="Right" Width="385"/>
+                <ScrollViewer Margin="0,202,10,0" Background="#FAE3B4" HorizontalAlignment="Right" Width="385" Height="182" VerticalAlignment="Top">
                     <StackPanel x:Name="spl_IngridentList"/>
                 </ScrollViewer>
-                <Image x:Name="imgRecipe" Grid.Column="1" HorizontalAlignment="Left" Height="180" Margin="10.5,10,0,0" VerticalAlignment="Top" Width="180"/>
-                <Label x:Name="lblRecPrepTime" Background="#FAE3B4" Margin="10,170,434.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
-                <Label x:Name="lblRecCookTime" Background="#FAE3B4" Margin="10,230,434.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
-                <Label x:Name="lblRecWarning" Background="#FAE3B4" Margin="10,290,434.5,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="55"/>
+                <Image x:Name="imgRecipe" Grid.Column="1" HorizontalAlignment="Left" Height="180" Margin="10,10,0,0" VerticalAlignment="Top" Width="180"/>
+                <Label x:Name="lblRecPrepTime" Background="#FAE3B4" Margin="10,210,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="50" Width="220" HorizontalAlignment="Left"/>
+                <Label x:Name="lblRecCookTime" Background="#FAE3B4" Margin="10,270,0,0" VerticalAlignment="Top" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" Height="50" HorizontalAlignment="Left" Width="220"/>
+                <Label x:Name="lblRecWarning" Background="#FAE3B4" Margin="10,330,0,0" FontSize="42" FontFamily="Monotype Corsiva" Foreground="Black" HorizontalAlignment="Left" Width="220" Height="50" VerticalAlignment="Top"/>
             </Grid>
         </Grid>
     </Grid>

@@ -102,7 +102,7 @@ namespace AwesomeMealtime
 			foreach(Ingredient i in r.Ingredients)
 			{
 				Label l = new Label();
-				l.Content = $"{i.Name} {i.TotalQuantity}";
+				l.Content = $"{i.Name} {i.Quan.Qty} {i.Quan.Msmt}";
 
 				spl_IngridentList.Children.Add(l);
 			}
