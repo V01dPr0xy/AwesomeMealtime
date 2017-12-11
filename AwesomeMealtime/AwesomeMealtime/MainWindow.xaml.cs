@@ -73,7 +73,6 @@ namespace AwesomeMealtime
 			if (add.proto != null)
 			{
 				confirm = add.proto;
-				myDriver.Current_Pantry.Add(add.proto);
 
 				StackPanel stack = new StackPanel();
 				stack.Orientation = Orientation.Horizontal;
@@ -156,7 +155,6 @@ namespace AwesomeMealtime
 			GetPartsFromButton(b, out name, ref dates, ref size);
 
 			Ingredient test = Ingredient.GetIngredientFromParts(name, dates, size);
-			int index = myDriver.Current_Pantry.ingredients.IndexOf(test);
 
 			IngredientWindow add = new IngredientWindow();
 
@@ -171,10 +169,6 @@ namespace AwesomeMealtime
 				parent.Children.Clear();
 				DisplayIngredient(ref parent, test);
 
-				if (index != -1)
-				{
-					myDriver.Current_Pantry.ingredients[index] = test;
-				}
 			}
 		}
 		private void btn_PantrySearch_Click(object sender, RoutedEventArgs e)
@@ -204,6 +198,20 @@ namespace AwesomeMealtime
 		//On closing
 		private void OnWindowClosing(object sender, CancelEventArgs e)
         {
+			foreach(var v in spl_Pantry.Children)
+			{
+				StackPanel s = (StackPanel)v;
+
+				List<string> dates = new List<string>();
+				List<string> amount = new List<string>();
+				string name;
+
+				GetPartsFromButton((Button)s.Children[3], out name, ref dates, ref amount);
+				Ingredient i = Ingredient.GetIngredientFromParts(name, dates, amount);
+
+				myDriver.Current_Pantry.ingredients.Add(i);
+			}
+
             FileStream fs = new FileStream("MyRecipe.bin", FileMode.Create);
             if (myDriver.Book != null)
             {
